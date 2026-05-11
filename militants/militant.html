@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sophie Exemple · Fiche militante — FO GRDF Sud-Est</title>
+<meta name="description" content="Fiche militante FO GRDF Sud-Est — parcours, engagements et combats prioritaires.">
+<meta name="theme-color" content="#019cda">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=DM+Sans:wght@300;400;500;600;700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/fo-2027.css">
+<style>
+  /* Hero fiche */
+  .fiche-hero {
+    background: linear-gradient(135deg, #0a2540 0%, #019cda 75%, #028bc2 100%);
+    color: var(--blanc);
+    padding: 130px 32px 130px;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .fiche-hero::before {
+    content: ""; position: absolute; inset: 0;
+    background: radial-gradient(circle at 80% 30%, rgba(247,221,92,0.18) 0%, transparent 50%);
+    z-index: -1;
+  }
+  .fiche-hero-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+  .fiche-portrait {
+    width: 240px; height: 240px;
+    border-radius: 30px;
+    background: var(--gradient-or);
+    color: var(--bleu-nuit);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-size: 96px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.3);
+    position: relative;
+    overflow: hidden;
+    transform: rotate(-2deg);
+    transition: transform 0.3s;
+  }
+  .fiche-portrait:hover { transform: rotate(0deg) scale(1.02); }
+  .fiche-portrait::after {
+    content: "PHOTO";
+    position: absolute;
+    bottom: 14px; left: 50%;
+    transform: translateX(-50%);
+    background: rgba(10,37,64,0.18);
+    color: var(--bleu-nuit);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    padding: 5px 12px;
+    border-radius: 20px;
+  }
+  .fiche-meta-row {
+    display: flex; gap: 10px; flex-wrap: wrap;
+    margin-bottom: 18px;
+  }
+  .meta-chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(247,221,92,0.18);
+    border: 1px solid rgba(247,221,92,0.45);
+    color: var(--or);
+    padding: 8px 16px; border-radius: 30px;
+    font-size: 12px; font-weight: 600;
+    letter-spacing: 2px; text-transform: uppercase;
+  }
+  .meta-chip.alt {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.25);
+    color: var(--blanc);
+  }
+  .fiche-hero h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(40px, 5vw, 62px);
+    font-weight: 900;
+    line-height: 1.05;
+    margin-bottom: 14px;
+    letter-spacing: -1px;
+  }
+  .fiche-role {
+    font-size: 19px;
+    color: rgba(255,255,255,0.85);
+    font-weight: 300;
+    margin-bottom: 28px;
+  }
+  .fiche-quick-info {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    max-width: 620px;
+  }
+  .qi-item {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 16px;
+    padding: 16px;
+    backdrop-filter: blur(10px);
+    transition: all 0.25s;
+  }
+  .qi-item:hover {
+    background: rgba(255,255,255,0.12);
+    transform: translateY(-3px);
+  }
+  .qi-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 4px;
+    font-weight: 500;
+  }
+  .qi-value {
+    font-family: 'Fraunces', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--blanc);
+    line-height: 1.2;
+  }
+
+  /* Contenu fiche */
+  .fiche-body {
+    max-width: 1100px;
+    margin: -80px auto 0;
+    padding: 0 32px 100px;
+    position: relative;
+    z-index: 2;
+  }
+  .fiche-card {
+    background: var(--blanc);
+    border-radius: 28px;
+    padding: 56px;
+    box-shadow: var(--ombre-fort);
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 56px;
+  }
+  .section-block { margin-bottom: 44px; }
+  .section-block:last-child { margin-bottom: 0; }
+  .block-title {
+    display: flex; align-items: center; gap: 14px;
+    font-family: 'Fraunces', serif;
+    font-size: 24px;
+    color: var(--bleu-nuit);
+    margin-bottom: 16px;
+    font-weight: 700;
+  }
+  .block-title-icon {
+    width: 40px; height: 40px;
+    border-radius: 12px;
+    background: var(--gradient-fo);
+    color: var(--or);
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.3s;
+  }
+  .section-block:hover .block-title-icon { transform: rotate(-6deg) scale(1.05); }
+  .block-content p {
+    color: var(--texte);
+    font-size: 16px;
+    line-height: 1.75;
+    margin-bottom: 14px;
+  }
+  .block-content p:last-child { margin-bottom: 0; }
+
+  .pull-quote {
+    background: var(--fond);
+    border-left: 5px solid var(--or);
+    padding: 28px 32px;
+    border-radius: 12px;
+    margin: 28px 0;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 21px;
+    line-height: 1.5;
+    color: var(--bleu-nuit);
+    position: relative;
+  }
+  .pull-quote::before {
+    content: """;
+    position: absolute;
+    top: -12px; left: 20px;
+    font-family: 'Fraunces', serif;
+    font-size: 80px;
+    color: var(--or);
+    line-height: 1;
+  }
+
+  .combats-list { list-style: none; display: grid; gap: 14px; }
+  .combat-item {
+    background: var(--fond);
+    border-radius: 16px;
+    padding: 22px;
+    display: flex; gap: 18px;
+    align-items: flex-start;
+    transition: all 0.25s;
+    border: 1px solid transparent;
+  }
+  .combat-item:hover {
+    background: var(--blanc);
+    border-color: var(--bleu);
+    box-shadow: var(--ombre-doux);
+    transform: translateX(6px);
+  }
+  .combat-num {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: var(--bleu);
+    color: var(--blanc);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-size: 15px;
+    flex-shrink: 0;
+  }
+  .combat-item h5 {
+    font-family: 'Fraunces', serif;
+    font-size: 17px;
+    color: var(--bleu-nuit);
+    margin-bottom: 4px;
+  }
+  .combat-item p { font-size: 14.5px; color: var(--gris); line-height: 1.55; }
+
+  /* Sidebar */
+  .sidebar-card {
+    background: var(--fond);
+    border-radius: 20px;
+    padding: 28px;
+    margin-bottom: 18px;
+  }
+  .sidebar-card.dark {
+    background: linear-gradient(135deg, var(--bleu-nuit), #051a30);
+    color: var(--blanc);
+    position: relative;
+    overflow: hidden;
+  }
+  .sidebar-card.dark::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 30% 20%, rgba(247,221,92,0.1) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .sidebar-card h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 15px;
+    color: var(--bleu);
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 700;
+    position: relative;
+  }
+  .sidebar-card.dark h4 { color: var(--or); }
+  .info-list { list-style: none; position: relative; }
+  .info-list li {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--fond-alt);
+    font-size: 14.5px;
+  }
+  .info-list li:last-child { border-bottom: none; }
+  .info-list li strong {
+    display: block;
+    color: var(--gris);
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    font-weight: 600;
+  }
+  .info-list li span { color: var(--texte); font-weight: 500; }
+  .sidebar-card.dark .info-list li { border-color: rgba(255,255,255,0.12); }
+  .sidebar-card.dark .info-list li strong { color: rgba(255,255,255,0.6); }
+  .sidebar-card.dark .info-list li span { color: var(--blanc); }
+
+  .engagement-tags {
+    display: flex; flex-wrap: wrap; gap: 8px;
+  }
+  .tag {
+    background: var(--blanc);
+    color: var(--bleu-nuit);
+    padding: 7px 13px;
+    border-radius: 20px;
+    font-size: 12.5px;
+    font-weight: 600;
+    border: 1px solid var(--fond-alt);
+    transition: all 0.2s;
+  }
+  .tag:hover {
+    border-color: var(--bleu);
+    color: var(--bleu);
+    transform: translateY(-2px);
+  }
+
+  .sidebar-contact {
+    background: var(--gradient-rouge);
+    color: var(--blanc);
+    border-radius: 20px;
+    padding: 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .sidebar-contact::before {
+    content: "✉";
+    position: absolute;
+    right: -12px; top: -20px;
+    font-size: 120px;
+    color: rgba(255,255,255,0.08);
+    pointer-events: none;
+    line-height: 1;
+  }
+  .sidebar-contact h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    color: var(--blanc);
+    margin-bottom: 10px;
+    position: relative;
+  }
+  .sidebar-contact p {
+    font-size: 13.5px;
+    color: rgba(255,255,255,0.82);
+    line-height: 1.55;
+    margin-bottom: 18px;
+    position: relative;
+  }
+  .sidebar-contact .fo-mailto-btn {
+    width: 100%;
+    justify-content: center;
+    position: relative;
+  }
+
+  @media (max-width: 980px) {
+    .fiche-hero-inner { grid-template-columns: 1fr; gap: 32px; justify-items: center; text-align: center; }
+    .fiche-portrait { width: 180px; height: 180px; font-size: 72px; }
+    .fiche-quick-info { grid-template-columns: 1fr; max-width: none; }
+    .fiche-meta-row { justify-content: center; }
+    .fiche-card { grid-template-columns: 1fr; padding: 36px; gap: 36px; }
+  }
+  @media (max-width: 560px) {
+    .fiche-hero { padding: 110px 20px 90px; }
+    .fiche-body { padding: 0 16px 70px; margin-top: -60px; }
+    .fiche-card { padding: 28px; }
+    .pull-quote { padding: 24px; font-size: 18px; }
+  }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#contenu-principal">Aller au contenu principal</a>
+<div class="cursor-dot" aria-hidden="true"></div>
+<div class="cursor-ring" aria-hidden="true"></div>
+
+<!-- NAV -->
+<nav class="top-nav" aria-label="Navigation principale">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">
+      <img src="https://www.destination-prevention.fr/wp-content/uploads/2026/03/Sans-titre-2026-03-24T120947.656.png" alt="Logo FO Énergie GRDF">
+      <span class="nav-logo-text">FO GRDF<small>Élections 2027</small></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html#message">Message</a></li>
+      <li><a href="../index.html#regions">Régions</a></li>
+      <li><a href="../index.html#engagements">Engagements</a></li>
+      <li><a href="../presentation.html" class="nav-cta">Présentation</a></li>
+    </ul>
+    <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <div class="nav-progress"></div>
+  </div>
+</nav>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <div class="breadcrumb-inner">
+    <a href="../index.html">Accueil</a>
+    <span class="sep">›</span>
+    <a href="../regions/region.html?r=sud-est">Sud-Est</a>
+    <span class="sep">›</span>
+    <span>Sophie Exemple</span>
+  </div>
+</div>
+
+<!-- HERO FICHE -->
+<header class="fiche-hero" id="contenu-principal">
+  <div class="fiche-hero-inner">
+    <div class="fiche-portrait" aria-hidden="true">S</div>
+    <div>
+      <div class="fiche-meta-row">
+        <span class="meta-chip">Tête de liste · Sud-Est</span>
+        <span class="meta-chip alt">Site Lyon</span>
+      </div>
+      <h1>Sophie Exemple</h1>
+      <p class="fiche-role">Technicienne d'intervention · 14 ans chez GRDF</p>
+
+      <div class="fiche-quick-info">
+        <div class="qi-item">
+          <div class="qi-label">Métier</div>
+          <div class="qi-value">Technicienne d'intervention</div>
+        </div>
+        <div class="qi-item">
+          <div class="qi-label">Ancienneté</div>
+          <div class="qi-value">14 ans</div>
+        </div>
+        <div class="qi-item">
+          <div class="qi-label">Territoire</div>
+          <div class="qi-value">Lyon & Vallée du Rhône</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- CORPS FICHE -->
+<div class="fiche-body">
+  <article class="fiche-card reveal">
+
+    <!-- Colonne principale -->
+    <div>
+      <section class="section-block">
+        <h2 class="block-title">
+          <span class="block-title-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="22" height="22">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+            </svg>
+          </span>
+          Mon parcours
+        </h2>
+        <div class="block-content">
+          <p>
+            Entrée chez GRDF en 2012 comme technicienne d'intervention sur le site de Lyon, j'ai progressivement
+            pris des responsabilités sur la maintenance préventive et la sécurité des installations gaz.
+          </p>
+          <p>
+            Engagée syndicalement depuis 2018, j'ai été déléguée du personnel sur mon site avant de rejoindre
+            la délégation régionale FO GRDF Sud-Est en 2023.
+          </p>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <h2 class="block-title">
+          <span class="block-title-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="22" height="22">
+              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+            </svg>
+          </span>
+          Pourquoi je me présente
+        </h2>
+        <div class="block-content">
+          <p>
+            Parce que les sujets de terrain ne se décident pas dans les bureaux. Parce que les techniciens et
+            techniciennes méritent une représentation qui parle leur langue, qui connaît leurs réalités et qui
+            ne cède pas face aux discours convenus.
+          </p>
+          <div class="pull-quote">
+            Le syndicalisme, c'est d'abord écouter, comprendre, puis agir. C'est ce que j'essaie de faire chaque jour
+            sur le terrain, et c'est ce que je veux porter pour vous en 2027.
+          </div>
+          <p>
+            Je crois aussi qu'il est temps de renouveler la manière de communiquer, d'être plus accessible,
+            plus transparent, plus à l'écoute. C'est tout le sens de cette nouvelle plateforme.
+          </p>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <h2 class="block-title">
+          <span class="block-title-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="22" height="22">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+            </svg>
+          </span>
+          Ma vision du syndicalisme
+        </h2>
+        <div class="block-content">
+          <p>
+            Un syndicalisme qui ne se contente pas de constater, mais qui propose. Qui ne s'épuise pas dans des
+            postures, mais qui obtient des résultats concrets. Qui ne parle pas «&nbsp;à la place de&nbsp;» mais
+            qui porte la voix collective des salariés.
+          </p>
+          <p>
+            FO GRDF, c'est cette tradition&nbsp;: libre, indépendante, sans compromission, mais toujours dans le dialogue.
+            C'est cette tradition que je veux faire vivre et moderniser.
+          </p>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <h2 class="block-title">
+          <span class="block-title-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="22" height="22">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </span>
+          Mes combats prioritaires
+        </h2>
+        <ul class="combats-list">
+          <li class="combat-item">
+            <div class="combat-num">1</div>
+            <div>
+              <h5>Sécurité au travail</h5>
+              <p>Renforcer les moyens, les EPI et les procédures d'intervention. La sécurité n'est jamais un coût&nbsp;: c'est un investissement.</p>
+            </div>
+          </li>
+          <li class="combat-item">
+            <div class="combat-num">2</div>
+            <div>
+              <h5>Reconnaissance des compétences</h5>
+              <p>Valoriser l'expertise terrain dans les grilles, les évolutions de carrière et les rémunérations.</p>
+            </div>
+          </li>
+          <li class="combat-item">
+            <div class="combat-num">3</div>
+            <div>
+              <h5>Équilibre vie pro / vie perso</h5>
+              <p>Préserver des organisations de travail soutenables, particulièrement pour les astreintes et les déplacements.</p>
+            </div>
+          </li>
+          <li class="combat-item">
+            <div class="combat-num">4</div>
+            <div>
+              <h5>Égalité femmes / hommes</h5>
+              <p>Promouvoir l'accès aux métiers techniques pour les femmes et lutter contre toutes les formes de discrimination.</p>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </div>
+
+    <!-- Sidebar -->
+    <aside>
+      <div class="sidebar-card dark">
+        <h4>Informations</h4>
+        <ul class="info-list">
+          <li><strong>Métier</strong><span>Technicienne d'intervention</span></li>
+          <li><strong>Ancienneté GRDF</strong><span>14 ans</span></li>
+          <li><strong>Site principal</strong><span>Lyon Vénissieux</span></li>
+          <li><strong>Territoire</strong><span>Sud-Est · Lyon & Vallée du Rhône</span></li>
+          <li><strong>Engagement syndical</strong><span>FO GRDF depuis 2018</span></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-card">
+        <h4>Engagements</h4>
+        <div class="engagement-tags">
+          <span class="tag">Sécurité</span>
+          <span class="tag">Salaires</span>
+          <span class="tag">Égalité F/H</span>
+          <span class="tag">Conditions de travail</span>
+          <span class="tag">Métiers techniques</span>
+          <span class="tag">Astreintes</span>
+        </div>
+      </div>
+
+      <div class="sidebar-contact">
+        <h4>Me contacter</h4>
+        <p>Une question, une situation, une idée ? Je suis à votre écoute, en toute confidentialité.</p>
+        <a href="mailto:syndicat-fo_grdf-delegations-nationales@grdf.fr" class="fo-mailto-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+          Envoyer un message
+        </a>
+      </div>
+    </aside>
+
+  </article>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="../index.html" class="nav-logo">
+        <img src="https://www.destination-prevention.fr/wp-content/uploads/2026/03/Sans-titre-2026-03-24T120947.656.png" alt="FO Énergie GRDF">
+        <span class="nav-logo-text">FO GRDF<small>Élections 2027</small></span>
+      </a>
+      <p>Force Ouvrière GRDF, syndicat libre et indépendant au service de tous les salariés.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Navigation</h5>
+      <ul>
+        <li><a href="../index.html">Accueil</a></li>
+        <li><a href="../index.html#regions">Toutes les régions</a></li>
+        <li><a href="../regions/region.html?r=sud-est">Retour Sud-Est</a></li>
+        <li><a href="../presentation.html">Présentation</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Cette fiche</h5>
+      <ul>
+        <li><a href="#contenu-principal">Présentation</a></li>
+        <li><a href="mailto:syndicat-fo_grdf-delegations-nationales@grdf.fr">Contact direct</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Contact</h5>
+      <ul>
+        <li><a href="mailto:syndicat-fo_grdf-delegations-nationales@grdf.fr">Délégations nationales</a></li>
+        <li><a href="#">Mentions légales</a></li>
+        <li><a href="#">Accessibilité</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 FO GRDF · Maquette concept · Données fictives</div>
+    <div><a href="mailto:syndicat-fo_grdf-delegations-nationales@grdf.fr">syndicat-fo_grdf-delegations-nationales@grdf.fr</a></div>
+  </div>
+</footer>
+
+<div class="a11y-toggle-bar">
+  <button class="a11y-btn" id="a11yToggle" onclick="toggleA11y()" aria-pressed="false">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+      <path d="M12 2a10 10 0 1 1 0 20A10 10 0 0 1 12 2z"/>
+      <path d="M12 2a10 10 0 0 1 0 20z" fill="currentColor"/>
+    </svg>
+    <span class="a11y-label-off">Mode lecture universelle</span>
+    <span class="a11y-label-on">Mode actif — Revenir</span>
+  </button>
+</div>
+
+<script src="../assets/js/fo-2027.js"></script>
+</body>
+</html>

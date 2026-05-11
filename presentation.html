@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Présentation au collectif · Plateforme FO GRDF 2027</title>
+<meta name="description" content="Présentation de la maquette de plateforme digitale FO GRDF pour les élections professionnelles 2027.">
+<meta name="theme-color" content="#019cda">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=DM+Sans:wght@300;400;500;600;700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/fo-2027.css">
+<style>
+  .presentation-hero {
+    background: linear-gradient(135deg, #0a2540 0%, #019cda 75%, #028bc2 100%);
+    color: var(--blanc);
+    padding: 150px 32px 110px;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    text-align: center;
+  }
+  .presentation-hero::before {
+    content: ""; position: absolute; inset: 0;
+    background:
+      radial-gradient(circle at 85% 25%, rgba(247,221,92,0.2) 0%, transparent 50%),
+      radial-gradient(circle at 15% 75%, rgba(40,177,147,0.18) 0%, transparent 50%);
+    z-index: -1;
+  }
+  .presentation-hero .hero-inner {
+    max-width: 1000px; margin: 0 auto;
+    grid-template-columns: 1fr;
+    text-align: center;
+    display: block;
+    position: relative;
+  }
+  .presentation-hero h1 {
+    margin-left: auto; margin-right: auto;
+    max-width: 900px;
+  }
+  .presentation-hero p {
+    max-width: 720px;
+    margin: 0 auto 36px;
+  }
+  .hero-context {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 16px;
+  }
+  .ctx-chip {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.18);
+    color: var(--blanc);
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-size: 12.5px;
+    font-weight: 500;
+    backdrop-filter: blur(10px);
+  }
+
+  /* Objectifs */
+  .obj-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .obj-card {
+    background: var(--blanc);
+    border-radius: 22px;
+    padding: 36px 32px;
+    box-shadow: var(--ombre-doux);
+    border-top: 4px solid var(--or);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .obj-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--ombre-fort);
+  }
+  .obj-icon {
+    width: 60px; height: 60px;
+    border-radius: 16px;
+    background: var(--gradient-fo);
+    color: var(--or);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 22px;
+    transition: transform 0.3s;
+  }
+  .obj-card:hover .obj-icon { transform: rotate(-6deg) scale(1.08); }
+  .obj-card h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    color: var(--bleu-nuit);
+    margin-bottom: 10px;
+  }
+  .obj-card p {
+    font-size: 14.5px;
+    color: var(--gris);
+    line-height: 1.6;
+  }
+
+  /* Note importante */
+  .note-card {
+    background: linear-gradient(135deg, #fff8d4 0%, #fff3a8 100%);
+    border-left: 6px solid var(--or-fonce);
+    border-radius: 18px;
+    padding: 32px 36px;
+    margin: 48px auto 0;
+    max-width: 960px;
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+    box-shadow: var(--ombre-doux);
+  }
+  .note-icon {
+    width: 52px; height: 52px;
+    border-radius: 14px;
+    background: var(--or-fonce);
+    color: var(--bleu-nuit);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .note-card h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 19px;
+    color: var(--bleu-nuit);
+    margin-bottom: 10px;
+  }
+  .note-card p {
+    color: var(--texte);
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  /* Démos pages */
+  .demos-section { background: var(--blanc); }
+  .demos-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    margin-bottom: 32px;
+  }
+  .demo-card {
+    background: var(--fond);
+    border-radius: 24px;
+    overflow: hidden;
+    transition: all 0.35s;
+    border: 2px solid transparent;
+    display: flex;
+    flex-direction: column;
+  }
+  .demo-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--ombre-fort);
+    border-color: var(--or);
+  }
+  .demo-preview {
+    aspect-ratio: 16/9;
+    background: var(--gradient-fo);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--or);
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-size: 84px;
+    position: relative;
+    overflow: hidden;
+  }
+  .demo-preview::before {
+    content: ""; position: absolute; inset: 0;
+    background: radial-gradient(circle at 80% 30%, rgba(247,221,92,0.2) 0%, transparent 60%);
+  }
+  .demo-preview.region { background: linear-gradient(135deg, var(--bleu-nuit), var(--bleu)); }
+  .demo-preview.fiche { background: var(--gradient-rouge); }
+  .demo-preview.full {
+    background: var(--gradient-mer);
+    font-size: 64px;
+  }
+  .demo-badge {
+    position: absolute;
+    top: 18px; left: 18px;
+    background: rgba(255,255,255,0.18);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: var(--blanc);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 20px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .demo-content {
+    padding: 32px;
+    flex: 1;
+    display: flex; flex-direction: column;
+  }
+  .demo-content h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 24px;
+    color: var(--bleu-nuit);
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+  .demo-content p {
+    color: var(--gris);
+    font-size: 14.5px;
+    line-height: 1.65;
+    margin-bottom: 20px;
+    flex: 1;
+  }
+  .demo-features {
+    list-style: none;
+    margin-bottom: 26px;
+  }
+  .demo-features li {
+    padding: 8px 0 8px 28px;
+    position: relative;
+    font-size: 13.5px;
+    color: var(--texte);
+  }
+  .demo-features li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 11px;
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    background: var(--vert) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>") center/12px 12px no-repeat;
+  }
+  .demo-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--bleu-nuit);
+    color: var(--blanc);
+    padding: 13px 24px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    transition: all 0.25s;
+    align-self: flex-start;
+  }
+  .demo-btn:hover {
+    background: var(--bleu);
+    color: var(--blanc);
+    transform: translateX(6px);
+    text-decoration: none;
+    box-shadow: 0 10px 24px rgba(1,156,218,0.35);
+  }
+  .demo-btn.gold {
+    background: var(--or);
+    color: var(--bleu-nuit);
+  }
+  .demo-btn.gold:hover {
+    background: var(--blanc);
+    color: var(--bleu-nuit);
+    box-shadow: 0 10px 24px rgba(247,221,92,0.4);
+  }
+
+  /* Prochaines étapes */
+  .next-section { background: var(--fond-alt); }
+  .next-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .next-item {
+    background: var(--blanc);
+    border-radius: 18px;
+    padding: 28px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .next-item:hover { transform: translateY(-4px); box-shadow: var(--ombre-doux); }
+  .next-num {
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-size: 42px;
+    color: var(--or-fonce);
+    line-height: 1;
+    min-width: 56px;
+  }
+  .next-item h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 19px;
+    color: var(--bleu-nuit);
+    margin-bottom: 8px;
+  }
+  .next-item p { color: var(--gris); font-size: 14.5px; line-height: 1.6; }
+
+  /* CTA */
+  .cta-final {
+    background: linear-gradient(135deg, var(--bleu-nuit) 0%, var(--bleu) 100%);
+    color: var(--blanc);
+    text-align: center;
+    padding: 100px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-final::before {
+    content: ""; position: absolute; inset: 0;
+    background: radial-gradient(circle at 50% 0%, rgba(247,221,92,0.2) 0%, transparent 60%);
+  }
+  .cta-final h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(32px, 4.5vw, 52px);
+    font-weight: 900;
+    margin-bottom: 18px;
+    position: relative;
+    line-height: 1.05;
+  }
+  .cta-final h2 em { color: var(--or); font-style: italic; }
+  .cta-final p {
+    color: rgba(255,255,255,0.85);
+    font-size: 17px;
+    max-width: 620px;
+    margin: 0 auto 36px;
+    position: relative;
+  }
+  .cta-actions {
+    display: flex; flex-wrap: wrap; gap: 14px; justify-content: center;
+    position: relative;
+  }
+
+  @media (max-width: 980px) {
+    .obj-grid, .next-grid, .demos-grid { grid-template-columns: 1fr; }
+    .note-card { flex-direction: column; padding: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#contenu-principal">Aller au contenu principal</a>
+<div class="cursor-dot" aria-hidden="true"></div>
+<div class="cursor-ring" aria-hidden="true"></div>
+
+<!-- NAV -->
+<nav class="top-nav" aria-label="Navigation principale">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="https://www.destination-prevention.fr/wp-content/uploads/2026/03/Sans-titre-2026-03-24T120947.656.png" alt="Logo FO Énergie GRDF">
+      <span class="nav-logo-text">FO GRDF<small>Élections 2027</small></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="index.html#regions">Régions</a></li>
+      <li><a href="index.html#engagements">Engagements</a></li>
+      <li><a href="#demos">Pages démo</a></li>
+      <li><a href="index.html" class="nav-cta">Démarrer la visite</a></li>
+    </ul>
+    <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <div class="nav-progress"></div>
+  </div>
+</nav>
+
+<!-- HERO PRÉSENTATION -->
+<header class="presentation-hero hero" id="contenu-principal">
+  <div class="hero-bg" aria-hidden="true"></div>
+
+  <div class="hero-inner">
+    <span class="hero-badge"><span class="dot"></span>Maquette concept · À présenter au collectif</span>
+    <h1>Une plateforme digitale<br>pour <em>l'élection de 2027</em>.</h1>
+    <p class="hero-lead">
+      Voici la première itération d'un support de communication moderne, structuré et interactif destiné à
+      valoriser nos équipes, harmoniser nos messages et créer une véritable proximité avec les salariés
+      partout en France.
+    </p>
+
+    <div class="hero-actions" style="justify-content:center;">
+      <a href="index.html" class="btn btn-primary" data-hover>
+        Démarrer la visite
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </a>
+      <a href="#demos" class="btn btn-ghost" data-hover>Explorer les pages</a>
+    </div>
+
+    <div class="hero-context">
+      <span class="ctx-chip">Maquette fonctionnelle</span>
+      <span class="ctx-chip">Validation du concept</span>
+      <span class="ctx-chip">Contenus fictifs</span>
+      <span class="ctx-chip">4 pages exemples</span>
+    </div>
+  </div>
+</header>
+
+<!-- OBJECTIFS -->
+<section aria-labelledby="t-obj">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-eyebrow">À quoi sert cette maquette</span>
+      <h2 class="section-title" id="t-obj">Trois <em>objectifs concrets</em>.</h2>
+      <p class="section-lead">
+        Cette première étape n'a pas vocation à être publiée. Elle sert à valider collectivement la structure,
+        l'univers visuel et l'expérience proposée, avant d'aller plus loin.
+      </p>
+    </div>
+
+    <div class="obj-grid">
+      <div class="obj-card reveal">
+        <div class="obj-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        </div>
+        <h4>Voir le concept</h4>
+        <p>Visualiser concrètement ce que pourrait être une plateforme nationale FO GRDF moderne, structurée et accessible.</p>
+      </div>
+      <div class="obj-card reveal" data-delay="100">
+        <div class="obj-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h4>Échanger ensemble</h4>
+        <p>Disposer d'un support tangible pour discuter en collectif des contenus, des fonctionnalités et des priorités à retenir.</p>
+      </div>
+      <div class="obj-card reveal" data-delay="200">
+        <div class="obj-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h4>Valider la direction</h4>
+        <p>Obtenir un accord de principe sur le ton, la structure et l'orientation avant d'investir sur la version définitive.</p>
+      </div>
+    </div>
+
+    <div class="note-card reveal">
+      <div class="note-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22">
+          <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+        </svg>
+      </div>
+      <div>
+        <h4>Point important à signaler au collectif</h4>
+        <p>
+          À ce stade, <strong>aucune photo réelle</strong> et <strong>aucun militant réel</strong> ne sont intégrés.
+          Tous les noms, témoignages et fiches sont des placeholders destinés uniquement à illustrer la structure.
+          La maquette est locale (ou hébergée sur un repository GitHub privé "FO 2027") et ne sera publiée nulle part
+          tant que le collectif n'a pas validé l'orientation.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAGES DÉMO -->
+<section class="demos-section" id="demos" aria-labelledby="t-demos">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-eyebrow">Quatre pages à explorer</span>
+      <h2 class="section-title" id="t-demos">Cliquez pour <em>parcourir la maquette</em>.</h2>
+      <p class="section-lead">
+        Quatre pages représentatives ont été conçues. Elles donnent un aperçu réaliste de l'expérience finale,
+        tout en étant entièrement modifiables.
+      </p>
+    </div>
+
+    <div class="demos-grid">
+
+      <article class="demo-card reveal">
+        <div class="demo-preview">
+          <span class="demo-badge">Page 1 · Nationale</span>
+          FR
+        </div>
+        <div class="demo-content">
+          <h3>Page d'accueil nationale</h3>
+          <p>
+            Point d'entrée principal. Présentation de FO GRDF, message national, compte à rebours animé,
+            carte de France interactive avec les 8 régions cliquables, engagements et profession de foi.
+          </p>
+          <ul class="demo-features">
+            <li>Compte à rebours dynamique jusqu'aux élections 2027</li>
+            <li>Carte interactive de France avec panneau région</li>
+            <li>Statistiques animées au scroll</li>
+            <li>Effets parallaxe et reveal au défilement</li>
+            <li>Curseur personnalisé sur desktop</li>
+          </ul>
+          <a href="index.html" class="demo-btn gold" data-hover>
+            Ouvrir l'accueil national
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="demo-card reveal" data-delay="100">
+        <div class="demo-preview region">
+          <span class="demo-badge">Page 2 · Régionale</span>
+          SE
+        </div>
+        <div class="demo-content">
+          <h3>Espace régional (exemple Sud-Est)</h3>
+          <p>
+            Page régionale dédiée avec mini-carte de localisation, présentation collective de l'équipe,
+            candidats placeholder, priorités locales et frise des actions menées.
+          </p>
+          <ul class="demo-features">
+            <li>Mini-carte de France avec région mise en avant</li>
+            <li>Mosaïque interactive de l'équipe (12 placeholders)</li>
+            <li>6 candidats placeholder avec quote signature</li>
+            <li>4 priorités locales spécifiques au territoire</li>
+            <li>Frise chronologique des actions terrain</li>
+          </ul>
+          <a href="regions/region.html?r=sud-est" class="demo-btn" data-hover>
+            Ouvrir la page Sud-Est
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="demo-card reveal">
+        <div class="demo-preview fiche">
+          <span class="demo-badge">Page 3 · Profil</span>
+          👤
+        </div>
+        <div class="demo-content">
+          <h3>Fiche militante individuelle</h3>
+          <p>
+            Format type pour humaniser la communication : parcours, motivations, vision du syndicalisme,
+            combats prioritaires et données clés (métier, ancienneté, territoire, engagements).
+          </p>
+          <ul class="demo-features">
+            <li>Portrait placeholder rotatif + données structurées</li>
+            <li>Quote pull-out style éditorial</li>
+            <li>Sidebar dynamique : infos + tags + contact direct</li>
+            <li>4 combats prioritaires numérotés</li>
+            <li>Lien mailto direct vers la délégation nationale</li>
+          </ul>
+          <a href="militants/militant.html?id=sophie-exemple" class="demo-btn" data-hover>
+            Ouvrir la fiche militante
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="demo-card reveal" data-delay="100">
+        <div class="demo-preview full">
+          <span class="demo-badge">Page 4 · Présentation</span>
+          📋
+        </div>
+        <div class="demo-content">
+          <h3>Page de présentation (vous êtes ici)</h3>
+          <p>
+            Cette page que vous lisez actuellement. Elle sert de table des matières pour la présentation
+            au collectif, avec liens directs vers les autres pages et explication du périmètre.
+          </p>
+          <ul class="demo-features">
+            <li>Vue d'ensemble du projet</li>
+            <li>Liens directs vers les 3 pages clés</li>
+            <li>Roadmap des prochaines étapes</li>
+            <li>Conçue pour être projetée ou partagée</li>
+          </ul>
+          <a href="index.html" class="demo-btn" data-hover>
+            Retour à l'accueil
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROCHAINES ÉTAPES -->
+<section class="next-section" aria-labelledby="t-next">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-eyebrow">Et après ?</span>
+      <h2 class="section-title" id="t-next">Prochaines <em>étapes possibles</em>.</h2>
+      <p class="section-lead">Si le concept est validé, voici les étapes naturelles pour aller plus loin, à discuter ensemble.</p>
+    </div>
+
+    <div class="next-grid">
+      <div class="next-item reveal">
+        <div class="next-num">01</div>
+        <div>
+          <h4>Affiner les contenus</h4>
+          <p>Ajuster les messages nationaux, les engagements, les priorités régionales et la profession de foi avec les retours du collectif.</p>
+        </div>
+      </div>
+      <div class="next-item reveal" data-delay="100">
+        <div class="next-num">02</div>
+        <div>
+          <h4>Identifier les militants</h4>
+          <p>Définir, pour chaque région, les profils à mettre en avant. Préparer les photos, les biographies et les témoignages.</p>
+        </div>
+      </div>
+      <div class="next-item reveal" data-delay="200">
+        <div class="next-num">03</div>
+        <div>
+          <h4>Compléter les 8 régions</h4>
+          <p>Décliner la page Sud-Est pour les 7 autres régions, avec leurs propres priorités et leurs propres équipes.</p>
+        </div>
+      </div>
+      <div class="next-item reveal" data-delay="300">
+        <div class="next-num">04</div>
+        <div>
+          <h4>Mise en ligne & diffusion</h4>
+          <p>Pousser le repo GitHub privé en public, activer GitHub Pages, choisir un nom de domaine et préparer la diffusion (QR Code, emails, réseaux syndicaux).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-final">
+  <h2>Prêt(e) à <em>échanger</em> ?</h2>
+  <p>Cette maquette est un point de départ, pas une fin en soi. Vos retours, vos idées et vos critiques sont précieux.</p>
+  <div class="cta-actions">
+    <a href="index.html" class="btn btn-primary" data-hover>
+      Démarrer la visite
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+    <a href="mailto:syndicat-fo_grdf-delegations-nationales@grdf.fr" class="btn btn-ghost" data-hover>Envoyer un retour</a>
+  </div>
+</section>
+
+<!-- FOOTER simple -->
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo">
+        <img src="https://www.destination-prevention.fr/wp-content/uploads/2026/03/Sans-titre-2026-03-24T120947.656.png" alt="FO Énergie GRDF">
+        <span class="nav-logo-text">FO GRDF<small>Élections 2027</small></span>
+      </a>
+      <p>Force Ouvrière GRDF, syndicat libre et indépendant au service de tous les salariés.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Pages</h5>
+      <ul>
+        <li><a href="index.html">Accueil national</a></li>
+        <li><a href="regions/region.html?r=sud-est">Région Sud-Est</a></li>
+        <li><a href="militants/militant.html?id=sophie-exemple">Fiche militante</a></li>
+        <li><a href="presentation.html">Présentation</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Régions</h5>
+      <ul>
+        <li><a href="index.html#regions">Carte des régions</a></li>
+        <li><a href="regions/region.html?r=idf">Île-de-France</a></li>
+        <li><a href="regions/region.html?r=ouest">Ouest</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Contact</h5>
+      <ul>
+        <li><a href="mailto:syndicat-fo_grdf-delegations-nationales@grdf.fr">Délégations nationales</a></li>
+        <li><a href="#">Mentions légales</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 FO GRDF · Maquette concept · Document de travail interne</div>
+    <div><a href="mailto:syndicat-fo_grdf-delegations-nationales@grdf.fr">syndicat-fo_grdf-delegations-nationales@grdf.fr</a></div>
+  </div>
+</footer>
+
+<div class="a11y-toggle-bar">
+  <button class="a11y-btn" id="a11yToggle" onclick="toggleA11y()" aria-pressed="false">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+      <path d="M12 2a10 10 0 1 1 0 20A10 10 0 0 1 12 2z"/>
+      <path d="M12 2a10 10 0 0 1 0 20z" fill="currentColor"/>
+    </svg>
+    <span class="a11y-label-off">Mode lecture universelle</span>
+    <span class="a11y-label-on">Mode actif — Revenir</span>
+  </button>
+</div>
+
+<script src="assets/js/fo-2027.js"></script>
+</body>
+</html>
