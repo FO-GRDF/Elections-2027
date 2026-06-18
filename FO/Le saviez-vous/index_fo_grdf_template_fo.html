@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FO GRDF — Le Saviez-Vous</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bleu: #003B6F;
+    --bleu-clair: #0074C2;
+    --or: #F5A623;
+    --or-clair: #FFF3D6;
+    --vert: #1A7A4A;
+    --fond: #F7F5F0;
+    --blanc: #FFFFFF;
+    --gris: #6B6B6B;
+    --texte: #1A1A2E;
+    --ombre: 0 12px 32px rgba(0,59,111,0.10);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--fond);
+    color: var(--texte);
+    min-height: 100vh;
+  }
+
+  .page {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 32px 24px 64px;
+  }
+
+  .header {
+    position: relative;
+    background: var(--bleu);
+    border-radius: 24px;
+    padding: 42px 42px 34px;
+    margin-bottom: 28px;
+    overflow: hidden;
+    box-shadow: var(--ombre);
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -40px;
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    background: rgba(245,166,35,0.18);
+  }
+
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -70px;
+    left: 70px;
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    background: rgba(0,116,194,0.28);
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 18px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .badge {
+    display: inline-block;
+    background: var(--or);
+    color: var(--bleu);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 2.2px;
+    text-transform: uppercase;
+    padding: 7px 14px;
+    border-radius: 40px;
+  }
+
+  .logo-wrap img {
+    height: 38px;
+    width: auto;
+    display: block;
+  }
+
+  .header h1 {
+    font-family: 'Fraunces', serif;
+    font-size: 46px;
+    font-weight: 900;
+    color: var(--blanc);
+    line-height: 1.06;
+    max-width: 760px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .header h1 em {
+    color: var(--or);
+    font-style: italic;
+  }
+
+  .subtitle {
+    margin-top: 14px;
+    max-width: 760px;
+    font-size: 16px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.78);
+    position: relative;
+    z-index: 1;
+    font-weight: 300;
+  }
+
+  .update {
+    margin-top: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.10);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 30px;
+    padding: 7px 16px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.88);
+    position: relative;
+    z-index: 1;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    background: #4ADE80;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .intro {
+    background: var(--blanc);
+    border-radius: 18px;
+    padding: 24px 28px;
+    margin-bottom: 30px;
+    border-left: 5px solid var(--bleu-clair);
+    font-size: 15.5px;
+    line-height: 1.75;
+    color: #2a2a2a;
+  }
+
+  .intro strong { color: var(--bleu); }
+
+  .section-title {
+    font-family: 'Fraunces', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--bleu);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-title .icon {
+    width: 38px;
+    height: 38px;
+    background: var(--or-clair);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 18px;
+    margin-bottom: 34px;
+  }
+
+  .card {
+    grid-column: span 4;
+    background: var(--blanc);
+    border-radius: 18px;
+    padding: 26px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 6px 18px rgba(0,59,111,0.05);
+  }
+
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--ombre);
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: var(--bleu-clair);
+  }
+
+  .card.highlight::before { background: var(--or); }
+
+  .card-icon {
+    font-size: 30px;
+    margin-bottom: 12px;
+    display: inline-block;
+  }
+
+  .card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--bleu);
+    margin-bottom: 10px;
+    line-height: 1.2;
+  }
+
+  .card p {
+    font-size: 14px;
+    color: var(--gris);
+    line-height: 1.7;
+    margin-bottom: 18px;
+  }
+
+  .meta {
+    font-size: 12px;
+    color: var(--bleu-clair);
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    background: var(--bleu);
+    color: white;
+    padding: 11px 16px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 700;
+    transition: transform 0.2s, opacity 0.2s;
+  }
+
+  .btn:hover {
+    opacity: 0.95;
+    transform: translateX(2px);
+  }
+
+  .quick-links {
+    background: linear-gradient(135deg, #003B6F 0%, #0074C2 100%);
+    border-radius: 18px;
+    padding: 28px 30px;
+    color: white;
+    margin-bottom: 34px;
+  }
+
+  .quick-links h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    color: var(--or);
+    margin-bottom: 10px;
+  }
+
+  .quick-links p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.80);
+    margin-bottom: 18px;
+  }
+
+  .quick-links-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .quick-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: white;
+    background: rgba(255,255,255,0.10);
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 30px;
+    padding: 10px 14px;
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  .footer {
+    text-align: center;
+    font-size: 12px;
+    color: var(--gris);
+    padding-top: 28px;
+    border-top: 1px solid #ddd;
+  }
+
+  .footer img {
+    height: 48px;
+    margin-bottom: 12px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .accessibility {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    background: var(--bleu);
+    color: white;
+    text-decoration: none;
+    border-radius: 999px;
+    padding: 12px 16px;
+    font-size: 13px;
+    font-weight: 700;
+    box-shadow: 0 12px 24px rgba(0,59,111,0.22);
+    z-index: 20;
+  }
+
+  .accessibility:hover { opacity: 0.95; }
+
+  @media (max-width: 920px) {
+    .card { grid-column: span 6; }
+    .header h1 { font-size: 38px; }
+  }
+
+  @media (max-width: 640px) {
+    .page { padding: 18px 14px 56px; }
+    .header { padding: 30px 22px 26px; border-radius: 20px; }
+    .header-top { align-items: flex-start; flex-direction: column; }
+    .header h1 { font-size: 31px; }
+    .subtitle { font-size: 14px; }
+    .intro { padding: 20px 18px; font-size: 14.5px; }
+    .cards { grid-template-columns: 1fr; }
+    .card { grid-column: auto; }
+    .quick-links { padding: 22px 18px; }
+    .accessibility {
+      right: 12px;
+      bottom: 12px;
+      font-size: 12px;
+      padding: 11px 14px;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+
+    <header class="header">
+      <div class="header-top">
+        <div class="badge">✦ Le Saviez-Vous ?</div>
+        <div class="logo-wrap">
+          <img src="https://www.fnem-fo.org/wp-content/uploads/2024/01/Header_FO_EM_2024.png" alt="FO Énergie">
+        </div>
+      </div>
+      <h1>FO GRDF <em>centralise</em> vos informations utiles</h1>
+      <p class="subtitle">
+        Retrouvez en un seul endroit les principales communications FO GRDF. Cette page d'accueil sert de point d'entrée unique pour accéder rapidement à chaque dossier, depuis un ordinateur comme depuis un téléphone.
+      </p>
+      <div class="update"><span class="dot"></span> Hub mis à jour régulièrement</div>
+    </header>
+
+    <section class="intro">
+      <strong>Un seul lien, tout le contenu.</strong> Cette page a été pensée comme un index central. Elle reprend l'esprit graphique de vos fiches “Le Saviez-Vous” et permet d'accéder rapidement aux sujets déjà publiés, puis d'en ajouter d'autres au fil du temps sans changer l'adresse partagée aux salariés.
+    </section>
+
+    <div class="section-title"><span class="icon">📚</span> Vos fiches disponibles</div>
+
+    <section class="cards">
+      <article class="card">
+        <div class="meta">Déplacements professionnels</div>
+        <span class="card-icon">🧭</span>
+        <h3>Frais de déplacement</h3>
+        <p>Barèmes, repas, nuitées, choix du mode de remboursement et conditions d'application : les règles essentielles à connaître.</p>
+        <a class="btn" href="frais_deplacement.html">Consulter la fiche <span>→</span></a>
+      </article>
+
+      <article class="card highlight">
+        <div class="meta">Rémunération</div>
+        <span class="card-icon">📈</span>
+        <h3>Évolution des grilles salariales</h3>
+        <p>Une lecture simple pour comprendre l'avant, l'après et les effets concrets de l'évolution des grilles de salaire.</p>
+        <a class="btn" href="evolution-grille-salaire.html">Consulter la fiche <span>→</span></a>
+      </article>
+
+      <article class="card">
+        <div class="meta">Activités sociales</div>
+        <span class="card-icon">🏖️</span>
+        <h3>CCAS / CMCAS</h3>
+        <p>Accédez aux repères utiles sur vos droits, prestations et informations pratiques liés aux activités sociales.</p>
+        <a class="btn" href="ccas_cmcas_fo_grdf.html">Consulter la fiche <span>→</span></a>
+      </article>
+    </section>
+
+    <section class="quick-links">
+      <h3>Accès rapide</h3>
+      <p>Tu peux enrichir cette zone avec d'autres communications, archives thématiques ou futures publications, sans casser la structure de la page.</p>
+      <div class="quick-links-grid">
+        <a class="quick-link" href="frais_deplacement.html">🧭 Frais de déplacement</a>
+        <a class="quick-link" href="evolution-grille-salaire.html">📈 Grilles salariales</a>
+        <a class="quick-link" href="ccas_cmcas_fo_grdf.html">🏖️ CCAS / CMCAS</a>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <img src="https://www.fnem-fo.org/wp-content/uploads/2024/01/Header_FO_EM_2024.png" alt="FO Énergie">
+      FO GRDF — Hub d'information salariés · Cette page d'index reprend la logique visuelle du format “Le Saviez-Vous” pour centraliser vos communications.
+    </footer>
+
+  </div>
+
+  <a class="accessibility" href="#" aria-label="Activer le mode lecture universelle">Mode lecture universelle</a>
+</body>
+</html>

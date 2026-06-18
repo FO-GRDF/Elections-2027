@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 -c \"\nimport sys, json\ndata = json.load(sys.stdin)\nfp = data.get('tool_response', {}).get('filePath') or data.get('tool_input', {}).get('file_path', '')\nif not fp.endswith('.html'):\n    sys.exit(0)\ntry:\n    with open(fp, 'r') as f:\n        content = f.read()\nexcept Exception:\n    sys.exit(0)\nscript = '<script data-goatcounter=\\\"https://fo-grdf.goatcounter.com/count\\\" async src=\\\"//gc.zgo.at/count.js\\\"></script>'\nif script in content:\n    sys.exit(0)\nnew_content = content.replace('</body>', script + '\\n</body>')\nwith open(fp, 'w') as f:\n    f.write(new_content)\n\" 2>/dev/null || true",
+            "statusMessage": "Injection GoatCounter..."
+          }
+        ]
+      }
+    ]
+  }
+}

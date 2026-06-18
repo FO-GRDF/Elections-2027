@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -c ' *)",
+      "Bash(pip3 install *)",
+      "Bash(python3)",
+      "mcp__Claude_in_Chrome__tabs_context_mcp",
+      "Bash(open \"/Users/lopesmickael/Desktop/GRDF HTML/FO/Le saviez-vous/baremes_frais_deplacement_fo_grdf.html\")",
+      "Bash(node --check \"/Users/lopesmickael/Desktop/GRDF HTML/FO/Le saviez-vous/baremes_frais_deplacement_fo_grdf.html\")",
+      "Bash(grep -c '\\\\\\\\`' \"/Users/lopesmickael/Desktop/GRDF HTML/FO/Le saviez-vous/baremes_frais_deplacement_fo_grdf.html\")",
+      "Bash(grep -n '\\\\\\\\`' \"/Users/lopesmickael/Desktop/GRDF HTML/FO/Le saviez-vous/baremes_frais_deplacement_fo_grdf.html\")",
+      "Bash(curl -s \"https://geo.api.gouv.fr/communes?fields=nom,codeDepartement&format=json&geometry=none\" -o /tmp/communes_france.json)",
+      "Bash(echo \"Exit: $?\")",
+      "Read(//usr/local/bin/**)",
+      "Read(//opt/homebrew/**)",
+      "Skill(update-config)",
+      "Skill(update-config:*)",
+      "Bash(echo \"exit: $?\")",
+      "Read(//tmp/**)"
+    ]
+  }
+}

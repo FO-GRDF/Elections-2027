@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le Saviez-Vous — Participation GRDF 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bleu: #019cda;
+    --bleu-clair: #019cda;
+    --or: #f7dd5c;
+    --or-clair: #fde8ea;
+    --vert: #28b193;
+    --vert-clair: #e8f8f4;
+    --rouge: #ef333e;
+    --rouge-clair: #fde8ea;
+    --fond: #F7F5F0;
+    --blanc: #FFFFFF;
+    --gris: #6B6B6B;
+    --texte: #1A1A2E;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--fond);
+    color: var(--texte);
+    min-height: 100vh;
+  }
+
+  .page {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 48px 32px 64px;
+  }
+
+ /* HEADER */
+.header {
+  position: relative;
+  background: linear-gradient(135deg, #019cda 0%, #028bc2 100%);
+  border-radius: 20px;
+  padding: 44px 48px 36px;
+  margin-bottom: 40px;
+  overflow: hidden;
+}
+
+.header::before {
+  display: none;
+}
+
+.header::after {
+  display: none;
+}
+  
+  .badge {
+  display: inline-block;
+  background: var(--or);
+  color: var(--bleu);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 40px;
+  margin-bottom: 18px;
+  position: relative;
+  z-index: 1;
+}
+  .header h1 {
+    font-family: 'Fraunces', serif;
+    font-size: 42px;
+    font-weight: 900;
+    color: var(--blanc);
+    line-height: 1.1;
+    position: relative;
+    z-index: 1;
+    max-width: 620px;
+  }
+  .header h1 em {
+    color: var(--or);
+    font-style: italic;
+  }
+  .header .subtitle {
+    margin-top: 14px;
+    font-size: 15px;
+    color: rgba(255,255,255,0.72);
+    position: relative;
+    z-index: 1;
+    font-weight: 300;
+  }
+  .header .update {
+    margin-top: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 30px;
+    padding: 6px 16px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.85);
+    position: relative;
+    z-index: 1;
+  }
+  .dot {
+    width: 7px; height: 7px;
+    background: #4ADE80;
+    border-radius: 50%;
+    display: inline-block;
+  }
+/* LOGO HEADER RESPONSIVE */
+.logo-header-wrap {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 120px;
+  z-index: 2;
+}
+
+.logo-header {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+/* RESPONSIVE MOBILE */
+@media (max-width: 600px) {
+  .logo-header-wrap {
+    top: 16px;
+    right: 16px;
+    width: 70px;
+  }
+}
+  /* INTRO */
+  .intro {
+    background: var(--blanc);
+    border-radius: 16px;
+    padding: 28px 32px;
+    margin-bottom: 32px;
+    border-left: 5px solid var(--bleu-clair);
+    font-size: 15.5px;
+    line-height: 1.75;
+    color: #2a2a2a;
+  }
+  .intro strong { color: var(--bleu); }
+
+  /* SECTION TITLE */
+  .section-title {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--bleu);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-title .icon {
+    width: 36px; height: 36px;
+    background: var(--or-clair);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+  }
+
+  /* CARDS GRID */
+  .cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .card {
+    background: var(--blanc);
+    border-radius: 16px;
+    padding: 24px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(0,59,111,0.1);
+  }
+  .card .card-icon {
+    font-size: 28px;
+    margin-bottom: 12px;
+    display: block;
+  }
+  .card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--bleu);
+    margin-bottom: 8px;
+  }
+  .card p {
+    font-size: 13.5px;
+    color: var(--gris);
+    line-height: 1.65;
+  }
+  .card.highlight {
+    background: var(--bleu);
+    color: white;
+  }
+  .card.highlight h3 { color: var(--or); }
+  .card.highlight p { color: rgba(255,255,255,0.78); }
+
+  /* ALERT BOX */
+  .alert {
+    background: var(--or-clair);
+    border: 1.5px solid var(--or);
+    border-radius: 14px;
+    padding: 20px 24px;
+    margin-bottom: 32px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .alert .alert-icon { font-size: 24px; flex-shrink: 0; }
+  .alert p { font-size: 14px; line-height: 1.7; color: #5a4000; }
+  .alert strong { color: #3a2800; }
+
+  .alert.green {
+    background: var(--vert-clair);
+    border-color: var(--vert);
+  }
+  .alert.green p { color: #0e3d22; }
+  .alert.green strong { color: #0a2e19; }
+
+  /* BIG STAT BOX */
+  .stat-box {
+    background: linear-gradient(135deg, #019cda 0%, #28b193 100%);
+    border-radius: 20px;
+    padding: 32px 40px;
+    margin-bottom: 32px;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+  .stat-box .stat-main {
+    flex-shrink: 0;
+    text-align: center;
+  }
+  .stat-box .stat-val {
+    font-family: 'Fraunces', serif;
+    font-size: 52px;
+    font-weight: 900;
+    color: var(--or);
+    line-height: 1;
+  }
+  .stat-box .stat-label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.65);
+    margin-top: 4px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .stat-box .stat-desc {
+    font-size: 14px;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.7;
+  }
+  .stat-box .stat-desc strong { color: white; }
+
+  /* PLACEMENT CARDS */
+  .placement-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 32px;
+  }
+  .place-card {
+    background: var(--blanc);
+    border-radius: 16px;
+    padding: 22px 18px;
+    border-top: 4px solid var(--bleu-clair);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .place-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 28px rgba(0,59,111,0.1);
+  }
+  .place-card.default { border-top-color: var(--gris); }
+  .place-card .place-icon { font-size: 28px; margin-bottom: 10px; display: block; }
+  .place-card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--bleu);
+    margin-bottom: 8px;
+  }
+  .place-card p {
+    font-size: 12.5px;
+    color: var(--gris);
+    line-height: 1.6;
+  }
+  .place-card .tag {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    background: var(--or-clair);
+    color: #7a5200;
+    font-weight: 500;
+  }
+  .place-card .tag.blue {
+    background: #e6f5fb;
+    color: #017fb1;
+  }
+  .place-card .tag.grey {
+    background: #f0f0f0;
+    color: #555;
+  }
+
+  /* BRUT/NET TABLE SECTION */
+  .fiscal-section {
+    background: var(--blanc);
+    border-radius: 16px;
+    padding: 28px 32px;
+    margin-bottom: 32px;
+  }
+  .fiscal-flow {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin: 20px 0;
+  }
+  .fiscal-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 20px;
+    border-radius: 10px;
+    background: var(--fond);
+    margin-bottom: 4px;
+    position: relative;
+  }
+  .fiscal-row.start { background: #e6f5fb; }
+  .fiscal-row.deduct { background: var(--rouge-clair); }
+  .fiscal-row.net { background: var(--vert-clair); }
+  .fiscal-row.taxable { background: #FFF3D6; }
+  .fiscal-row .f-icon { font-size: 22px; flex-shrink: 0; width: 36px; text-align:center; }
+  .fiscal-row .f-label { flex: 1; font-size: 13.5px; line-height: 1.5; }
+  .fiscal-row .f-label strong { font-size: 14.5px; display:block; margin-bottom:2px; }
+  .fiscal-row .f-amount {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: right;
+    flex-shrink: 0;
+    min-width: 100px;
+  }
+  .fiscal-row.start .f-amount { color: var(--bleu); }
+  .fiscal-row.deduct .f-amount { color: var(--rouge); }
+  .fiscal-row.net .f-amount { color: var(--vert); }
+  .fiscal-row.taxable .f-amount { color: #a36200; }
+  .arrow-down {
+    text-align: center;
+    font-size: 18px;
+    color: var(--gris);
+    margin: 2px 0;
+    opacity: 0.5;
+  }
+  .fiscal-compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 20px;
+  }
+  .fc-col {
+    border-radius: 14px;
+    padding: 20px;
+    border-top: 4px solid;
+  }
+  .fc-col.placement {
+    background: var(--vert-clair);
+    border-top-color: var(--vert);
+  }
+  .fc-col.paiement {
+    background: #FFF3D6;
+    border-top-color: var(--or);
+  }
+  .fc-col h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 15px;
+    color: var(--bleu);
+    margin-bottom: 10px;
+  }
+  .fc-col ul {
+    list-style: none;
+    padding: 0;
+  }
+  .fc-col ul li {
+    font-size: 12.5px;
+    color: #333;
+    line-height: 1.65;
+    padding-left: 18px;
+    position: relative;
+    margin-bottom: 6px;
+  }
+  .fc-col ul li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--vert);
+    font-weight: 700;
+  }
+  .fc-col.paiement ul li::before { color: #a36200; }
+  .fc-col .fc-highlight {
+    margin-top: 12px;
+    background: rgba(255,255,255,0.7);
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  /* LINK SECTION */
+  .link-box {
+    background: linear-gradient(135deg, #019cda 0%, #28b193 100%);
+    border-radius: 16px;
+    padding: 28px 32px;
+    margin-bottom: 32px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+  .link-box::after {
+    content: 'LINK 2026';
+    position: absolute;
+    right: -20px; top: -10px;
+    font-family: 'Fraunces', serif;
+    font-size: 90px;
+    font-weight: 900;
+    color: rgba(255,255,255,0.05);
+    pointer-events: none;
+  }
+  .link-box h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    color: var(--or);
+    margin-bottom: 12px;
+  }
+  .link-box p {
+    font-size: 13.5px;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+  .link-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 16px;
+  }
+  .link-item {
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+    padding: 12px 16px;
+  }
+  .link-item .li-label { font-size: 11px; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 1px; }
+  .link-item .li-val { font-family: 'Fraunces', serif; font-size: 18px; color: var(--or); margin-top: 2px; }
+  .link-item .li-sub { font-size: 11.5px; color: rgba(255,255,255,0.75); margin-top: 2px; }
+
+  /* CALENDAR */
+  .calendar-section {
+    background: var(--blanc);
+    border-radius: 16px;
+    padding: 28px 32px;
+    margin-bottom: 32px;
+  }
+  .timeline {
+    position: relative;
+    padding-left: 28px;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 10px; top: 8px; bottom: 8px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--bleu-clair), var(--or));
+    border-radius: 2px;
+  }
+  .tl-item {
+    position: relative;
+    margin-bottom: 22px;
+  }
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: -22px; top: 5px;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: var(--bleu-clair);
+    border: 2px solid white;
+    box-shadow: 0 0 0 2px var(--bleu-clair);
+  }
+  .tl-item.active::before { background: var(--or); box-shadow: 0 0 0 2px var(--or); }
+  .tl-date {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--bleu-clair);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 3px;
+  }
+  .tl-item.active .tl-date { color: var(--or); }
+  .tl-title {
+    font-family: 'Fraunces', serif;
+    font-size: 15px;
+    color: var(--bleu);
+    margin-bottom: 3px;
+  }
+  .tl-desc { font-size: 13px; color: var(--gris); line-height: 1.55; }
+
+  /* TABLE */
+  table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  thead tr { background: var(--bleu); color: white; }
+  thead th { padding: 12px 14px; text-align: left; font-weight: 500; font-size: 12px; letter-spacing: 0.5px; }
+  tbody tr:nth-child(even) { background: var(--fond); }
+  tbody td { padding: 11px 14px; border-bottom: 1px solid #eee; color: #2a2a2a; }
+
+  /* FOOTER */
+  .footer {
+    text-align: center;
+    font-size: 12px;
+    color: var(--gris);
+    padding-top: 24px;
+    border-top: 1px solid #ddd;
+  }
+
+  @media (max-width: 600px) {
+    .cards, .placement-grid, .fiscal-compare, .link-grid { grid-template-columns: 1fr; }
+    .stat-box { flex-direction: column; text-align: center; }
+    .header h1 { font-size: 30px; }
+    .header { padding: 32px 24px; }
+    .page { padding: 24px 16px 48px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+<div class="header">
+  <div class="badge" style="margin-bottom:18px;">✦ Le Saviez-Vous ?</div>
+
+  <div style="position:absolute; top:20px; right:28px; width:140px; height:140px; z-index:2;">
+  <img 
+    src="https://www.destination-prevention.fr/wp-content/uploads/2026/03/Sans-titre-2026-03-24T120947.656.png"
+    alt="FO Énergie"
+    style="width:100%; height:100%; object-fit:contain; display:block;">
+</div>
+
+  <h1 style="color:white;">Votre <em>participation 2025</em> arrive en 2026</h1>
+  <p class="subtitle">Tout ce que vous devez savoir sur votre prime, les modes de placement et leur fiscalité — GRDF 2026</p>
+  <div class="update"><span class="dot"></span> Saisie de vos choix ouverte du 23 mars au 13 avril 2026</div>
+</div>
+
+
+
+  <!-- INTRO -->
+  <div class="intro">
+    La <strong>participation est un dispositif légal obligatoire</strong> prévu par le Code du travail pour toutes les entreprises de plus de 50 salariés. Elle redistribue une part des bénéfices de l'entreprise à ses salariés. Au titre de l'exercice 2025, GRDF verse une <strong>réserve spéciale de participation (RSP) de près de 60 millions d'euros</strong>, soit environ <strong>5 184 € bruts par salarié</strong> à temps plein présent toute l'année. Cet accord a été signé le 6 février 2026 par FO, la CFDT, la CGT et la Direction.
+  </div>
+
+  <!-- BIG STAT -->
+  <div class="stat-box">
+    <div class="stat-main">
+      <div class="stat-val">5 184 €</div>
+      <div class="stat-label">bruts / salarié</div>
+    </div>
+    <div class="stat-desc">
+      <strong>Réserve totale : ~60 millions d'euros</strong> distribués au titre des résultats 2025.<br><br>
+      La répartition est <strong>égalitaire</strong> entre tous les bénéficiaires, au <strong>prorata du temps de présence et de travail</strong> sur l'année. Les salariés en entité mixte perçoivent leur part selon la clé de répartition gaz de leur unité.
+    </div>
+  </div>
+
+  <!-- QUI BÉNÉFICIE -->
+  <div class="section-title"><span class="icon">👥</span> Qui bénéficie de la participation ?</div>
+  <div class="cards">
+    <div class="card">
+      <span class="card-icon">📅</span>
+      <h3>Ancienneté requise</h3>
+      <p>Avoir au moins <strong>3 mois d'ancienneté</strong>, consécutifs ou non, sur la période 2024-2025 (incluant les 12 mois précédant l'exercice). L'ancienneté dans le Groupe ENGIE ou à Enedis est prise en compte.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">⏱️</span>
+      <h3>Calcul au prorata</h3>
+      <p>Temps de présence, temps de travail et clé gaz pour les entités mixtes. Congés maternité, paternité, adoption et arrêts pour accident du travail sont assimilés à du temps de présence.</p>
+    </div>
+    <div class="card highlight">
+      <span class="card-icon">✋</span>
+      <h3>Important cette année</h3>
+      <p>La participation élevée entraîne l'<strong>écrêtement total de l'intéressement collectif</strong>. Par ailleurs, placer votre participation sur le PEG ou le PERCOL ne génère <strong>pas d'abondement de la part de GRDF</strong> cette année.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">📬</span>
+      <h3>Votre notification personnelle</h3>
+      <p>Vous recevrez votre notification individuelle directement de <strong>Natixis InterÉpargne</strong> par e-mail ou courrier à partir du <strong>23 mars 2026</strong>, avec le montant exact qui vous est attribué.</p>
+    </div>
+  </div>
+
+  <!-- BRUT / NET FISCALITÉ -->
+  <div class="fiscal-section">
+    <div class="section-title" style="margin-bottom:8px;"><span class="icon">💡</span> Brut, net : ce que vous touchez vraiment</div>
+    <p style="font-size:14px; color:var(--gris); margin-bottom:20px; line-height:1.65;">Les 5 184 € sont un montant <strong>brut</strong>. Avant tout versement ou placement, des prélèvements sociaux obligatoires sont automatiquement déduits. Voici comment se déroule le calcul, sur la base du montant indicatif pour un salarié présent à temps plein sur 2025 :</p>
+
+    <div class="fiscal-flow">
+      <div class="fiscal-row start">
+        <div class="f-icon">💰</div>
+        <div class="f-label"><strong>Montant brut de participation</strong>Calculé légalement à partir du bénéfice net de l'entreprise, de ses capitaux propres, de sa masse salariale et de sa valeur ajoutée</div>
+        <div class="f-amount">≈ 5 184 €</div>
+      </div>
+      <div class="arrow-down">▼</div>
+      <div class="fiscal-row deduct">
+        <div class="f-icon">📉</div>
+        <div class="f-label"><strong>CSG + CRDS prélevées à la source</strong>Taux de 9,7 % (CSG 9,2 % + CRDS 0,5 %) — quel que soit le choix du salarié (placement OU versement direct)</div>
+        <div class="f-amount" style="color:var(--rouge);">− ≈ 503 €</div>
+      </div>
+      <div class="arrow-down">▼</div>
+      <div class="fiscal-row net">
+        <div class="f-icon">✅</div>
+        <div class="f-label"><strong>Montant net après CSG/CRDS</strong>Ce montant est placé ou versé — c'est votre point de départ réel</div>
+        <div class="f-amount">≈ 4 681 €</div>
+      </div>
+    </div>
+
+    <div class="fiscal-compare">
+      <div class="fc-col placement">
+        <h4>📦 Si vous placez sur PEG / PERCOL</h4>
+        <ul>
+          <li>Seule la CSG/CRDS est prélevée (≈ 9,7 %)</li>
+          <li>Le montant net est investi et <strong>bloqué</strong> selon les règles du plan</li>
+          <li>Les gains et plus-values restent exonérés d'impôt sur le revenu à la sortie</li>
+          <li>Déblocage anticipé possible dans les cas légaux</li>
+        </ul>
+        <div class="fc-highlight" style="background:rgba(26,122,74,0.1); font-size:12px; border-radius:8px; padding:8px 12px; margin-top:10px;">
+          💡 <strong>Avantage fiscal :</strong> pas d'impôt sur le revenu sur les sommes placées ni sur les gains à la sortie (hors CSG/CRDS).
+        </div>
+      </div>
+      <div class="fc-col paiement">
+        <h4>💳 Si vous demandez le versement direct</h4>
+        <ul>
+          <li>CSG/CRDS prélevée (≈ 9,7 %), identique au placement</li>
+          <li>Le montant net est versé via la <strong>paie de mai 2026</strong></li>
+          <li>Ce montant <strong>s'intègre dans votre revenu imposable</strong> de l'année</li>
+          <li>L'impôt sur le revenu s'applique selon votre tranche marginale</li>
+        </ul>
+        <div class="fc-highlight" style="background:rgba(245,166,35,0.15); font-size:12px; border-radius:8px; padding:8px 12px; margin-top:10px;">
+          ⚠️ <strong>À savoir :</strong> un versement direct peut faire monter votre revenu fiscal de référence et déclencher une imposition plus élevée.
+        </div>
+      </div>
+    </div>
+
+    <p style="font-size:12px; color:var(--gris); margin-top:10px;">* Montants indicatifs calculés sur la base de 5 184 € bruts pour un salarié à temps plein. Votre montant net exact figure sur votre notification Natixis InterÉpargne.</p>
+  </div>
+
+  <!-- MODES DE PLACEMENT -->
+  <div class="section-title"><span class="icon">🗂️</span> Vos 3 options de versement</div>
+  <div class="placement-grid">
+    <div class="place-card">
+      <span class="place-icon">💳</span>
+      <h3>Versement immédiat</h3>
+      <p>Vous demandez le paiement direct de tout ou partie de votre participation. Le versement a lieu <strong>via la paie de mai 2026</strong>.</p>
+      <p style="margin-top:8px; font-size:12px;">Les sommes versées sont imposables à l'impôt sur le revenu.</p>
+      <span class="tag">Disponible immédiatement</span>
+    </div>
+    <div class="place-card">
+      <span class="place-icon">📈</span>
+      <h3>PEG ENGIE</h3>
+      <p>Plan d'Épargne Groupe. Les sommes sont investies dans des FCPE (ex : <em>Égépargne Monétaire</em>) et bloquées selon les règles du plan.</p>
+      <p style="margin-top:8px; font-size:12px;">Exonération d'impôt sur le revenu. Déblocage anticipé selon les cas légaux.</p>
+      <span class="tag blue">Exonéré d'IR</span>
+    </div>
+    <div class="place-card">
+      <span class="place-icon">🏖️</span>
+      <h3>PERCOL ENGIE</h3>
+      <p>Plan d'Épargne Retraite Collectif. Les sommes sont investies pour la retraite (ex : <em>gestion pilotée profil Équilibre</em>).</p>
+      <p style="margin-top:8px; font-size:12px;">Horizon retraite, exonération d'IR, sorties en capital ou rente.</p>
+      <span class="tag blue">Exonéré d'IR</span>
+    </div>
+  </div>
+
+  <div class="alert green">
+    <div class="alert-icon">⚙️</div>
+    <p><strong>Affectation par défaut :</strong> si vous ne faites aucun choix avant le 13 avril 2026, vos sommes seront automatiquement placées à <strong>50 % sur le PEG ENGIE (FCPE Égépargne Monétaire)</strong> et à <strong>50 % sur le PERCOL ENGIE (gestion pilotée profil Équilibre)</strong>.</p>
+  </div>
+
+  <!-- LINK 2026 -->
+  <div class="link-box">
+    <h3>🔗 Et si vous investissiez votre participation dans LINK 2026 ?</h3>
+    <p>Engie lance une opération d'actionnariat salarié réservée aux salariés du Groupe. En tant que salarié de GRDF (filiale du Groupe), vous pouvez y participer. Lors de votre saisie sur Natixis InterÉpargne, il vous sera proposé de <strong>pré-affecter tout ou partie de votre participation</strong> en vue de souscrire à LINK 2026.</p>
+    <div class="link-grid">
+      <div class="link-item">
+        <div class="li-label">1ère tranche</div>
+        <div class="li-val">300 % d'abondement</div>
+        <div class="li-sub">sur les 100 premiers € investis</div>
+      </div>
+      <div class="link-item">
+        <div class="li-label">2ème tranche</div>
+        <div class="li-val">100 % d'abondement</div>
+        <div class="li-sub">de 100 € à 300 € investis</div>
+      </div>
+      <div class="link-item">
+        <div class="li-label">Abondement maximum</div>
+        <div class="li-val">500 € offerts</div>
+        <div class="li-sub">pour 300 € investis</div>
+      </div>
+      <div class="link-item">
+        <div class="li-label">Prix de souscription</div>
+        <div class="li-val">−20 % de décote</div>
+        <div class="li-sub">sur la moyenne du cours mai–juin 2026</div>
+      </div>
+    </div>
+    <p style="margin-top:14px; font-size:12px; color:rgba(255,255,255,0.6);">⚠️ Cette formule comporte un risque de perte en capital. Information détaillée envoyée par le Groupe à partir du 20 mai 2026. Souscription du 3 au 17 juin 2026.</p>
+  </div>
+
+  <!-- CALENDRIER -->
+  <div class="calendar-section">
+    <div class="section-title" style="margin-bottom:20px;"><span class="icon">📅</span> Les grandes étapes à retenir</div>
+    <div class="timeline">
+      <div class="tl-item active">
+        <div class="tl-date">📬 23 mars 2026</div>
+        <div class="tl-title">Réception de votre notification personnelle</div>
+        <div class="tl-desc">Natixis InterÉpargne vous envoie par e-mail (ou courrier) votre montant individuel attribué, la déduction CSG/CRDS et les modalités de choix.</div>
+      </div>
+      <div class="tl-item active">
+        <div class="tl-date">🖱️ 23 mars → 13 avril 2026</div>
+        <div class="tl-title">Saisie de vos choix — fenêtre ouverte</div>
+        <div class="tl-desc">Connectez-vous sur <strong>natixisinterepargne.com</strong> ou l'application <em>Mon Épargne Salariale</em> pour indiquer versement, placement PEG/PERCOL ou pré-affectation LINK 2026.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">🏦 Avant le 31 mai 2026</div>
+        <div class="tl-title">Versement de la RSP par GRDF</div>
+        <div class="tl-desc">L'entreprise verse la réserve à Natixis avant le 31 mai. Au-delà, des intérêts de retard s'appliquent à compter du 1er juin.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">💳 Paie de mai 2026</div>
+        <div class="tl-title">Versement direct sur votre compte</div>
+        <div class="tl-desc">Si vous avez demandé un paiement total ou partiel, celui-ci figure dans votre bulletin de paie de mai 2026.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">📢 20 mai 2026</div>
+        <div class="tl-title">Information LINK 2026 par le Groupe ENGIE</div>
+        <div class="tl-desc">Envoi d'un e-mail détaillé sur l'offre d'actionnariat, le prix de souscription et le site dédié.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">🏷️ 3 → 17 juin 2026</div>
+        <div class="tl-title">Période de souscription LINK 2026</div>
+        <div class="tl-desc">Vous pouvez souscrire à l'offre LINK 2026. Livraison des actions prévue le 30 juillet 2026.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ALERT DROITS DÉPART -->
+  <div class="alert">
+    <div class="alert-icon">🚪</div>
+    <p><strong>Vous quittez GRDF ?</strong> Si vous avez des droits à la participation au moment de votre départ, un état récapitulatif vous est remis. Vos avoirs restent disponibles ou bloqués selon les règles du plan, et sont conservés par l'entreprise pendant un an si vous ne pouvez être atteint, puis remis à la Caisse des Dépôts jusqu'à 20 ans.</p>
+  </div>
+
+  <!-- FOOTER -->
+<div class="footer">
+
+  <div style="display:flex; justify-content:center; align-items:center; gap:24px; margin-bottom:16px; flex-wrap:wrap;">
+    
+    <img 
+    src="https://www.destination-prevention.fr/wp-content/uploads/2026/03/Sans-titre-2026-03-24T120947.656.png" 
+    alt="FO Énergie"
+    style="height:70px; object-fit:contain; opacity:0.85;">
+  
+  </div>
+
+  Basé sur l'accord de participation GRDF signé le 06/02/2026 (FO, CFDT, CGT) et la note d'information 2026 · Gestionnaire : Natixis InterÉpargne
+
+</div>
+
+</div>
+</body>
+</html>

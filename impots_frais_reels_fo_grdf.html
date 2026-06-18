@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le Saviez-Vous — Abattement 10 % ou frais réels ?</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bleu: #019cda;
+    --bleu-clair: #019cda;
+    --or: #f7dd5c;
+    --or-clair: #fff7d6;
+    --vert: #28b193;
+    --vert-clair: #e8f8f4;
+    --rouge: #ef333e;
+    --rouge-clair: #fde8ea;
+    --fond: #F7F5F0;
+    --blanc: #FFFFFF;
+    --gris: #6B6B6B;
+    --texte: #1A1A2E;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--fond);
+    color: var(--texte);
+    min-height: 100vh;
+  }
+  .page { max-width: 960px; margin: 0 auto; padding: 48px 32px 64px; }
+
+  /* ── Header ──────────────────────────────────────────────────── */
+  .header {
+    position: relative;
+    background: linear-gradient(135deg, #019cda 0%, #028bc2 100%);
+    border-radius: 20px;
+    padding: 44px 48px 36px;
+    margin-bottom: 40px;
+    overflow: hidden;
+  }
+  .badge {
+    display: inline-block;
+    background: var(--or);
+    color: var(--bleu);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 40px;
+    margin-bottom: 18px;
+    position: relative;
+    z-index: 1;
+  }
+  .header h1 {
+    font-family: 'Fraunces', serif;
+    font-size: 42px;
+    font-weight: 900;
+    color: var(--blanc);
+    line-height: 1.08;
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+  }
+  .header h1 em { color: var(--or); font-style: italic; }
+  .header .subtitle {
+    margin-top: 14px;
+    font-size: 15px;
+    color: rgba(255,255,255,0.85);
+    position: relative;
+    z-index: 1;
+    font-weight: 300;
+  }
+  .header .update {
+    margin-top: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 30px;
+    padding: 6px 16px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.9);
+    position: relative;
+    z-index: 1;
+  }
+  .dot { width: 7px; height: 7px; background: #4ADE80; border-radius: 50%; display: inline-block; }
+  .logo-link-wrap { position: relative; display: inline-block; }
+  .logo-link-wrap .logo-tooltip {
+    visibility: hidden;
+    opacity: 0;
+    background: rgba(0,0,0,0.82);
+    color: #fff;
+    font-size: 11.5px;
+    white-space: nowrap;
+    padding: 6px 12px;
+    border-radius: 8px;
+    position: absolute;
+    bottom: calc(100% + 10px);
+    right: 0;
+    pointer-events: none;
+    transition: opacity .2s, visibility .2s;
+  }
+  .logo-link-wrap:hover .logo-tooltip,
+  .logo-link-wrap:focus-within .logo-tooltip { visibility: visible; opacity: 1; }
+  .logo-link-wrap img {
+    transition: transform .25s, filter .25s;
+    cursor: pointer;
+    filter: drop-shadow(0 2px 8px rgba(247,221,92,0.2));
+  }
+  .logo-link-wrap:hover img { transform: scale(1.06); filter: drop-shadow(0 4px 14px rgba(247,221,92,0.5)); }
+
+  /* ── A11y toggle ─────────────────────────────────────────────── */
+  .a11y-toggle-bar { display: flex; justify-content: center; margin: -20px 0 28px; position: relative; z-index: 10; }
+  .a11y-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: white;
+    border: 2px solid #ddd;
+    border-radius: 40px;
+    padding: 8px 20px;
+    font-size: 12.5px;
+    font-weight: 500;
+    color: #444;
+    cursor: pointer;
+    transition: all .2s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+  .a11y-btn:focus { outline: 4px solid #019cda; outline-offset: 3px; }
+  .a11y-btn .a11y-label-on { display: none; }
+  .a11y-btn .a11y-label-off { display: inline; }
+
+  /* ── Intro & sections ────────────────────────────────────────── */
+  .intro, .calc-wrap, .peda-section, .alert-card {
+    background: var(--blanc);
+    border-radius: 16px;
+    padding: 28px 32px;
+    margin-bottom: 32px;
+  }
+  .intro {
+    border-left: 5px solid var(--bleu-clair);
+    font-size: 15.5px;
+    line-height: 1.75;
+    color: #2a2a2a;
+  }
+  .intro strong { color: var(--bleu); }
+
+  .section-title {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--bleu);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-title .icon {
+    width: 36px; height: 36px;
+    background: var(--or-clair);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+  }
+
+  /* ── Calculator grid ─────────────────────────────────────────── */
+  .calc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .calc-col {
+    background: var(--fond);
+    border-radius: 14px;
+    padding: 24px;
+  }
+  .calc-col h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    color: var(--bleu);
+    margin-bottom: 18px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e0e6eb;
+  }
+  .field { margin-bottom: 14px; }
+  .field label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 6px;
+  }
+  .field .hint {
+    font-size: 11.5px;
+    color: var(--gris);
+    margin-top: 3px;
+    font-style: italic;
+  }
+  .field input[type="number"],
+  .field select,
+  .field textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border: 2px solid #e0e6eb;
+    border-radius: 10px;
+    font-size: 14px;
+    font-family: 'DM Sans', sans-serif;
+    background: white;
+    color: var(--texte);
+    transition: border-color .2s, background .2s;
+  }
+  .field input[type="number"]:focus,
+  .field select:focus,
+  .field textarea:focus {
+    outline: none;
+    border-color: var(--bleu);
+    background: #f9fcfe;
+  }
+  .field textarea { min-height: 75px; resize: vertical; font-family: inherit; }
+
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .radio-group { display: flex; gap: 10px; margin-top: 4px; }
+  .radio-pill {
+    flex: 1;
+    position: relative;
+    cursor: pointer;
+  }
+  .radio-pill input { position: absolute; opacity: 0; pointer-events: none; }
+  .radio-pill span {
+    display: block;
+    padding: 9px 12px;
+    border: 2px solid #e0e6eb;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 500;
+    color: #555;
+    background: white;
+    transition: all .2s;
+  }
+  .radio-pill input:checked + span {
+    background: var(--bleu);
+    color: white;
+    border-color: var(--bleu);
+  }
+  .radio-pill:hover span { border-color: var(--bleu); }
+
+  .checkbox-wrap {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px 14px;
+    background: #fff7d6;
+    border: 1.5px solid #f7dd5c;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  .checkbox-wrap input { margin-top: 2px; flex-shrink: 0; }
+  .checkbox-wrap label { font-size: 13px; font-weight: 500; color: #5a4000; cursor: pointer; line-height: 1.5; }
+
+  .eloignement-zone {
+    margin-top: 12px;
+    padding: 14px;
+    background: #fff8e1;
+    border-left: 4px solid var(--or);
+    border-radius: 10px;
+    display: none;
+  }
+  .eloignement-zone.visible { display: block; }
+  .eloignement-zone .hint {
+    font-size: 12px;
+    color: #7a5200;
+    margin-bottom: 8px;
+    line-height: 1.5;
+  }
+
+  /* ── Results card ─────────────────────────────────────────── */
+  .verdict-card {
+    background: linear-gradient(135deg, #019cda 0%, #28b193 100%);
+    border-radius: 14px;
+    padding: 24px;
+    color: white;
+    margin-bottom: 18px;
+    text-align: center;
+  }
+  .verdict-card.neutral { background: linear-gradient(135deg, #6B6B6B 0%, #888 100%); }
+  .verdict-card .verdict-eyebrow {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.85;
+    margin-bottom: 8px;
+  }
+  .verdict-card .verdict-msg {
+    font-family: 'Fraunces', serif;
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 1.35;
+  }
+  .verdict-card .verdict-gain {
+    margin-top: 12px;
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    padding: 6px 14px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .result-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    background: white;
+    border-radius: 10px;
+    margin-bottom: 8px;
+    border: 1px solid #e0e6eb;
+  }
+  .result-row .label {
+    font-size: 13px;
+    color: #555;
+    font-weight: 500;
+  }
+  .result-row .val {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--bleu);
+  }
+  .result-row.ecart .val { color: var(--vert); }
+  .result-row.ecart.negative .val { color: var(--rouge); }
+
+  .gauge-wrap {
+    background: white;
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin-top: 14px;
+    border: 1px solid #e0e6eb;
+  }
+  .gauge-label {
+    font-size: 12px;
+    color: var(--gris);
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .gauge-bar {
+    height: 14px;
+    background: #eef1f5;
+    border-radius: 7px;
+    overflow: hidden;
+    position: relative;
+  }
+  .gauge-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #28b193, #019cda);
+    border-radius: 7px;
+    transition: width .4s ease;
+    width: 0%;
+  }
+  .gauge-fill.negative { background: linear-gradient(90deg, #ef333e, #ff7a82); }
+
+  .justif-alert {
+    margin-top: 14px;
+    padding: 14px 16px;
+    background: #fff8e1;
+    border-left: 4px solid var(--or);
+    border-radius: 10px;
+    font-size: 12.5px;
+    color: #5a4000;
+    line-height: 1.6;
+  }
+  .justif-alert strong { color: #3a2800; }
+
+  /* ── Pedagogical Q&A ───────────────────────────────────────── */
+  .peda-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .peda-card {
+    background: var(--fond);
+    border-radius: 12px;
+    padding: 18px 22px;
+    border-left: 4px solid var(--bleu-clair);
+  }
+  .peda-card.warn { border-left-color: var(--or); background: #fff8e1; }
+  .peda-card h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 15.5px;
+    color: var(--bleu);
+    margin-bottom: 8px;
+    font-weight: 700;
+  }
+  .peda-card.warn h4 { color: #b35900; }
+  .peda-card p { font-size: 13.5px; color: #444; line-height: 1.65; }
+  .peda-card strong { color: #1a1a2e; }
+
+  /* ── Alerts ────────────────────────────────────────────────── */
+  .alert-card {
+    background: var(--rouge-clair);
+    border-left: 5px solid var(--rouge);
+    padding: 18px 24px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .alert-card .icon { font-size: 22px; flex-shrink: 0; }
+  .alert-card p { font-size: 13.5px; color: #6e1922; line-height: 1.65; }
+  .alert-card strong { color: #4e0f14; }
+
+  /* ── FO contact ────────────────────────────────────────────── */
+  .fo-contact-card {
+    background: linear-gradient(135deg, #c0303a 0%, #9e1a28 60%, #7a0e1c 100%);
+    border-radius: 16px;
+    padding: 18px 24px;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .fo-contact-card::before {
+    content: '✉';
+    position: absolute;
+    right: -8px; top: -16px;
+    font-size: 100px;
+    color: rgba(255,255,255,0.08);
+    line-height: 1;
+  }
+  .fo-logo-wrap img {
+    height: 44px;
+    object-fit: contain;
+    display: block;
+    background: white;
+    border-radius: 8px;
+    padding: 5px 8px;
+  }
+  .fo-body { flex: 1; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .fo-text { flex: 1; min-width: 180px; }
+  .fo-contact-card h3 { font-family: 'Fraunces', serif; font-size: 15px; color: #ffffff; margin-bottom: 4px; }
+  .fo-contact-card p { font-size: 12px; color: rgba(255,255,255,0.8); line-height: 1.55; }
+  .fo-mailto-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: white;
+    color: #1a1a1a;
+    font-weight: 700;
+    font-size: 12px;
+    padding: 9px 18px;
+    border-radius: 40px;
+    text-decoration: none;
+    white-space: nowrap;
+    flex-shrink: 0;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.2);
+  }
+
+  /* ── Footer ───────────────────────────────────────────────── */
+  .footer { text-align: center; font-size: 12px; color: var(--gris); padding-top: 24px; border-top: 1px solid #ddd; }
+  .footer a { color: inherit; }
+  .skip-link {
+    position: absolute;
+    top: -100px;
+    left: 16px;
+    background: #ffbf00;
+    color: #000;
+    font-weight: 700;
+    padding: 10px 20px;
+    border-radius: 8px;
+    z-index: 9999;
+    text-decoration: none;
+    transition: top 0.2s;
+  }
+  .skip-link:focus { top: 16px; }
+
+  /* ── Rotate banner (mobile) ───────────────────────────────── */
+  .rotate-banner {
+    display: none;
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: linear-gradient(135deg, #019cda, #028bc2);
+    color: white;
+    text-align: center;
+    padding: 10px 16px;
+    font-size: 13px;
+    font-weight: 500;
+    z-index: 9998;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 -3px 12px rgba(0,0,0,0.15);
+  }
+  .rotate-banner .rb-icon { font-size: 20px; }
+  .rotate-banner .rb-close {
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: white;
+    font-size: 14px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-left: 8px;
+  }
+
+  /* ── Mode a11y (lecture universelle) ──────────────────────── */
+  body.a11y-mode {
+    --a11y-bg:        #FAFAF7;
+    --a11y-surface:   #FFFFFF;
+    --a11y-surface2:  #F4F3EF;
+    --a11y-border:    #E2E0DA;
+    --a11y-txt1:      #2C2C29;
+    --a11y-txt2:      #4A4A46;
+    --a11y-txt4-dark: #C8C6C0;
+    --a11y-dark:      #525250;
+    --a11y-dark-txt:  #F8F7F4;
+    background: var(--a11y-bg);
+    font-family: 'Atkinson Hyperlegible', sans-serif !important;
+    font-size: 16px;
+    line-height: 1.85;
+  }
+  body.a11y-mode .a11y-btn { background: var(--a11y-dark); border-color: var(--a11y-dark); color: var(--a11y-dark-txt); font-weight: 700; }
+  body.a11y-mode .a11y-btn .a11y-label-on { display: inline; }
+  body.a11y-mode .a11y-btn .a11y-label-off { display: none; }
+  body.a11y-mode .header,
+  body.a11y-mode .verdict-card,
+  body.a11y-mode .fo-contact-card { background: var(--a11y-dark) !important; }
+  body.a11y-mode .header h1,
+  body.a11y-mode .verdict-card .verdict-msg,
+  body.a11y-mode .fo-contact-card h3 { color: var(--a11y-dark-txt) !important; font-family: 'Atkinson Hyperlegible', sans-serif !important; }
+  body.a11y-mode .header h1 em { color: var(--a11y-dark-txt) !important; font-style: normal; text-decoration: underline; text-underline-offset: 4px; }
+  body.a11y-mode .subtitle,
+  body.a11y-mode .update,
+  body.a11y-mode .fo-contact-card p { color: var(--a11y-txt4-dark) !important; }
+  body.a11y-mode .intro,
+  body.a11y-mode .calc-wrap,
+  body.a11y-mode .peda-section,
+  body.a11y-mode .alert-card,
+  body.a11y-mode .calc-col,
+  body.a11y-mode .peda-card,
+  body.a11y-mode .result-row,
+  body.a11y-mode .gauge-wrap {
+    background: var(--a11y-surface) !important;
+    color: var(--a11y-txt2) !important;
+    border: 1px solid var(--a11y-border) !important;
+    box-shadow: none !important;
+  }
+  body.a11y-mode .section-title,
+  body.a11y-mode .peda-card h4,
+  body.a11y-mode .calc-col h3,
+  body.a11y-mode .result-row .val { color: var(--a11y-txt1) !important; font-family: 'Atkinson Hyperlegible', sans-serif !important; }
+  body.a11y-mode p,
+  body.a11y-mode li,
+  body.a11y-mode label { font-family: 'Atkinson Hyperlegible', sans-serif !important; color: var(--a11y-txt2) !important; line-height: 1.85 !important; }
+  body.a11y-mode .badge,
+  body.a11y-mode .radio-pill input:checked + span { background: var(--a11y-dark) !important; color: var(--a11y-dark-txt) !important; border-color: var(--a11y-dark) !important; }
+  body.a11y-mode .field input,
+  body.a11y-mode .field select,
+  body.a11y-mode .field textarea { background: var(--a11y-surface2) !important; color: var(--a11y-txt1) !important; border-color: var(--a11y-border) !important; }
+  body.a11y-mode .fo-mailto-btn { background: #fff !important; color: #000 !important; border: 1px solid #000 !important; }
+  body.a11y-mode *:focus { outline: 3px solid var(--a11y-txt1) !important; outline-offset: 3px !important; }
+  body.a11y-mode .a11y-emoji { font-size: inherit !important; line-height: inherit !important; display: inline !important; }
+
+  /* ── Responsive ─────────────────────────────────────────── */
+  @media (max-width: 768px) and (orientation: portrait) {
+    .rotate-banner { display: flex; }
+    body { padding-bottom: 52px; }
+  }
+  @media (max-width: 820px) {
+    .calc-grid, .peda-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    .page { padding: 24px 16px 48px; }
+    .header { padding: 32px 24px; }
+    .header h1 { font-size: 28px; }
+    .intro, .calc-wrap, .peda-section { padding: 22px 20px; }
+    .field-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="rotate-banner" id="rotateBanner" role="status" aria-live="polite">
+  <span class="rb-icon" aria-hidden="true">📱</span>
+  <span>Tournez votre téléphone pour une meilleure lecture</span>
+  <button class="rb-close" onclick="dismissRotate()" aria-label="Fermer ce message">✕</button>
+</div>
+
+<a href="#contenu-principal" class="skip-link">Aller au contenu principal</a>
+
+<div class="page" role="main">
+
+  <!-- ═══ HEADER ═══════════════════════════════════════════════════ -->
+  <div class="header">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:18px; position:relative; z-index:1; gap:20px;">
+      <div class="badge" style="margin-bottom:0;"><span class="a11y-emoji">✦</span> Le Saviez-Vous ?</div>
+      <span class="logo-link-wrap">
+        <a href="mailto:syndicat-fo_grdf-delegations-nationales@grdf.fr" title="Écrire à FO GRDF" aria-label="Contacter FO GRDF par email">
+          <img src="https://www.destination-prevention.fr/wp-content/uploads/2026/03/Sans-titre-2026-03-24T120947.656.png" alt="Logo FO Énergie GRDF — cliquez pour nous écrire" style="height:clamp(44px, 8vw, 90px); width:auto; object-fit:contain; display:block; flex-shrink:0;">
+        </a>
+        <span class="logo-tooltip">✉️ Écrire à FO GRDF</span>
+      </span>
+    </div>
+    <h1>Abattement 10 % ou <em>frais réels ?</em></h1>
+    <p class="subtitle">Comparez l'impact fiscal des deux options pour votre déclaration de revenus</p>
+    <div class="update"><span class="dot"></span> Impôt 2026 sur les revenus 2025</div>
+  </div>
+
+  <!-- ═══ A11Y TOGGLE ══════════════════════════════════════════════ -->
+  <div class="a11y-toggle-bar" role="navigation" aria-label="Options d'accessibilité">
+    <button class="a11y-btn" id="a11yToggle" onclick="toggleA11y()" aria-pressed="false" title="Activer le mode lecture universelle">
+      <span class="a11y-icon" aria-hidden="true">◐</span>
+      <span class="a11y-label-off">Mode lecture universelle</span>
+      <span class="a11y-label-on">✓ Mode lecture universelle actif — Revenir au mode standard</span>
+    </button>
+  </div>
+
+  <div id="contenu-principal">
+
+    <!-- ═══ INTRO ═════════════════════════════════════════════════ -->
+    <div class="intro">
+      Chaque année, l'administration fiscale applique <strong>automatiquement un abattement de 10 %</strong> sur vos salaires pour couvrir vos frais professionnels. Mais vous pouvez, si c'est plus avantageux, <strong>opter pour les frais réels</strong> et déduire précisément vos dépenses : trajets, repas, matériel, etc. Cette calculette vous aide à savoir si ce choix peut être intéressant <strong>dans votre situation</strong>.
+    </div>
+
+    <!-- ═══ CALCULATRICE ═════════════════════════════════════════ -->
+    <div class="calc-wrap">
+      <div class="section-title"><span class="icon">🧮</span> Simulateur comparatif</div>
+
+      <div class="calc-grid">
+
+        <!-- ─── Colonne 1 : Vos informations ────────────────────── -->
+        <div class="calc-col">
+          <h3>📋 Vos informations</h3>
+
+          <div class="field">
+            <label for="salaire">Salaire net imposable annuel (€)</label>
+            <input type="number" id="salaire" value="32000" min="0" step="100" oninput="recalc()">
+            <div class="hint">Montant figurant sur votre fiche de paie de décembre ou pré-rempli sur votre déclaration.</div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="parts">Parts fiscales</label>
+              <input type="number" id="parts" value="1" min="1" step="0.5" oninput="recalc()">
+            </div>
+            <div class="field">
+              <label for="distance">Distance domicile-travail (km, aller simple)</label>
+              <input type="number" id="distance" value="25" min="0" step="1" oninput="recalc()">
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="jours">Nombre de jours travaillés sur site dans l'année</label>
+            <input type="number" id="jours" value="210" min="0" step="1" oninput="recalc()">
+            <div class="hint">En général entre 200 et 220 jours, télétravail déduit.</div>
+          </div>
+
+          <div class="field">
+            <label for="cv">Puissance fiscale du véhicule</label>
+            <select id="cv" onchange="recalc()">
+              <option value="3cv">3 CV ou moins</option>
+              <option value="4cv">4 CV</option>
+              <option value="5cv" selected>5 CV</option>
+              <option value="6cv">6 CV</option>
+              <option value="7cv">7 CV et plus</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label>Type de véhicule</label>
+            <div class="radio-group">
+              <label class="radio-pill">
+                <input type="radio" name="vehType" value="thermique" checked onchange="recalc()">
+                <span>Thermique / Hybride</span>
+              </label>
+              <label class="radio-pill">
+                <input type="radio" name="vehType" value="electrique" onchange="recalc()">
+                <span>100 % Électrique (+20 %)</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="peages">Péages / jour (€)</label>
+              <input type="number" id="peages" value="0" min="0" step="0.5" oninput="recalc()">
+              <div class="hint">Coût moyen aller-retour par jour travaillé sur site.</div>
+            </div>
+            <div class="field">
+              <label for="parking">Parking / jour (€)</label>
+              <input type="number" id="parking" value="0" min="0" step="0.5" oninput="recalc()">
+              <div class="hint">Coût moyen par jour travaillé sur site.</div>
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="repas">Repas sur site / semaine (nb)</label>
+              <input type="number" id="repas" value="0" min="0" max="7" step="1" oninput="recalc()">
+              <div class="hint">Gamelle apportée, sans cantine. Déduction ≈ 5,45 €/repas.</div>
+            </div>
+            <div class="field">
+              <label for="autres">Autres frais justifiés (€)</label>
+              <input type="number" id="autres" value="0" min="0" step="10" oninput="recalc()">
+              <div class="hint">Matériel, formation, tenue, etc.</div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="indemn">Indemnités ou remboursements employeur perçus (€)</label>
+            <input type="number" id="indemn" value="0" min="0" step="10" oninput="recalc()">
+            <div class="hint">À soustraire des frais réels (prime transport, indemnité km, etc.)</div>
+          </div>
+
+          <div class="checkbox-wrap" onclick="document.getElementById('longTrajet').click();">
+            <input type="checkbox" id="longTrajet" onchange="toggleEloignement()">
+            <label for="longTrajet">Mon trajet domicile-travail dépasse <strong>40 km aller</strong></label>
+          </div>
+
+          <div class="eloignement-zone" id="eloignementZone">
+            <div class="hint">
+              ⚠️ <strong>Au-delà de 40 km aller</strong>, l'administration peut demander une justification de l'éloignement (mutation, santé, emploi du conjoint, garde d'enfants, logement indisponible, etc.). Expliquez brièvement votre situation :
+            </div>
+            <textarea id="justifEloignement" placeholder="Ex : emploi du conjoint à proximité, logement familial, contrainte de santé…"></textarea>
+          </div>
+
+        </div>
+
+        <!-- ─── Colonne 2 : Résultat ─────────────────────────────── -->
+        <div class="calc-col" id="resultCol">
+          <h3>📊 Résultat</h3>
+
+          <div class="verdict-card" id="verdict">
+            <div class="verdict-eyebrow">Dans votre situation</div>
+            <div class="verdict-msg" id="verdictMsg">—</div>
+            <div class="verdict-gain" id="verdictGain" style="display:none;"></div>
+          </div>
+
+          <div class="result-row">
+            <span class="label">Abattement forfaitaire 10 %</span>
+            <span class="val" id="resAbat">—</span>
+          </div>
+          <div class="result-row">
+            <span class="label">Frais réels estimés</span>
+            <span class="val" id="resFrais">—</span>
+          </div>
+          <div class="result-row ecart" id="ecartRow">
+            <span class="label">Écart de déduction</span>
+            <span class="val" id="resEcart">—</span>
+          </div>
+          <div class="result-row">
+            <span class="label">Revenu imposable (abattement 10 %)</span>
+            <span class="val" id="resRevAbat">—</span>
+          </div>
+          <div class="result-row">
+            <span class="label">Revenu imposable (frais réels)</span>
+            <span class="val" id="resRevFrais">—</span>
+          </div>
+          <div class="result-row ecart" id="impotRow">
+            <span class="label">Économie d'impôt estimée</span>
+            <span class="val" id="resImpot">—</span>
+          </div>
+
+          <div class="gauge-wrap">
+            <div class="gauge-label">
+              <span>Gain potentiel frais réels</span>
+              <span id="gaugePercent">0 %</span>
+            </div>
+            <div class="gauge-bar">
+              <div class="gauge-fill" id="gaugeFill"></div>
+            </div>
+          </div>
+
+          <div class="justif-alert">
+            <strong>📎 Justificatifs à conserver :</strong> si vous optez pour les frais réels, gardez tous vos justificatifs (factures, tickets, attestation employeur) pendant <strong>3 ans minimum</strong>. L'administration peut les demander.
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ PÉDAGOGIE ═════════════════════════════════════════════ -->
+    <div class="peda-section">
+      <div class="section-title"><span class="icon">💡</span> Pour bien comprendre</div>
+      <div class="peda-grid">
+        <div class="peda-card">
+          <h4>L'abattement de 10 %, c'est quoi ?</h4>
+          <p>C'est une <strong>déduction automatique</strong> appliquée par le fisc sur vos salaires pour couvrir forfaitairement vos frais professionnels. Elle est <strong>plafonnée à 14 555 €</strong> et ne peut pas être inférieure à <strong>509 €</strong>. Aucun justificatif à fournir.</p>
+        </div>
+        <div class="peda-card">
+          <h4>Les frais réels, c'est quoi ?</h4>
+          <p>Une <strong>option</strong> que vous pouvez choisir au lieu de l'abattement forfaitaire. Vous additionnez vos dépenses professionnelles réelles (trajets, repas, matériel…) et vous les déduisez de votre salaire imposable. Vous devez conserver tous les justificatifs.</p>
+        </div>
+        <div class="peda-card">
+          <h4>Quand est-ce intéressant ?</h4>
+          <p>Principalement si vous avez un <strong>long trajet domicile-travail</strong>, si vous <strong>mangez sur site sans cantine</strong> (gamelle = ≈ 5,45 €/repas déductibles), ou si vous avez des dépenses professionnelles importantes (matériel, formation, local professionnel). À tester chaque année.</p>
+        </div>
+        <div class="peda-card">
+          <h4>Quels justificatifs conserver ?</h4>
+          <p>Carte grise, factures d'entretien, tickets de péage et parking, tickets de caisse repas, attestation employeur sur les jours de présence, tickets de train, factures de matériel… pendant <strong>3 ans minimum</strong>.</p>
+        </div>
+        <div class="peda-card warn" style="grid-column: 1 / -1;">
+          <h4>⚠️ Attention : le choix est global</h4>
+          <p>Le choix des frais réels <strong>s'applique à l'ensemble des salaires</strong> de la personne concernée (tous vos employeurs sur l'année). Si vous êtes en couple, chacun choisit indépendamment : l'un peut être au forfait, l'autre aux frais réels.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ ALERTE ═══════════════════════════════════════════════ -->
+    <div class="alert-card">
+      <div class="icon">⚠️</div>
+      <p>
+        <strong>Cette calculette est une simulation pédagogique.</strong> Elle ne remplace ni le <strong>simulateur officiel des impôts</strong> (impots.gouv.fr) ni un <strong>conseil fiscal personnalisé</strong>. Les barèmes utilisés peuvent évoluer. Pour toute déclaration officielle, référez-vous aux publications de la DGFiP ou consultez un conseiller.
+      </p>
+    </div>
+
+    <!-- ═══ FO CONTACT ════════════════════════════════════════════ -->
+    <div class="fo-contact-card">
+      <div class="fo-logo-wrap">
+        <a href="mailto:syndicat-fo_grdf-delegations-nationales@grdf.fr" title="Écrire à FO GRDF">
+          <img src="https://www.destination-prevention.fr/wp-content/uploads/2026/03/Sans-titre-2026-03-24T120947.656.png" alt="FO Énergie GRDF">
+        </a>
+      </div>
+      <div class="fo-body">
+        <div class="fo-text">
+          <h3>✉️ Une question fiscale ? Contactez FO GRDF</h3>
+          <p>Nos équipes peuvent vous orienter sur vos droits et les démarches liées à votre déclaration d'impôts.</p>
+        </div>
+        <a href="mailto:syndicat-fo_grdf-delegations-nationales@grdf.fr" class="fo-mailto-btn">✉️ Nous écrire</a>
+      </div>
+    </div>
+
+    <!-- ═══ FOOTER ════════════════════════════════════════════════ -->
+    <div class="footer">
+      <div style="display:flex; justify-content:center; align-items:center; gap:24px; margin-bottom:16px; flex-wrap:wrap;">
+        <a href="mailto:syndicat-fo_grdf-delegations-nationales@grdf.fr" title="Écrire à FO GRDF" aria-label="Contacter FO GRDF par email">
+          <img src="https://www.destination-prevention.fr/wp-content/uploads/2026/03/Sans-titre-2026-03-24T120947.656.png" alt="Logo FO Énergie GRDF" style="height:70px; object-fit:contain; opacity:0.85;">
+        </a>
+      </div>
+      Document pédagogique FO GRDF — Simulateur indicatif. Barèmes fiscaux 2026 pour les revenus 2025.
+    </div>
+
+  </div>
+</div>
+
+<script>
+/* ════════════════════════════════════════════════════════════════════
+   CALCULATEUR FISCAL : ABATTEMENT 10 % vs FRAIS RÉELS
+   ──────────────────────────────────────────────────────────────────
+   Barèmes IR 2026 pour les revenus 2025 (à ajuster quand la loi
+   de finances est publiée). Les valeurs par défaut correspondent
+   aux dernières valeurs connues au moment de l'édition.
+   ════════════════════════════════════════════════════════════════════ */
+
+// ─── A11y toggle ─────────────────────────────────────────────
+function toggleA11y() {
+  const btn = document.getElementById('a11yToggle');
+  const isOn = document.body.classList.toggle('a11y-mode');
+  btn.setAttribute('aria-pressed', isOn ? 'true' : 'false');
+  try { localStorage.setItem('fo-a11y', isOn ? '1' : '0'); } catch(e) {}
+}
+try {
+  if (localStorage.getItem('fo-a11y') === '1') {
+    document.body.classList.add('a11y-mode');
+    const btn = document.getElementById('a11yToggle');
+    if (btn) btn.setAttribute('aria-pressed', 'true');
+  }
+} catch(e) {}
+
+// ─── Rotate banner ───────────────────────────────────────────
+function dismissRotate() {
+  const b = document.getElementById('rotateBanner');
+  if (b) b.style.display = 'none';
+  try { sessionStorage.setItem('fo-rotate-dismissed', '1'); } catch(e) {}
+}
+try {
+  if (sessionStorage.getItem('fo-rotate-dismissed') === '1') {
+    const b = document.getElementById('rotateBanner');
+    if (b) b.style.display = 'none';
+  }
+} catch(e) {}
+
+// ─── Toggle zone "justification éloignement" ─────────────────
+function toggleEloignement() {
+  const cb = document.getElementById('longTrajet');
+  document.getElementById('eloignementZone').classList.toggle('visible', cb.checked);
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   BARÈME KILOMÉTRIQUE 2026 (revenus 2025)
+   Source : basé sur le barème 2024 (revenus 2023), dernier en vigueur
+   au moment de la rédaction. À mettre à jour dès publication du
+   barème officiel par le ministère de l'Économie.
+   ──────────────────────────────────────────────────────────────────
+   Formule : selon la puissance fiscale et la distance annuelle (d)
+     • d ≤ 5 000 km     → d × coef1
+     • 5 000 < d ≤ 20 000 → d × coef2 + forfait
+     • d > 20 000 km    → d × coef3
+   Majoration +20 % pour véhicule 100 % électrique (inchangé).
+   ════════════════════════════════════════════════════════════════════ */
+const BAREME_KM = {
+  '3cv': { c1: 0.529, c2: 0.316, f: 1065, c3: 0.370 },
+  '4cv': { c1: 0.606, c2: 0.340, f: 1330, c3: 0.407 },
+  '5cv': { c1: 0.636, c2: 0.357, f: 1395, c3: 0.427 },
+  '6cv': { c1: 0.665, c2: 0.374, f: 1457, c3: 0.447 },
+  '7cv': { c1: 0.697, c2: 0.394, f: 1515, c3: 0.470 }
+};
+
+function calcFraisKm(puissance, distanceAnnuelle, electrique) {
+  const b = BAREME_KM[puissance];
+  if (!b || distanceAnnuelle <= 0) return 0;
+  let montant;
+  if (distanceAnnuelle <= 5000)        montant = distanceAnnuelle * b.c1;
+  else if (distanceAnnuelle <= 20000)  montant = distanceAnnuelle * b.c2 + b.f;
+  else                                 montant = distanceAnnuelle * b.c3;
+  // Majoration véhicule électrique : +20 %
+  if (electrique) montant *= 1.20;
+  return montant;
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   BARÈME PROGRESSIF IR 2026 (revenus 2025)
+   Tranches basées sur les dernières valeurs publiées. Ajuster lors
+   de la publication du barème officiel 2026.
+   ──────────────────────────────────────────────────────────────────
+   Taux marginaux par tranche de quotient familial (revenu / parts).
+   ════════════════════════════════════════════════════════════════════ */
+const TRANCHES_IR = [
+  { jusqua: 11497,   taux: 0.00 },
+  { jusqua: 29315,   taux: 0.11 },
+  { jusqua: 83823,   taux: 0.30 },
+  { jusqua: 180294,  taux: 0.41 },
+  { jusqua: Infinity, taux: 0.45 }
+];
+
+function calcImpot(revenuImposable, parts) {
+  if (revenuImposable <= 0 || parts <= 0) return 0;
+  // Quotient familial
+  const quotient = revenuImposable / parts;
+  let impotParPart = 0;
+  let borneBasse = 0;
+  for (const t of TRANCHES_IR) {
+    if (quotient > t.jusqua) {
+      impotParPart += (t.jusqua - borneBasse) * t.taux;
+      borneBasse = t.jusqua;
+    } else {
+      impotParPart += (quotient - borneBasse) * t.taux;
+      break;
+    }
+  }
+  // Impôt total = impôt/part × nombre de parts
+  return impotParPart * parts;
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   PLAFOND & PLANCHER DE L'ABATTEMENT 10 %
+   ════════════════════════════════════════════════════════════════════ */
+const ABAT_MIN = 509;      // Minimum 2024 applicable revenus 2025
+const ABAT_MAX = 14555;    // Plafond
+
+function calcAbattement10(salaireNetImposable) {
+  if (salaireNetImposable <= 0) return 0;
+  let abat = salaireNetImposable * 0.10;
+  if (abat < ABAT_MIN) abat = ABAT_MIN;
+  if (abat > ABAT_MAX) abat = ABAT_MAX;
+  return abat;
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   FONCTION PRINCIPALE : COMPARE ABATTEMENT 10 % vs FRAIS RÉELS
+   ════════════════════════════════════════════════════════════════════ */
+function recalc() {
+  // ── Récupérer les entrées ─────────────────────────────────────
+  const salaire    = parseFloat(document.getElementById('salaire').value) || 0;
+  const parts      = parseFloat(document.getElementById('parts').value) || 1;
+  const distance   = parseFloat(document.getElementById('distance').value) || 0;
+  const jours      = parseFloat(document.getElementById('jours').value) || 0;
+  const cv         = document.getElementById('cv').value;
+  const veh        = document.querySelector('input[name="vehType"]:checked').value;
+  const peagesJour   = parseFloat(document.getElementById('peages').value) || 0;
+  const parkingJour  = parseFloat(document.getElementById('parking').value) || 0;
+  const repasSemaine = parseFloat(document.getElementById('repas').value) || 0;
+  const autres       = parseFloat(document.getElementById('autres').value) || 0;
+
+  /* ── Péages et parking : saisie journalière ───────────────────
+     L'utilisateur saisit le coût moyen par jour travaillé sur site.
+     Le montant annuel est obtenu en multipliant par le nombre de
+     jours travaillés sur site renseigné plus haut.
+     ────────────────────────────────────────────────────────────── */
+  const peages  = peagesJour  * jours;
+  const parking = parkingJour * jours;
+
+  /* ── Calcul des frais de repas "gamelle" ──────────────────────
+     Quand le salarié mange sur son lieu de travail sans cantine,
+     il peut déduire par repas la différence entre le coût d'un
+     repas au travail et celui d'un repas à domicile.
+     Valeur fixée annuellement par l'administration fiscale :
+       • 5,20 € (revenus 2023)
+       • 5,35 € (revenus 2024)
+       • 5,45 € (revenus 2025, estimation — à confirmer)
+     Nombre annuel de repas ≈ (repas/semaine) × (jours sur site ÷ 5)
+     ────────────────────────────────────────────────────────────── */
+  const VALEUR_REPAS_GAMELLE = 5.45;
+  const nbRepasAnnuel = repasSemaine * (jours / 5);
+  const repas = nbRepasAnnuel * VALEUR_REPAS_GAMELLE;
+  const indemn     = parseFloat(document.getElementById('indemn').value) || 0;
+
+  const electrique = (veh === 'electrique');
+
+  // ── Calcul 1 : Abattement forfaitaire 10 % ─────────────────────
+  const abattement = calcAbattement10(salaire);
+
+  // ── Calcul 2 : Frais réels ────────────────────────────────────
+  // Distance annuelle = aller-retour × jours
+  const distanceAnnuelle = distance * 2 * jours;
+  const fraisKm = calcFraisKm(cv, distanceAnnuelle, electrique);
+  // Total frais = km + péages + parking + repas + autres − indemnités
+  let fraisReels = fraisKm + peages + parking + repas + autres - indemn;
+  if (fraisReels < 0) fraisReels = 0;
+
+  // ── Écart de déduction ────────────────────────────────────────
+  const ecart = fraisReels - abattement;
+
+  // ── Revenus imposables résultants ─────────────────────────────
+  const revenuAvecAbat  = Math.max(salaire - abattement, 0);
+  const revenuAvecFrais = Math.max(salaire - fraisReels, 0);
+
+  // ── Impôt dans les deux cas ───────────────────────────────────
+  const impotAvecAbat  = calcImpot(revenuAvecAbat,  parts);
+  const impotAvecFrais = calcImpot(revenuAvecFrais, parts);
+  const economieImpot  = impotAvecAbat - impotAvecFrais;
+
+  // ── Affichage ────────────────────────────────────────────────
+  const fmt = v => v.toLocaleString('fr-FR', { maximumFractionDigits: 0 }) + ' €';
+  document.getElementById('resAbat').textContent     = fmt(abattement);
+  document.getElementById('resFrais').textContent    = fmt(fraisReels);
+  document.getElementById('resEcart').textContent    = (ecart >= 0 ? '+' : '') + fmt(ecart);
+  document.getElementById('resRevAbat').textContent  = fmt(revenuAvecAbat);
+  document.getElementById('resRevFrais').textContent = fmt(revenuAvecFrais);
+  document.getElementById('resImpot').textContent    = (economieImpot >= 0 ? '+' : '') + fmt(economieImpot);
+
+  // Ecart row : vert si positif, rouge si négatif
+  const ecartRow = document.getElementById('ecartRow');
+  const impotRow = document.getElementById('impotRow');
+  ecartRow.classList.toggle('negative', ecart < 0);
+  impotRow.classList.toggle('negative', economieImpot < 0);
+
+  // ── Verdict ─────────────────────────────────────────────────
+  const verdict     = document.getElementById('verdict');
+  const verdictMsg  = document.getElementById('verdictMsg');
+  const verdictGain = document.getElementById('verdictGain');
+  if (economieImpot > 20) {
+    verdict.classList.remove('neutral');
+    verdictMsg.textContent = 'Les frais réels semblent plus favorables';
+    verdictGain.textContent = '≈ ' + fmt(economieImpot) + ' d\'économie estimée';
+    verdictGain.style.display = 'inline-block';
+  } else if (economieImpot < -20) {
+    verdict.classList.remove('neutral');
+    verdictMsg.textContent = 'L\'abattement forfaitaire de 10 % semble plus favorable';
+    verdictGain.textContent = 'Garder l\'abattement (économie : ≈ ' + fmt(-economieImpot) + ')';
+    verdictGain.style.display = 'inline-block';
+  } else {
+    verdict.classList.add('neutral');
+    verdictMsg.textContent = 'Les deux options sont à peu près équivalentes';
+    verdictGain.style.display = 'none';
+  }
+
+  // ── Jauge visuelle ──────────────────────────────────────────
+  // Ratio : gain relatif par rapport à l'abattement (pour avoir un % lisible)
+  const gaugeFill    = document.getElementById('gaugeFill');
+  const gaugePercent = document.getElementById('gaugePercent');
+  let ratio = 0;
+  if (abattement > 0 && ecart > 0) {
+    ratio = Math.min((ecart / abattement) * 100, 100);
+  }
+  gaugeFill.style.width = ratio + '%';
+  gaugeFill.classList.toggle('negative', ecart < 0);
+  gaugePercent.textContent = Math.round(ratio) + ' %';
+}
+
+// ── Premier calcul au chargement ──────────────────────────────
+document.addEventListener('DOMContentLoaded', recalc);
+</script>
+
+<script data-goatcounter="https://fo-grdf.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

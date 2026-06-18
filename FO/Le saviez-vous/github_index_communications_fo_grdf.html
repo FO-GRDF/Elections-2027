@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FO Énergie & Mines — Mes communications GRDF</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bleu: #019cda;
+    --bleu-clair: #019cda;
+    --or: #f7dd5c;
+    --or-clair: #fde8ea;
+    --vert: #28b193;
+    --vert-clair: #e8f8f4;
+    --rouge: #ef333e;
+    --rouge-clair: #fde8ea;
+    --fond: #F7F5F0;
+    --blanc: #FFFFFF;
+    --gris: #6B6B6B;
+    --texte: #1A1A2E;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--fond);
+    color: var(--texte);
+    min-height: 100vh;
+  }
+
+  a { text-decoration: none; }
+
+  .page {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 48px 32px 64px;
+  }
+
+  .header {
+    position: relative;
+    background: linear-gradient(135deg, #019cda 0%, #028bc2 100%);
+    border-radius: 20px;
+    padding: 44px 48px 36px;
+    margin-bottom: 40px;
+    overflow: hidden;
+  }
+
+  .badge {
+    display: inline-block;
+    background: var(--or);
+    color: var(--bleu);
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 40px;
+    margin-bottom: 18px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .header h1 {
+    font-family: 'Fraunces', serif;
+    font-size: 42px;
+    font-weight: 900;
+    color: var(--blanc);
+    line-height: 1.1;
+    position: relative;
+    z-index: 1;
+    max-width: 620px;
+  }
+
+  .header h1 em {
+    color: var(--or);
+    font-style: italic;
+  }
+
+  .header .subtitle {
+    margin-top: 14px;
+    font-size: 15px;
+    color: rgba(255,255,255,0.72);
+    position: relative;
+    z-index: 1;
+    font-weight: 300;
+    max-width: 580px;
+    line-height: 1.65;
+  }
+
+  .header .update {
+    margin-top: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 30px;
+    padding: 6px 16px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.85);
+    position: relative;
+    z-index: 1;
+  }
+
+  .dot {
+    width: 7px;
+    height: 7px;
+    background: #4ADE80;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .logo-header-wrap {
+    position: absolute;
+    top: 20px;
+    right: 28px;
+    width: 140px;
+    height: 140px;
+    z-index: 2;
+  }
+
+  .logo-header {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  .intro {
+    background: var(--blanc);
+    border-radius: 16px;
+    padding: 28px 32px;
+    margin-bottom: 32px;
+    border-left: 5px solid var(--bleu-clair);
+    font-size: 15.5px;
+    line-height: 1.75;
+    color: #2a2a2a;
+  }
+
+  .intro strong { color: var(--bleu); }
+
+  .stat-box {
+    background: linear-gradient(135deg, #019cda 0%, #28b193 100%);
+    border-radius: 20px;
+    padding: 32px 40px;
+    margin-bottom: 32px;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .stat-main {
+    flex-shrink: 0;
+    text-align: center;
+  }
+
+  .stat-val {
+    font-family: 'Fraunces', serif;
+    font-size: 52px;
+    font-weight: 900;
+    color: var(--or);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.65);
+    margin-top: 4px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .stat-desc {
+    font-size: 14px;
+    color: rgba(255,255,255,0.88);
+    line-height: 1.7;
+  }
+
+  .stat-desc strong { color: white; }
+
+  .section-title {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--bleu);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-title .icon {
+    width: 36px;
+    height: 36px;
+    background: var(--or-clair);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .card-link {
+    display: block;
+    color: inherit;
+  }
+
+  .card {
+    background: var(--blanc);
+    border-radius: 16px;
+    padding: 24px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+    overflow: hidden;
+    min-height: 220px;
+    height: 100%;
+  }
+
+  .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(0,59,111,0.1);
+  }
+
+  .card-icon {
+    font-size: 28px;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--bleu);
+    margin-bottom: 8px;
+  }
+
+  .card p {
+    font-size: 13.5px;
+    color: var(--gris);
+    line-height: 1.65;
+  }
+
+  .card .meta {
+    margin-top: 14px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--bleu-clair);
+    font-weight: 700;
+  }
+
+  .card .cta {
+    margin-top: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #e6f5fb;
+    color: var(--bleu);
+    border-radius: 30px;
+    padding: 7px 12px;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .card.highlight {
+    background: var(--bleu);
+  }
+
+  .card.highlight h3 { color: var(--or); }
+  .card.highlight p,
+  .card.highlight .meta { color: rgba(255,255,255,0.82); }
+  .card.highlight .cta {
+    background: rgba(255,255,255,0.12);
+    color: white;
+  }
+
+  .alert {
+    background: var(--or-clair);
+    border: 1.5px solid var(--or);
+    border-radius: 14px;
+    padding: 20px 24px;
+    margin-bottom: 32px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+
+  .alert-icon {
+    font-size: 24px;
+    flex-shrink: 0;
+  }
+
+  .alert p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #5a4000;
+  }
+
+  .alert strong { color: #3a2800; }
+
+  .link-box {
+    background: linear-gradient(135deg, #019cda 0%, #28b193 100%);
+    border-radius: 16px;
+    padding: 28px 32px;
+    margin-bottom: 32px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .link-box::after {
+    content: 'INDEX';
+    position: absolute;
+    right: -14px;
+    top: -8px;
+    font-family: 'Fraunces', serif;
+    font-size: 92px;
+    font-weight: 900;
+    color: rgba(255,255,255,0.05);
+    pointer-events: none;
+  }
+
+  .link-box h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    color: var(--or);
+    margin-bottom: 12px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .link-box p {
+    font-size: 13.5px;
+    color: rgba(255,255,255,0.88);
+    line-height: 1.7;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .link-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 16px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .link-item {
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+    padding: 12px 16px;
+  }
+
+  .li-label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.6);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .li-val {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    color: var(--or);
+    margin-top: 2px;
+  }
+
+  .li-sub {
+    font-size: 11.5px;
+    color: rgba(255,255,255,0.75);
+    margin-top: 2px;
+    line-height: 1.5;
+  }
+
+  .calendar-section {
+    background: var(--blanc);
+    border-radius: 16px;
+    padding: 28px 32px;
+    margin-bottom: 32px;
+  }
+
+  .timeline {
+    position: relative;
+    padding-left: 28px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--bleu-clair), var(--or));
+    border-radius: 2px;
+  }
+
+  .tl-item {
+    position: relative;
+    margin-bottom: 22px;
+  }
+
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: -22px;
+    top: 5px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--bleu-clair);
+    border: 2px solid white;
+    box-shadow: 0 0 0 2px var(--bleu-clair);
+  }
+
+  .tl-item.active::before {
+    background: var(--or);
+    box-shadow: 0 0 0 2px var(--or);
+  }
+
+  .tl-date {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--bleu-clair);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 3px;
+  }
+
+  .tl-item.active .tl-date { color: var(--or); }
+
+  .tl-title {
+    font-family: 'Fraunces', serif;
+    font-size: 15px;
+    color: var(--bleu);
+    margin-bottom: 3px;
+  }
+
+  .tl-desc {
+    font-size: 13px;
+    color: var(--gris);
+    line-height: 1.55;
+  }
+
+  .footer {
+    text-align: center;
+    font-size: 12px;
+    color: var(--gris);
+    padding-top: 24px;
+    border-top: 1px solid #ddd;
+  }
+
+  @media (max-width: 600px) {
+    .logo-header-wrap {
+      top: 16px;
+      right: 16px;
+      width: 70px;
+      height: 70px;
+    }
+
+    .cards,
+    .link-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .stat-box {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .header h1 { font-size: 30px; }
+    .header { padding: 32px 24px; }
+    .page { padding: 24px 16px 48px; }
+    .card { min-height: unset; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="badge">✦ Mes communications</div>
+
+    <div class="logo-header-wrap">
+      <img
+        src="https://www.destination-prevention.fr/wp-content/uploads/2026/03/Sans-titre-2026-03-24T120947.656.png"
+        alt="FO Énergie"
+        class="logo-header">
+    </div>
+
+    <h1>Index de mes <em>communications GRDF</em></h1>
+    <p class="subtitle">Une page d'accueil unique pour retrouver facilement l'ensemble de mes publications, supports d'information et communications destinées aux salariés.</p>
+    <div class="update"><span class="dot"></span> Page de garde GitHub prête à être enrichie</div>
+  </div>
+
+  <div class="intro">
+    Cette page sert de <strong>porte d'entrée unique</strong> vers toutes tes communications. Le principe est simple : chaque carte ci-dessous renvoie vers une page HTML, un support d'information ou une ressource publiée. Tu peux garder cette structure telle quelle et <strong>remplacer seulement les liens, les titres et les descriptions</strong> au fur et à mesure de tes publications.
+  </div>
+
+  <div class="stat-box">
+    <div class="stat-main">
+      <div class="stat-val">1</div>
+      <div class="stat-label">page centrale</div>
+    </div>
+    <div class="stat-desc">
+      <strong>Un seul index, toutes tes publications.</strong><br><br>
+      Cette version reprend la logique graphique du template : même ambiance visuelle, même hiérarchie, mêmes couleurs, mêmes polices et même comportement responsive. Elle est pensée pour être utilisée comme page d'accueil GitHub Pages.
+    </div>
+  </div>
+
+  <div class="section-title"><span class="icon">📚</span> Communications à la une</div>
+  <div class="cards">
+    <a class="card-link" href="participation-grdf-2026.html">
+      <div class="card highlight">
+        <span class="card-icon">💶</span>
+        <h3>Participation GRDF 2026</h3>
+        <p>Communication synthétique sur la participation, les choix possibles, la fiscalité et les principales échéances à retenir pour les salariés.</p>
+        <div class="meta">Communication publiée</div>
+        <div class="cta">Ouvrir la communication →</div>
+      </div>
+    </a>
+
+    <a class="card-link" href="grilles-salaires-grdf.html">
+      <div class="card">
+        <span class="card-icon">📈</span>
+        <h3>Évolution des grilles de salaires</h3>
+        <p>Présentation simple et accessible du projet d'évolution des grilles, avec une lecture claire de la situation avant, aujourd'hui et des points de vigilance.</p>
+        <div class="meta">Communication sociale</div>
+        <div class="cta">Ouvrir la communication →</div>
+      </div>
+    </a>
+  </div>
+
+  <div class="section-title"><span class="icon">🗂️</span> Autres communications</div>
+  <div class="cards">
+    <a class="card-link" href="communication-03.html">
+      <div class="card">
+        <span class="card-icon">📰</span>
+        <h3>Communication 03</h3>
+        <p>Remplace ici par le titre de ta publication, puis ajoute un résumé court pour expliquer en une phrase ce que le salarié va trouver en cliquant.</p>
+        <div class="meta">À personnaliser</div>
+        <div class="cta">Ajouter le lien →</div>
+      </div>
+    </a>
+
+    <a class="card-link" href="communication-04.html">
+      <div class="card">
+        <span class="card-icon">📣</span>
+        <h3>Communication 04</h3>
+        <p>Bloc prêt à dupliquer pour intégrer une nouvelle page HTML, une note d'information, un tract ou une synthèse thématique.</p>
+        <div class="meta">À personnaliser</div>
+        <div class="cta">Ajouter le lien →</div>
+      </div>
+    </a>
+
+    <a class="card-link" href="communication-05.html">
+      <div class="card">
+        <span class="card-icon">⚡</span>
+        <h3>Communication 05</h3>
+        <p>Conserve cette carte si tu veux présenter une actualité plus courte, un point d'étape, ou un focus sur un sujet précis.</p>
+        <div class="meta">À personnaliser</div>
+        <div class="cta">Ajouter le lien →</div>
+      </div>
+    </a>
+
+    <a class="card-link" href="communication-06.html">
+      <div class="card">
+        <span class="card-icon">🧭</span>
+        <h3>Communication 06</h3>
+        <p>Tu peux continuer sur cette logique autant que nécessaire. Il suffit de dupliquer une carte et de modifier le href, l'icône et le contenu.</p>
+        <div class="meta">À personnaliser</div>
+        <div class="cta">Ajouter le lien →</div>
+      </div>
+    </a>
+  </div>
+
+  <div class="alert">
+    <div class="alert-icon">🛠️</div>
+    <p><strong>Important :</strong> pour que cette page fonctionne correctement sur GitHub Pages, chaque lien doit pointer vers le bon nom de fichier HTML publié dans le même dépôt. Si un fichier est dans un sous-dossier, adapte simplement le <strong>href</strong> de la carte concernée.</p>
+  </div>
+
+  <div class="link-box">
+    <h3>🔗 Organisation conseillée de ton dépôt GitHub</h3>
+    <p>Tu peux utiliser cette structure très simple : une page d'accueil centrale, puis une page HTML par communication. Cela te donne un espace clair, propre et facile à faire évoluer sans casser la cohérence graphique.</p>
+    <div class="link-grid">
+      <div class="link-item">
+        <div class="li-label">Page d'accueil</div>
+        <div class="li-val">index.html</div>
+        <div class="li-sub">Cette page de garde visible en premier</div>
+      </div>
+      <div class="link-item">
+        <div class="li-label">Communication 1</div>
+        <div class="li-val">participation-grdf-2026.html</div>
+        <div class="li-sub">Exemple de publication déjà intégrée</div>
+      </div>
+      <div class="link-item">
+        <div class="li-label">Communication 2</div>
+        <div class="li-val">grilles-salaires-grdf.html</div>
+        <div class="li-sub">Exemple de seconde publication</div>
+      </div>
+      <div class="link-item">
+        <div class="li-label">Suite</div>
+        <div class="li-val">communication-03.html</div>
+        <div class="li-sub">À décliner ensuite selon tes besoins</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="calendar-section">
+    <div class="section-title" style="margin-bottom:20px;"><span class="icon">✅</span> Ce que tu peux modifier en priorité</div>
+    <div class="timeline">
+      <div class="tl-item active">
+        <div class="tl-date">Étape 1</div>
+        <div class="tl-title">Remplacer les liens</div>
+        <div class="tl-desc">Dans chaque carte, change l'attribut <strong>href</strong> pour pointer vers le bon fichier HTML publié sur ton dépôt.</div>
+      </div>
+      <div class="tl-item active">
+        <div class="tl-date">Étape 2</div>
+        <div class="tl-title">Adapter les titres</div>
+        <div class="tl-desc">Renomme chaque carte avec l'intitulé exact de la communication pour que la page soit immédiatement compréhensible.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Étape 3</div>
+        <div class="tl-title">Ajouter ou supprimer des cartes</div>
+        <div class="tl-desc">Tu peux dupliquer un bloc carte pour ajouter une nouvelle communication, ou en retirer si tu veux une version plus courte.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Étape 4</div>
+        <div class="tl-title">Publier sur GitHub Pages</div>
+        <div class="tl-desc">Une fois les fichiers en place, cette page devient ta vitrine centrale pour accéder à tout le reste.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    FO Énergie & Mines — Index des communications GRDF<br>
+    Page de garde HTML conçue pour GitHub Pages dans la continuité stricte du template fourni.
+  </div>
+</div>
+</body>
+</html>

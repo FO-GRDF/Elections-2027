@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Négociation Intéressement 2026-2028 — Historique · FO GRDF</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bleu:#019cda; --bleu-clair:#019cda;
+  --or:#f7dd5c; --or-clair:#fde8ea;
+  --vert:#28b193; --vert-clair:#e8f8f4;
+  --rouge:#ef333e; --rouge-clair:#fde8ea;
+  --fond:#F7F5F0; --blanc:#FFFFFF;
+  --gris:#6B6B6B; --texte:#1A1A2E;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--fond);color:var(--texte);min-height:100vh;}
+.page{max-width:880px;margin:0 auto;padding:48px 32px 64px;}
+
+/* HEADER */
+.header{position:relative;background:linear-gradient(135deg,#019cda 0%,#028bc2 100%);border-radius:20px;padding:44px 48px 36px;margin-bottom:28px;overflow:hidden;}
+.header-logo-wrap{position:absolute;top:24px;right:24px;background:#fff;border-radius:50%;padding:8px;box-shadow:0 6px 18px rgba(0,0,0,0.18);}
+.header-logo-wrap img{width:78px;height:78px;display:block;}
+.badge{display:inline-block;background:var(--or);color:var(--bleu);font-weight:500;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;padding:6px 14px;border-radius:40px;margin-bottom:18px;}
+.header h1{font-family:'Fraunces',serif;font-size:38px;font-weight:900;color:#fff;line-height:1.1;max-width:640px;}
+.header h1 em{color:var(--or);font-style:italic;}
+.header .subtitle{margin-top:14px;font-size:15px;color:rgba(255,255,255,0.78);max-width:600px;font-weight:300;}
+.header .update{margin-top:20px;display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);border-radius:30px;padding:6px 16px;font-size:12px;color:rgba(255,255,255,0.92);}
+.dot{width:7px;height:7px;background:#4ADE80;border-radius:50%;display:inline-block;}
+
+/* A11Y TOGGLE */
+.a11y-toggle-bar{display:flex;justify-content:flex-end;margin:-10px 0 18px;}
+.a11y-btn{background:#fff;border:1.5px solid #ddd;color:#333;border-radius:30px;padding:8px 16px;font-size:12px;font-weight:500;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;gap:8px;transition:all .2s;}
+.a11y-btn:hover{border-color:var(--bleu);color:var(--bleu);}
+.a11y-btn .a11y-label-on{display:none;}
+
+/* INTRO */
+.intro{background:#fff;border-radius:16px;padding:28px 32px;margin-bottom:24px;border-left:5px solid var(--bleu);font-size:15.5px;line-height:1.75;color:#2a2a2a;}
+.intro strong{color:var(--bleu);}
+mark.hl{background:linear-gradient(180deg,transparent 55%,var(--or) 55%);padding:0 3px;font-weight:600;color:var(--texte);}
+mark.hl-rouge{background:linear-gradient(180deg,transparent 55%,#fbb6ba 55%);padding:0 3px;font-weight:600;color:#7a0e1c;}
+
+/* BANNIERE STAT FO QUITTE */
+.statement{background:linear-gradient(135deg,#c0303a 0%,#9e1a28 60%,#7a0e1c 100%);border-radius:20px;padding:32px 36px;margin-bottom:28px;color:#fff;position:relative;overflow:hidden;}
+.statement::after{content:'';position:absolute;right:-40px;top:-40px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,0.05);pointer-events:none;}
+.statement .st-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.7);margin-bottom:10px;}
+.statement h2{font-family:'Fraunces',serif;font-size:28px;font-weight:900;line-height:1.18;margin-bottom:10px;}
+.statement p{font-size:14.5px;line-height:1.65;color:rgba(255,255,255,0.92);max-width:660px;}
+.statement .agir{position:absolute;right:24px;bottom:18px;font-family:'Fraunces',serif;font-style:italic;color:var(--or);font-size:14px;letter-spacing:.4px;opacity:.85;}
+
+/* SECTION TITLE */
+.section-title{font-family:'Fraunces',serif;font-size:22px;font-weight:700;color:var(--bleu);margin:36px 0 18px;display:flex;align-items:center;gap:12px;}
+.section-title .icon{width:36px;height:36px;background:var(--or-clair);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;}
+
+/* TIMELINE INTERACTIVE */
+.timeline-section{background:#fff;border-radius:16px;padding:24px 28px;margin-bottom:24px;}
+.tl-step{border-left:3px solid #e6e6e6;padding:0 0 8px 22px;position:relative;margin-bottom:6px;}
+.tl-step::before{content:'';position:absolute;left:-10px;top:14px;width:17px;height:17px;border-radius:50%;background:#fff;border:3px solid var(--bleu);}
+.tl-step.locked::before{background:var(--rouge);border-color:var(--rouge);}
+.tl-step details{background:transparent;}
+.tl-step summary{list-style:none;cursor:pointer;padding:12px 16px 12px 0;display:flex;align-items:center;justify-content:space-between;gap:14px;}
+.tl-step summary::-webkit-details-marker{display:none;}
+.tl-step .tl-head{flex:1;}
+.tl-date{font-size:11px;font-weight:600;color:var(--bleu);text-transform:uppercase;letter-spacing:1.4px;}
+.tl-step.locked .tl-date{color:var(--rouge);}
+.tl-title{font-family:'Fraunces',serif;font-size:17px;color:var(--texte);margin-top:4px;font-weight:700;}
+.tl-hint{font-size:12.5px;color:var(--gris);margin-top:3px;}
+.tl-chev{flex-shrink:0;width:32px;height:32px;border-radius:50%;background:var(--fond);display:flex;align-items:center;justify-content:center;color:var(--bleu);font-weight:700;transition:transform .25s,background .25s;}
+.tl-step details[open] .tl-chev{transform:rotate(180deg);background:var(--bleu);color:#fff;}
+.tl-step.locked details[open] .tl-chev{background:var(--rouge);color:#fff;}
+.tl-body{padding:8px 0 18px 4px;font-size:14px;line-height:1.7;color:#333;}
+.tl-body h4{font-family:'Fraunces',serif;color:var(--bleu);font-size:14.5px;margin:14px 0 6px;}
+.tl-body ul{padding-left:18px;margin:6px 0 12px;}
+.tl-body ul li{margin-bottom:4px;}
+.tl-body .meta{font-size:11.5px;color:var(--gris);font-style:italic;background:var(--fond);padding:6px 12px;border-radius:8px;display:inline-block;margin-bottom:10px;}
+
+/* OS PILLS */
+.os-row{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 14px;}
+.os-pill{font-size:11.5px;font-weight:600;padding:5px 11px;border-radius:30px;background:#eef6fb;color:#016a96;border:1px solid #d4e9f3;}
+.os-pill.fo{background:#fde8ea;color:#7a0e1c;border-color:#f1bcc1;}
+.os-pill.cgt{background:#fff3e0;color:#7a4e0e;border-color:#f0d8a8;}
+.os-pill.cfdt{background:#e8f8f4;color:#0a4f3d;border-color:#bde7da;}
+.os-pill.cfe{background:#ede7f6;color:#3b2a78;border-color:#cabae3;}
+.os-pill.dir{background:#f2f2f2;color:#333;border-color:#ddd;}
+
+/* RAISONS — CARTES */
+.reasons{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:24px;}
+.reason-card{background:#fff;border-radius:14px;padding:20px;border-top:4px solid var(--rouge);position:relative;overflow:hidden;}
+.reason-card .r-num{position:absolute;right:14px;top:10px;font-family:'Fraunces',serif;font-size:42px;font-weight:900;color:rgba(239,51,62,0.1);line-height:1;}
+.reason-card h3{font-family:'Fraunces',serif;font-size:16px;color:var(--rouge);margin-bottom:8px;}
+.reason-card p{font-size:13px;color:#444;line-height:1.6;}
+
+/* DETAILS GENERIC */
+details.foldable{background:#fff;border-radius:14px;padding:4px 24px;margin-bottom:14px;border:1px solid #ececec;transition:border-color .2s;}
+details.foldable[open]{border-color:var(--bleu);box-shadow:0 6px 20px rgba(1,156,218,0.08);}
+details.foldable summary{cursor:pointer;list-style:none;padding:18px 0;display:flex;align-items:center;justify-content:space-between;gap:14px;font-family:'Fraunces',serif;font-size:16px;color:var(--bleu);font-weight:700;}
+details.foldable summary::-webkit-details-marker{display:none;}
+details.foldable summary .pict{width:34px;height:34px;border-radius:10px;background:var(--or-clair);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+details.foldable summary .ttl{flex:1;}
+details.foldable summary .chev{width:28px;height:28px;border-radius:50%;background:var(--fond);display:flex;align-items:center;justify-content:center;color:var(--bleu);font-weight:700;transition:transform .25s,background .25s;flex-shrink:0;}
+details.foldable[open] summary .chev{transform:rotate(180deg);background:var(--bleu);color:#fff;}
+details.foldable .fold-body{padding:0 0 18px;font-size:14px;line-height:1.7;color:#333;}
+details.foldable .fold-body p+p{margin-top:10px;}
+
+/* INDICATEURS TABLE */
+.indic-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0;}
+.indic-card{background:var(--fond);border-radius:12px;padding:14px 16px;border-left:4px solid var(--bleu);}
+.indic-card.exc{border-left-color:var(--rouge);}
+.indic-card h5{font-family:'Fraunces',serif;font-size:14px;color:var(--bleu);margin-bottom:4px;}
+.indic-card.exc h5{color:var(--rouge);}
+.indic-card p{font-size:12.5px;color:#444;line-height:1.55;}
+
+/* VOIX NÉGO (citation) */
+.quote{background:linear-gradient(135deg,#019cda 0%,#28b193 100%);border-radius:20px;padding:30px 34px;margin-bottom:28px;color:#fff;position:relative;}
+.quote::before{content:'\201C';position:absolute;left:18px;top:-10px;font-family:'Fraunces',serif;font-size:120px;color:var(--or);line-height:1;font-weight:900;opacity:.7;}
+.quote .q-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--or);margin-bottom:6px;margin-left:60px;}
+.quote .q-title{font-family:'Fraunces',serif;font-size:18px;font-weight:700;margin-left:60px;margin-bottom:12px;}
+.quote .q-body{font-size:14px;line-height:1.7;color:rgba(255,255,255,0.92);}
+.quote .q-body p+p{margin-top:10px;}
+.quote .q-body em{color:var(--or);font-style:normal;font-weight:600;}
+
+/* FINAL CTA — sans email */
+.cta-final{background:#fff;border-radius:16px;padding:26px 32px;margin-bottom:24px;border-top:5px solid var(--or);text-align:center;}
+.cta-final h3{font-family:'Fraunces',serif;color:var(--bleu);font-size:20px;margin-bottom:8px;}
+.cta-final p{color:#444;font-size:14.5px;line-height:1.65;max-width:580px;margin:0 auto;}
+.cta-final .slogan{margin-top:14px;font-family:'Fraunces',serif;font-style:italic;color:var(--rouge);font-size:18px;}
+
+/* FOOTER */
+.footer{text-align:center;font-size:12px;color:var(--gris);padding-top:24px;border-top:1px solid #ddd;}
+.footer img{height:54px;object-fit:contain;display:block;margin:0 auto 14px;}
+
+/* RESPONSIVE */
+@media (max-width:680px){
+  .page{padding:24px 16px 48px;}
+  .header{padding:32px 24px 28px;}
+  .header h1{font-size:28px;}
+  .header-logo-wrap{position:static;margin-bottom:18px;width:fit-content;}
+  .header-logo-wrap img{width:60px;height:60px;}
+  .statement h2{font-size:22px;}
+  .reasons{grid-template-columns:1fr;}
+  .indic-grid{grid-template-columns:1fr;}
+  .quote{padding:24px 22px;}
+  .quote .q-label,.quote .q-title{margin-left:0;}
+  .quote::before{display:none;}
+}
+
+/* ═══════════ MODE LECTURE UNIVERSELLE ═══════════ */
+body.a11y-mode{
+  --a11y-bg:#FAFAF7;--a11y-surface:#FFFFFF;--a11y-surface2:#F4F3EF;
+  --a11y-border:#E2E0DA;--a11y-border2:#CCCAC4;
+  --a11y-txt1:#2C2C29;--a11y-txt2:#4A4A46;--a11y-txt3:#6E6D69;--a11y-txt4:#6F6E68;
+  --a11y-dark:#525250;--a11y-dark-txt:#F8F7F4;--a11y-txt4-dark:#C8C6C0;
+  font-family:'Atkinson Hyperlegible',sans-serif!important;font-size:16px;line-height:1.85;
+  background:var(--a11y-bg)!important;color:var(--a11y-txt2);
+}
+body.a11y-mode .a11y-btn{background:var(--a11y-dark);border-color:var(--a11y-dark);color:var(--a11y-dark-txt);font-weight:700;}
+body.a11y-mode .a11y-btn .a11y-label-on{display:inline;}
+body.a11y-mode .a11y-btn .a11y-label-off{display:none;}
+body.a11y-mode .header{background:var(--a11y-dark)!important;border-radius:16px;}
+body.a11y-mode .header h1{color:var(--a11y-dark-txt)!important;font-family:'Atkinson Hyperlegible',sans-serif!important;font-size:32px;}
+body.a11y-mode .header h1 em{color:var(--a11y-dark-txt)!important;font-style:normal;text-decoration:underline;text-underline-offset:4px;}
+body.a11y-mode .header .subtitle{color:var(--a11y-txt4-dark)!important;}
+body.a11y-mode .badge{background:var(--a11y-surface2)!important;color:var(--a11y-txt2)!important;border:1.5px solid var(--a11y-border2)!important;}
+body.a11y-mode .header .update{background:rgba(255,255,255,0.08)!important;border-color:rgba(255,255,255,0.2)!important;color:var(--a11y-txt4-dark)!important;}
+body.a11y-mode .dot{background:var(--a11y-dark-txt)!important;}
+body.a11y-mode .header-logo-wrap{background:var(--a11y-surface)!important;border:2px solid var(--a11y-border2)!important;}
+body.a11y-mode .intro{background:var(--a11y-surface)!important;border-left:5px solid var(--a11y-txt2)!important;color:var(--a11y-txt2)!important;border-radius:0 12px 12px 0!important;}
+body.a11y-mode .intro strong{color:var(--a11y-txt1)!important;}
+body.a11y-mode mark.hl,body.a11y-mode mark.hl-rouge{background:var(--a11y-surface2)!important;color:var(--a11y-txt1)!important;border:1px solid var(--a11y-border2);text-decoration:underline;}
+body.a11y-mode .statement{background:var(--a11y-dark)!important;border:2px solid var(--a11y-border2)!important;}
+body.a11y-mode .statement::after{display:none!important;}
+body.a11y-mode .statement h2{color:var(--a11y-dark-txt)!important;}
+body.a11y-mode .statement p{color:var(--a11y-txt4-dark)!important;}
+body.a11y-mode .statement .st-label{color:var(--a11y-txt4-dark)!important;}
+body.a11y-mode .statement .agir{color:var(--a11y-dark-txt)!important;}
+body.a11y-mode .section-title{color:var(--a11y-txt1)!important;font-size:21px!important;font-family:'Atkinson Hyperlegible',sans-serif!important;}
+body.a11y-mode .section-title .icon{background:var(--a11y-surface2)!important;border:1.5px solid var(--a11y-border2)!important;border-radius:8px!important;}
+body.a11y-mode .timeline-section{background:var(--a11y-surface)!important;border:1px solid var(--a11y-border)!important;}
+body.a11y-mode .tl-step{border-left:3px solid var(--a11y-border2)!important;}
+body.a11y-mode .tl-step::before{background:var(--a11y-surface)!important;border:3px solid var(--a11y-txt2)!important;}
+body.a11y-mode .tl-step.locked::before{background:var(--a11y-txt1)!important;border:3px solid var(--a11y-txt1)!important;}
+body.a11y-mode .tl-date{color:var(--a11y-txt3)!important;}
+body.a11y-mode .tl-step.locked .tl-date{color:var(--a11y-txt1)!important;}
+body.a11y-mode .tl-title{color:var(--a11y-txt1)!important;font-family:'Atkinson Hyperlegible',sans-serif!important;}
+body.a11y-mode .tl-hint{color:var(--a11y-txt3)!important;}
+body.a11y-mode .tl-chev{background:var(--a11y-surface2)!important;color:var(--a11y-txt1)!important;border:1px solid var(--a11y-border2);}
+body.a11y-mode .tl-step details[open] .tl-chev{background:var(--a11y-dark)!important;color:var(--a11y-dark-txt)!important;}
+body.a11y-mode .tl-body{color:var(--a11y-txt2)!important;font-family:'Atkinson Hyperlegible',sans-serif!important;}
+body.a11y-mode .tl-body h4{color:var(--a11y-txt1)!important;}
+body.a11y-mode .tl-body .meta{background:var(--a11y-surface2)!important;color:var(--a11y-txt2)!important;border:1px solid var(--a11y-border)!important;}
+body.a11y-mode .os-pill,body.a11y-mode .os-pill.fo,body.a11y-mode .os-pill.cgt,body.a11y-mode .os-pill.cfdt,body.a11y-mode .os-pill.cfe,body.a11y-mode .os-pill.dir{background:var(--a11y-surface2)!important;color:var(--a11y-txt2)!important;border:1px solid var(--a11y-border2)!important;}
+body.a11y-mode .os-pill.fo{border:2px solid var(--a11y-txt1)!important;color:var(--a11y-txt1)!important;font-weight:700;}
+body.a11y-mode .reason-card{background:var(--a11y-surface)!important;border:1px solid var(--a11y-border)!important;border-top:4px solid var(--a11y-txt1)!important;}
+body.a11y-mode .reason-card .r-num{color:var(--a11y-surface2)!important;}
+body.a11y-mode .reason-card h3{color:var(--a11y-txt1)!important;font-family:'Atkinson Hyperlegible',sans-serif!important;}
+body.a11y-mode .reason-card p{color:var(--a11y-txt2)!important;}
+body.a11y-mode details.foldable{background:var(--a11y-surface)!important;border:1px solid var(--a11y-border)!important;}
+body.a11y-mode details.foldable[open]{border-color:var(--a11y-txt1)!important;}
+body.a11y-mode details.foldable summary{color:var(--a11y-txt1)!important;font-family:'Atkinson Hyperlegible',sans-serif!important;}
+body.a11y-mode details.foldable .pict{background:var(--a11y-surface2)!important;border:1px solid var(--a11y-border2);}
+body.a11y-mode details.foldable .chev{background:var(--a11y-surface2)!important;color:var(--a11y-txt1)!important;}
+body.a11y-mode details.foldable[open] .chev{background:var(--a11y-dark)!important;color:var(--a11y-dark-txt)!important;}
+body.a11y-mode details.foldable .fold-body{color:var(--a11y-txt2)!important;font-family:'Atkinson Hyperlegible',sans-serif!important;}
+body.a11y-mode .indic-card{background:var(--a11y-surface2)!important;border-left:4px solid var(--a11y-txt2)!important;}
+body.a11y-mode .indic-card.exc{border-left:4px dashed var(--a11y-txt1)!important;}
+body.a11y-mode .indic-card h5{color:var(--a11y-txt1)!important;}
+body.a11y-mode .indic-card p{color:var(--a11y-txt2)!important;}
+body.a11y-mode .quote{background:var(--a11y-dark)!important;border:2px solid var(--a11y-border2)!important;}
+body.a11y-mode .quote::before{color:var(--a11y-dark-txt)!important;}
+body.a11y-mode .quote .q-label{color:var(--a11y-dark-txt)!important;}
+body.a11y-mode .quote .q-title{color:var(--a11y-dark-txt)!important;}
+body.a11y-mode .quote .q-body{color:var(--a11y-txt4-dark)!important;}
+body.a11y-mode .quote .q-body em{color:var(--a11y-dark-txt)!important;text-decoration:underline;}
+body.a11y-mode .cta-final{background:var(--a11y-surface)!important;border:1px solid var(--a11y-border)!important;border-top:5px solid var(--a11y-txt1)!important;}
+body.a11y-mode .cta-final h3{color:var(--a11y-txt1)!important;}
+body.a11y-mode .cta-final p{color:var(--a11y-txt2)!important;}
+body.a11y-mode .cta-final .slogan{color:var(--a11y-txt1)!important;}
+body.a11y-mode .footer{color:var(--a11y-txt3)!important;border-top-color:var(--a11y-border)!important;}
+body.a11y-mode *:focus{outline:3px solid var(--a11y-txt1)!important;outline-offset:3px!important;box-shadow:0 0 0 5px rgba(44,44,41,0.15)!important;}
+
+/* SKIP LINK */
+.skip-link{position:absolute;top:-100px;left:16px;background:#ffbf00;color:#2C2C29;font-weight:700;padding:10px 20px;border-radius:8px;z-index:9999;text-decoration:none;transition:top 0.2s;}
+.skip-link:focus{top:16px;}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#contenu-principal">Aller au contenu</a>
+
+<div class="page">
+
+  <header class="header">
+    <div class="header-logo-wrap">
+      <img src="https://www.destination-prevention.fr/wp-content/uploads/2026/03/logo-cercle-2.png" alt="Logo FO Énergie GRDF">
+    </div>
+    <span class="badge">Communiqué National · Mai 2026</span>
+    <h1>Négociation Accord <em>Intéressement 2026-2028</em><br>— Clap de fin pour 2026</h1>
+    <p class="subtitle">Retour synthétique sur 4 séances de négociation, les positions de chaque organisation syndicale et les raisons pour lesquelles la délégation FO a quitté la table.</p>
+    <span class="update"><span class="dot"></span> Mis à jour le 11 mai 2026 — séance finale du 6 mai</span>
+  </header>
+
+  <div class="a11y-toggle-bar">
+    <button id="a11yToggle" class="a11y-btn" type="button" aria-pressed="false" onclick="toggleA11y()">
+      <span class="a11y-label-off">Mode lecture universelle</span>
+      <span class="a11y-label-on">Mode standard</span>
+    </button>
+  </div>
+
+  <div id="contenu-principal">
+
+  <div class="intro">
+    FO est une organisation syndicale attachée au <strong>dialogue social</strong>. Dans un contexte où la <mark class="hl">participation tend à écraser l'intéressement</mark>, signer un accord qui récompense réellement l'investissement des salariés constitue une priorité. <strong>Mais pas à n'importe quel prix.</strong> Cette communication retrace de façon synthétique l'historique des 4 séances de négociation et explique <mark class="hl-rouge">pourquoi la délégation FO a quitté la table le 6 mai 2026</mark>. Les menus déroulants permettent d'approfondir chaque étape.
+  </div>
+
+  <div class="statement">
+    <div class="st-label">Décision FO · 6 mai 2026</div>
+    <h2>La délégation FO quitte la négociation.</h2>
+    <p>Un choix clair, assumé et responsable : nous ne signerons pas un accord qui ne prend pas en compte les résultats historiques connus de l'entreprise. FO reste disponible pour rouvrir les discussions dès que les conditions seront réunies.</p>
+    <span class="agir">Agir, ne pas subir.</span>
+  </div>
+
+  <div class="section-title">
+    <span class="icon" aria-hidden="true">📅</span>
+    Historique des séances — cliquez pour développer
+  </div>
+
+  <div class="timeline-section">
+
+    <div class="tl-step">
+      <details>
+        <summary>
+          <div class="tl-head">
+            <div class="tl-date">Séance 1 · 10 mars 2026</div>
+            <div class="tl-title">Ouverture des négociations</div>
+            <div class="tl-hint">Cadre légal · calendrier · premières positions OS</div>
+          </div>
+          <span class="tl-chev" aria-hidden="true">▼</span>
+        </summary>
+        <div class="tl-body">
+          <span class="meta">Présidée par N. Lefébure · salle 2C261 · clôture 15h45</span>
+          <p>La Direction rappelle que l'intéressement est un <strong>dispositif facultatif</strong> reposant uniquement sur un accord collectif, et qu'aucune décision unilatérale n'est possible en cas d'échec. Objectif : dépôt de l'accord avant le 30 juin 2026.</p>
+          <h4>Position FO</h4>
+          <div class="os-row">
+            <span class="os-pill fo">FO Énergie GRDF</span>
+          </div>
+          <p>FO recherche un mécanisme récompensant les salariés <mark class="hl">malgré une participation supérieure à 8,5 %</mark>. Sur les indicateurs : prévention au cœur, <strong>débat sur le TF (Taux de Fréquence des accidents du travail) jugé trop ambitieux</strong>, axe collectivités locales souhaité. FO partage la volonté d'un accord <em>valorisant l'investissement de chaque salarié</em>, indépendamment de la participation.</p>
+          <h4>Position de la Direction</h4>
+          <p>Transparence continue sur la RSP (Réserve Spéciale de Participation). Souhait de réduire à 4 indicateurs pour la lisibilité. Maintien du TF (Taux de Fréquence) comme standard SST (Santé Sécurité au Travail).</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="tl-step">
+      <details>
+        <summary>
+          <div class="tl-head">
+            <div class="tl-date">Séance 2 · 18 mars 2026</div>
+            <div class="tl-title">Architecture à 5 thématiques</div>
+            <div class="tl-hint">Idée de sanctuarisation · accord triennal · annulation du 26 mars</div>
+          </div>
+          <span class="tl-chev" aria-hidden="true">▼</span>
+        </summary>
+        <div class="tl-body">
+          <span class="meta">Salle 6C161 · 10h · clôture 11h50</span>
+          <p>La Direction préfère un mécanisme fondé sur la <mark class="hl">surperformance</mark> et un accord triennal.</p>
+          <h4>Architecture proposée par la Direction (après suspension de séance)</h4>
+          <div class="indic-grid">
+            <div class="indic-card"><h5>Biométhane</h5><p>Puissance annuelle raccordée</p></div>
+            <div class="indic-card"><h5>Satisfaction Client</h5><p>Taux après contact à distance</p></div>
+            <div class="indic-card"><h5>Solde Client</h5><p>Indicateur PCE (Points de Comptage et d'Estimation) rattachés</p></div>
+            <div class="indic-card"><h5>Taux de Fréquence (TF)</h5><p>Standard SST (Santé Sécurité au Travail)</p></div>
+            <div class="indic-card" style="grid-column:span 2;"><h5>Décarbonation via DO (Dommages aux Ouvrages)</h5><p>Dommages aux ouvrages enterrés avec fuites</p></div>
+          </div>
+          <h4>Position FO sur cette architecture</h4>
+          <div class="os-row">
+            <span class="os-pill fo">FO Énergie GRDF</span>
+          </div>
+          <p>FO appelle à la <strong>vigilance sur le TF (Taux de Fréquence)</strong> et salue positivement <mark class="hl">le retour du taux de DO (Dommages aux Ouvrages)</mark> dans les indicateurs. FO retient cinq thématiques : sécurité, décarbonation, biométhane, satisfaction client et collectivités territoriales.</p>
+          <p><strong>Sortie de séance</strong> : la séance du 26 mars est annulée, celle du 7 avril maintenue.</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="tl-step">
+      <details>
+        <summary>
+          <div class="tl-head">
+            <div class="tl-date">Séance 3 · 7 avril 2026</div>
+            <div class="tl-title">Le TF cristallise l'opposition</div>
+            <div class="tl-hint">Surperformance liée au TF · expression intersyndicale "non-souhaitable"</div>
+          </div>
+          <span class="tl-chev" aria-hidden="true">▼</span>
+        </summary>
+        <div class="tl-body">
+          <span class="meta">Salle 6C161 · 14h30 · clôture 15h55</span>
+          <p>La Direction confirme : 5 indicateurs, et la <strong>surperformance du TF (Taux de Fréquence)</strong> sera la condition déclenchante de l'exclusion du plafonnement P+I (Participation + Intéressement). <mark class="hl-rouge">Seuil annoncé : 2,8</mark>.</p>
+          <h4>Le chiffre qui dérange</h4>
+          <p>Selon la Direction elle-même : sur les <strong>12 dernières années</strong>, le TF a été ≤ 2,8 à <strong>7 reprises</strong>, et > 2,8 à <strong>5 reprises</strong>. Autrement dit : conditionner la prime supplémentaire à une <mark class="hl-rouge">surperformance d'un indicateur historiquement difficile</mark>.</p>
+          <h4>Position FO</h4>
+          <div class="os-row">
+            <span class="os-pill fo">FO Énergie GRDF</span>
+          </div>
+          <p>FO attire l'attention sur <strong>l'externalisation du niveau 1 d'accueil</strong> (projet Ventes et Accueils) susceptible d'impacter la satisfaction client. FO conteste également le choix du TF comme indicateur de surperformance, jugé <mark class="hl-rouge">incohérent avec l'historique</mark> de l'entreprise.</p>
+          <p><strong>Après 25 min de suspension</strong> : expression intersyndicale unanime à laquelle FO s'associe — le choix du TF comme indicateur de surperformance est jugé <mark class="hl-rouge">« non-souhaitable »</mark>. Les organisations syndicales demandent de reprendre les propositions autour d'autres indicateurs.</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="tl-step locked">
+      <details open>
+        <summary>
+          <div class="tl-head">
+            <div class="tl-date">Séance 4 · 6 mai 2026 — FIN</div>
+            <div class="tl-title">FO et l'intersyndicale quittent la séance</div>
+            <div class="tl-hint">Version « ANNULE ET REMPLACE » · objectifs revus mais insuffisants</div>
+          </div>
+          <span class="tl-chev" aria-hidden="true">▼</span>
+        </summary>
+        <div class="tl-body">
+          <p>La Direction présente une version <strong>« ANNULE ET REMPLACE »</strong> sur 3 indicateurs : Biométhane, Solde Client, et Prévention Sécurité. Les seuils du TF (Taux de Fréquence) sont revus (Objectif 0 % → 3 ; Objectif 100 % → 2,8 en 2026, 2,7 en 2027, 2,6 en 2028).</p>
+          <h4>Position FO (verbatim de séance)</h4>
+          <p><em>« FO réagit favorablement à l'évolution des propositions sur les critères. Cependant, sur le TF, bien que notant la revoyure des paramètres, FO note le côté <mark class="hl">timide</mark> de la direction au regard de la tendance actuelle. FO demande à remonter les seuils. »</em></p>
+          <p><em>« Sur le critère DO (Dommages aux Ouvrages), FO précise que ce critère englobe tous les DO, <mark class="hl-rouge">incluant les entreprises non-prestataires de GRDF</mark>. Cela pose la question de la légitimité de ce critère, indépendant de l'implication des salariés de GRDF. »</em></p>
+          <h4>L'épilogue</h4>
+          <p>La Direction confirme que le critère de surperformance restera <strong>le TF</strong>. Devant cette posture, <mark class="hl-rouge">l'ensemble des organisations syndicales quitte la séance</mark>.</p>
+          <h4>Mot final de la délégation FO</h4>
+          <p><em>« Devant un I+P (Intéressement + Participation) ne bougeant pas ou si peu, avec un critère sortant de l'I+P – le TF – trop timide au regard de l'historique, devant un critère DO incluant des entreprises non liées contractuellement à l'entreprise, la délégation FO quitte la négociation mais laisse sa disponibilité l'année prochaine afin de répondre à la demande des salariés de GRDF. »</em></p>
+        </div>
+      </details>
+    </div>
+
+  </div><!-- fin timeline -->
+
+  <div class="section-title">
+    <span class="icon" aria-hidden="true">⚠️</span>
+    Pourquoi FO refuse de signer
+  </div>
+
+  <div class="reasons">
+    <div class="reason-card">
+      <span class="r-num">1</span>
+      <h3>Un I+P (Intéressement + Participation) qui ne bouge pas</h3>
+      <p>L'Intéressement + Participation <mark class="hl">n'évolue pas ou à peine</mark>, même en incluant un critère hors de ce périmètre. La logique de plafonnement reste intacte.</p>
+    </div>
+    <div class="reason-card">
+      <span class="r-num">2</span>
+      <h3>Un TF (Taux de Fréquence) trop ambitieux</h3>
+      <p>Le seuil de surperformance est <mark class="hl">quasi inatteignable</mark> au regard de l'historique : > 2,8 cinq années sur les douze dernières. Conditionner une prime à un indicateur historiquement difficile.</p>
+    </div>
+    <div class="reason-card">
+      <span class="r-num">3</span>
+      <h3>Un critère DO (Dommages aux Ouvrages) contestable</h3>
+      <p>L'indicateur Dommages aux Ouvrages intègre des <mark class="hl">entreprises sans lien contractuel</mark> avec GRDF, donc indépendant de l'implication des salariés.</p>
+    </div>
+  </div>
+
+  <div class="section-title">
+    <span class="icon" aria-hidden="true">🎙️</span>
+    L'argumentaire de notre négociateur
+  </div>
+
+  <div class="quote">
+    <div class="q-label">Verbatim · 11 mai 2026</div>
+    <div class="q-title">Pourquoi avoir choisi d'aller négocier malgré le contexte ?</div>
+    <div class="q-body">
+      <p>La question d'aller négocier ou non un futur accord d'intéressement a été posée au regard du contexte actuel : une <em>participation très forte qui écrasera l'intéressement</em> sur l'exercice 2026-2028 dans le contexte de la mise en place de l'<strong>ATRD7</strong> (Accès des Tiers au Réseau de Distribution, 7<sup>e</sup> période tarifaire).</p>
+      <p>Comment intéresser les salariés de GRDF à l'atteinte des objectifs de l'entreprise, sachant que quel que soit leur investissement, <em>il n'y aura pas de récompense à la fin puisque la participation écrasera tout</em> ?</p>
+      <p>On en est arrivé à sortir un critère de I+P (Intéressement + Participation) : le TF (Taux de Fréquence des accidents du travail). Sauf que pour atteindre une pseudo-prime d'environ 300 €, il fallait <em>surperformer sur le TF</em> — alors qu'historiquement, on sait que cet indicateur est très problématique. La valeur de déclenchement fournie par la direction était <em>beaucoup trop ambitieuse</em>, quasi systématiquement non atteinte.</p>
+      <p>FO a malgré tout décidé d'y aller : la participation dépend du chiffre d'affaires, et celui-ci dépend aussi du contexte étatique. Nous ne sommes pas à l'abri d'une décision d'investissement lourd sur un ouvrage qui pourrait faire <em>perdre la participation</em>. Mieux vaut un accord ambitieux qui sécurise les salariés.</p>
+    </div>
+  </div>
+
+  <div class="section-title">
+    <span class="icon" aria-hidden="true">🧭</span>
+    Et maintenant ?
+  </div>
+
+  <details class="foldable">
+    <summary>
+      <span class="pict" aria-hidden="true">⚡</span>
+      <span class="ttl">L'ATRD7, c'est quoi ? (et pourquoi ça change tout)</span>
+      <span class="chev" aria-hidden="true">▼</span>
+    </summary>
+    <div class="fold-body">
+      <p><strong>ATRD</strong> signifie <strong>Accès des Tiers au Réseau de Distribution</strong>. Il s'agit d'une <em>contribution tarifaire</em> qui concerne le gaz naturel et qui permet de financer les gestionnaires de réseaux de distribution de cette énergie — donc GRDF.</p>
+      <p>Le « 7 » désigne la <strong>7<sup>e</sup> période tarifaire</strong>, fixée par la CRE (Commission de Régulation de l'Énergie). C'est elle qui détermine, pour plusieurs années, les recettes que GRDF peut percevoir pour exploiter le réseau.</p>
+      <p><strong>Pourquoi c'est central dans cette négociation ?</strong> L'ATRD7 a entraîné une <mark class="hl">hausse significative du chiffre d'affaires de l'entreprise</mark>, donc mécaniquement de la RSP (Réserve Spéciale de Participation). Cette participation très forte <em>écrase</em> l'intéressement à cause du plafonnement légal I+P (Intéressement + Participation). C'est précisément pour cette raison que FO a cherché un mécanisme qui sorte du plafonnement et qui récompense réellement l'investissement des salariés.</p>
+    </div>
+  </details>
+
+  <details class="foldable">
+    <summary>
+      <span class="pict" aria-hidden="true">🔄</span>
+      <span class="ttl">FO ne tourne pas le dos à la négociation</span>
+      <span class="chev" aria-hidden="true">▼</span>
+    </summary>
+    <div class="fold-body">
+      <p>Quitter la table n'est pas un renoncement. C'est un refus de cautionner un dispositif déséquilibré. FO continue de porter une exigence claire : l'intéressement doit <strong>récompenser réellement</strong> l'investissement des salariés à l'atteinte des objectifs de l'entreprise.</p>
+      <p>FO <strong>reste disponible</strong> pour rouvrir les discussions, portera des propositions ambitieuses, et reviendra à la table dès que les conditions seront réunies.</p>
+    </div>
+  </details>
+
+  <details class="foldable">
+    <summary>
+      <span class="pict" aria-hidden="true">📌</span>
+      <span class="ttl">Les exigences que FO continuera de porter</span>
+      <span class="chev" aria-hidden="true">▼</span>
+    </summary>
+    <div class="fold-body">
+      <p><strong>Sur la structure financière :</strong> un mécanisme qui récompense les salariés <em>quand</em> les objectifs sont atteints, partiellement ou totalement — même si la participation dépasse les 8,5 %.</p>
+      <p><strong>Sur les indicateurs :</strong> recentrer la prévention sur des indicateurs maîtrisables par les salariés ; revoir le seuil du TF en cohérence avec son historique ; exclure du critère DO les dommages causés par des entreprises sans lien contractuel avec GRDF.</p>
+      <p><strong>Sur la méthode :</strong> davantage de bilatérales en amont, transmission des documents supports dans des délais permettant une analyse complète.</p>
+    </div>
+  </details>
+
+  <div class="cta-final">
+    <h3>L'intéressement doit récompenser l'investissement des salariés.</h3>
+    <p>FO continuera de se battre pour un dispositif <strong>juste, lisible et à la hauteur</strong> des engagements des agents de GRDF.</p>
+    <div class="slogan">Agir, ne pas subir.</div>
+  </div>
+
+  <footer class="footer" role="contentinfo">
+    <img src="https://www.destination-prevention.fr/wp-content/uploads/2026/03/logo-cercle-2.png" alt="Logo FO Énergie GRDF">
+    Communication nationale FO Énergie GRDF · Négociation Accord d'Intéressement 2026-2028 · Mai 2026
+  </footer>
+
+  </div>
+</div>
+
+<script>
+function toggleA11y(){
+  var body=document.body;
+  var btn=document.getElementById('a11yToggle');
+  var on=body.classList.toggle('a11y-mode');
+  if(btn) btn.setAttribute('aria-pressed', on?'true':'false');
+  try{ localStorage.setItem('fo-a11y', on?'1':'0'); }catch(e){}
+}
+try{
+  if(localStorage.getItem('fo-a11y')==='1'){
+    document.body.classList.add('a11y-mode');
+    var b=document.getElementById('a11yToggle');
+    if(b) b.setAttribute('aria-pressed','true');
+  }
+}catch(e){}
+</script>
+</body>
+</html>

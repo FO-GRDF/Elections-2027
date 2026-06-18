@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FO GRDF — Le Saviez‑Vous</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+:root {
+--bleu: #019cda;
+--vert: #28b193;
+--orange: #f7dd5c;
+--rouge: #ef333e;
+--fond: #F7F5F0;
+--blanc: #ffffff;
+--texte: #1a1a1a;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'DM Sans', sans-serif;
+background:var(--fond);
+color:var(--texte);
+line-height:1.6;
+}
+
+.container{
+max-width:1000px;
+margin:auto;
+padding:40px 20px;
+}
+
+.header{
+text-align:center;
+margin-bottom:50px;
+}
+
+.logo{
+font-family:'Fraunces', serif;
+font-size:42px;
+color:var(--bleu);
+margin-bottom:10px;
+}
+
+.subtitle{
+font-size:18px;
+opacity:0.8;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
+}
+
+.card{
+background:var(--blanc);
+padding:30px;
+border-radius:14px;
+box-shadow:0 10px 25px rgba(0,0,0,0.05);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+box-shadow:0 15px 35px rgba(0,0,0,0.08);
+}
+
+.card h3{
+font-family:'Fraunces', serif;
+margin-bottom:15px;
+color:var(--bleu);
+}
+
+.card p{
+margin-bottom:20px;
+}
+
+.btn{
+display:inline-block;
+padding:12px 20px;
+background:var(--bleu);
+color:white;
+text-decoration:none;
+border-radius:8px;
+font-weight:500;
+}
+
+.footer{
+margin-top:60px;
+text-align:center;
+font-size:14px;
+opacity:0.7;
+}
+
+.accessibility{
+position:fixed;
+bottom:20px;
+right:20px;
+background:var(--bleu);
+color:white;
+padding:12px 18px;
+border-radius:30px;
+text-decoration:none;
+font-size:14px;
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="header">
+<div class="logo">FO GRDF</div>
+<div class="subtitle">Le Saviez‑Vous — Informations essentielles</div>
+</div>
+
+<div class="cards">
+
+<div class="card">
+<h3>Frais de déplacement</h3>
+<p>Découvrez les règles, les montants et les conditions concernant vos frais de déplacement.</p>
+<a href="frais_deplacement.html" class="btn">Consulter</a>
+</div>
+
+<div class="card">
+<h3>Évolution des grilles salariales</h3>
+<p>Comprendre les évolutions des grilles salariales et leurs impacts.</p>
+<a href="evolution-grille-salaire.html" class="btn">Consulter</a>
+</div>
+
+<div class="card">
+<h3>CCAS / CMCAS</h3>
+<p>Les informations utiles concernant vos droits et prestations CCAS.</p>
+<a href="ccas_cmcas_fo_grdf.html" class="btn">Consulter</a>
+</div>
+
+</div>
+
+<div class="footer">
+FO GRDF — Communication salariés
+</div>
+
+</div>
+
+<a class="accessibility" href="#">Mode lecture universelle</a>
+
+</body>
+</html>
