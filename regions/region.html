@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Région Sud-Est · FO GRDF Élections 2027</title>
+<meta name="description" content="Découvrez l'équipe FO GRDF Sud-Est, ses candidats, ses priorités locales et ses combats du quotidien.">
+<meta name="theme-color" content="#019cda">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=DM+Sans:wght@300;400;500;600;700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/fo-2027.css">
+<style>
+  /* Page-specific styles */
+  .region-hero {
+    background: linear-gradient(135deg, #0a2540 0%, #019cda 75%, #028bc2 100%);
+    color: var(--blanc);
+    padding: 140px 32px 90px;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .region-hero::before {
+    content: ""; position: absolute; inset: 0;
+    background:
+      radial-gradient(circle at 80% 30%, rgba(247,221,92,0.18) 0%, transparent 50%),
+      radial-gradient(circle at 10% 70%, rgba(40,177,147,0.18) 0%, transparent 50%);
+    z-index: -1;
+  }
+  .region-hero-inner {
+    max-width: 1320px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  .rh-mini-map {
+    position: relative;
+    width: 320px;
+    margin: 0 auto;
+  }
+  .rh-mini-map svg {
+    width: 100%; height: auto;
+    filter: drop-shadow(0 16px 40px rgba(0,0,0,0.3));
+  }
+  .rh-mini-map .map-zone { fill: rgba(255,255,255,0.15); cursor: default; }
+  .rh-mini-map .map-zone.this { fill: var(--or); }
+  .rh-mini-map .map-label { fill: rgba(255,255,255,0.6); font-size: 9px; }
+  .rh-mini-map .map-label.this { fill: var(--bleu-nuit); }
+  .rh-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    max-width: 720px;
+    margin-top: 40px;
+  }
+  .rh-stat {
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 18px;
+    padding: 20px;
+  }
+  .rh-stat-val {
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-size: 36px;
+    color: var(--or);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .rh-stat-lbl {
+    font-size: 12px;
+    color: rgba(255,255,255,0.78);
+    line-height: 1.35;
+  }
+
+  /* Équipe collective */
+  .team-intro {
+    background: var(--blanc);
+    border-radius: 28px;
+    padding: 48px;
+    box-shadow: var(--ombre-doux);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+    border-left: 6px solid var(--bleu);
+  }
+  .team-intro h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 28px;
+    color: var(--bleu-nuit);
+    margin-bottom: 16px;
+  }
+  .team-intro p { color: var(--gris); font-size: 15.5px; line-height: 1.7; margin-bottom: 14px; }
+  .team-mosaic {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+  .avatar-tile {
+    aspect-ratio: 1;
+    border-radius: 16px;
+    background: var(--gradient-fo);
+    color: var(--or);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-size: 19px;
+    transition: transform 0.25s;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  .avatar-tile::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 30% 30%, rgba(247,221,92,0.2), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+  .avatar-tile:hover { transform: scale(1.08) rotate(-3deg); }
+  .avatar-tile:hover::before { opacity: 1; }
+  .avatar-tile:nth-child(3n) { background: linear-gradient(135deg, var(--vert), #1d8b75); }
+  .avatar-tile:nth-child(5n) { background: linear-gradient(135deg, #c0303a, #7a0e1c); }
+  .avatar-tile:nth-child(7n) { background: linear-gradient(135deg, var(--bleu-fonce), var(--bleu-nuit)); }
+
+  /* Candidats */
+  .candidates-section { background: var(--fond-alt); }
+  .candidates-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .candidate-card {
+    background: var(--blanc);
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: var(--ombre-doux);
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex; flex-direction: column;
+    position: relative;
+  }
+  .candidate-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--ombre-fort);
+  }
+  .candidate-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--bleu), var(--or));
+    z-index: 2;
+  }
+  .candidate-photo {
+    aspect-ratio: 4/3;
+    background: var(--gradient-fo);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--or);
+    font-family: 'Fraunces', serif;
+    font-size: 64px;
+    font-weight: 900;
+    position: relative;
+    overflow: hidden;
+  }
+  .candidate-photo::before {
+    content: "";
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at 30% 20%, rgba(247,221,92,0.2), transparent 60%);
+  }
+  .candidate-card:nth-child(2) .candidate-photo { background: linear-gradient(135deg, var(--bleu-fonce), var(--bleu-nuit)); }
+  .candidate-card:nth-child(3) .candidate-photo { background: linear-gradient(135deg, var(--vert), #1d8b75); }
+  .candidate-card:nth-child(4) .candidate-photo { background: linear-gradient(135deg, #c0303a, #7a0e1c); }
+  .candidate-card:nth-child(5) .candidate-photo { background: linear-gradient(135deg, var(--bleu), var(--vert)); }
+  .candidate-card:nth-child(6) .candidate-photo { background: linear-gradient(135deg, var(--bleu-nuit), var(--bleu)); }
+  .candidate-placeholder {
+    position: absolute;
+    bottom: 14px; right: 14px;
+    background: rgba(255,255,255,0.18);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: var(--blanc);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    padding: 5px 11px;
+    border-radius: 20px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .candidate-info {
+    padding: 26px;
+    flex: 1;
+    display: flex; flex-direction: column;
+  }
+  .candidate-role {
+    color: var(--bleu);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .candidate-info h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    color: var(--bleu-nuit);
+    margin-bottom: 6px;
+    line-height: 1.2;
+  }
+  .candidate-meta {
+    color: var(--gris);
+    font-size: 13px;
+    margin-bottom: 16px;
+  }
+  .candidate-quote {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    color: var(--texte);
+    font-size: 14.5px;
+    line-height: 1.55;
+    padding-top: 16px;
+    border-top: 1px solid var(--fond-alt);
+    margin-top: auto;
+  }
+  .candidate-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 18px;
+    color: var(--bleu);
+    font-weight: 600;
+    font-size: 14px;
+    transition: gap 0.2s;
+  }
+  .candidate-link:hover { gap: 12px; text-decoration: none; color: var(--bleu-fonce); }
+
+  /* Priorités */
+  .priorities-section { background: var(--blanc); }
+  .priorities-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .priority {
+    background: var(--fond);
+    border-radius: 18px;
+    padding: 28px;
+    display: flex;
+    gap: 20px;
+    border-left: 4px solid var(--bleu);
+    transition: all 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .priority::after {
+    content: "";
+    position: absolute;
+    top: 0; right: -100%;
+    width: 60%; height: 100%;
+    background: linear-gradient(135deg, transparent, rgba(247,221,92,0.08));
+    transition: right 0.4s;
+  }
+  .priority:hover {
+    background: var(--blanc);
+    box-shadow: var(--ombre-doux);
+    border-left-color: var(--or);
+    transform: translateX(6px);
+  }
+  .priority:hover::after { right: 0; }
+  .priority-icon {
+    width: 52px; height: 52px;
+    border-radius: 14px;
+    background: var(--bleu);
+    color: var(--or);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    transition: transform 0.3s, background 0.25s;
+  }
+  .priority:hover .priority-icon { transform: rotate(-6deg) scale(1.05); background: var(--bleu-nuit); }
+  .priority h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 19px;
+    color: var(--bleu-nuit);
+    margin-bottom: 6px;
+  }
+  .priority p { color: var(--gris); font-size: 14.5px; line-height: 1.6; }
+
+  /* Timeline actions */
+  .actions-section {
+    background: linear-gradient(180deg, var(--fond) 0%, var(--fond-alt) 100%);
+  }
+  .actions-timeline {
+    position: relative;
+    padding-left: 36px;
+    max-width: 880px;
+    margin: 0 auto;
+  }
+  .actions-timeline::before {
+    content: "";
+    position: absolute;
+    left: 8px; top: 12px; bottom: 12px;
+    width: 3px;
+    background: linear-gradient(180deg, var(--bleu), var(--or));
+    border-radius: 3px;
+  }
+  .action-item {
+    position: relative;
+    background: var(--blanc);
+    border-radius: 18px;
+    padding: 24px 30px;
+    margin-bottom: 22px;
+    box-shadow: var(--ombre-doux);
+    transition: transform 0.25s;
+  }
+  .action-item:hover { transform: translateX(6px); }
+  .action-item::before {
+    content: "";
+    position: absolute;
+    left: -36px; top: 28px;
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    background: var(--blanc);
+    border: 4px solid var(--bleu);
+    box-shadow: 0 0 0 4px rgba(1,156,218,0.15);
+  }
+  .action-item:nth-child(2n)::before { border-color: var(--or); box-shadow: 0 0 0 4px rgba(247,221,92,0.2); }
+  .action-date {
+    color: var(--bleu);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .action-item:nth-child(2n) .action-date { color: var(--or-fonce); }
+  .action-item h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    color: var(--bleu-nuit);
+    margin-bottom: 6px;
+  }
+  .action-item p { color: var(--gris); font-size: 14.5px; line-height: 1.6; }
+
+  @media (max-width: 1100px) {
+    .candidates-grid { grid-template-columns: 1fr 1fr; }
+    .region-hero-inner { grid-template-columns: 1fr; gap: 36px; text-align: center; }
+    .rh-stats { margin-left: auto; margin-right: auto; }
+    .team-intro { grid-template-columns: 1fr; padding: 36px; }
+  }
+  @media (max-width: 760px) {
+    .candidates-grid { grid-template-columns: 1fr; }
+    .priorities-grid { grid-template-columns: 1fr; }
+    .rh-stats { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#contenu-principal">Aller au contenu principal</a>
+
+<!-- Curseur -->
+<div class="cursor-dot" aria-hidden="true"></div>
+<div class="cursor-ring" aria-hidden="true"></div>
+
+<!-- NAV -->
+<nav class="top-nav" aria-label="Navigation principale">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo" aria-label="FO GRDF — retour à l'accueil">
+      <img src="https://www.destination-prevention.fr/wp-content/uploads/2026/03/Sans-titre-2026-03-24T120947.656.png" alt="Logo FO Énergie GRDF">
+      <span class="nav-logo-text">
+        FO GRDF
+        <small>Élections 2027</small>
+      </span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html#message">Message</a></li>
+      <li><a href="../index.html#regions">Toutes les régions</a></li>
+      <li><a href="../index.html#pourquoi">Pourquoi FO</a></li>
+      <li><a href="../index.html#engagements">Engagements</a></li>
+      <li><a href="../presentation.html" class="nav-cta">Présentation</a></li>
+    </ul>
+    <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <div class="nav-progress"></div>
+  </div>
+</nav>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <div class="breadcrumb-inner">
+    <a href="../index.html">Accueil</a>
+    <span class="sep">›</span>
+    <a href="../index.html#regions">Régions</a>
+    <span class="sep">›</span>
+    <span>Sud-Est</span>
+  </div>
+</div>
+
+<!-- HERO RÉGION -->
+<header class="region-hero" id="contenu-principal">
+  <div class="region-hero-inner">
+    <div>
+      <span class="hero-badge"><span class="dot"></span>Région · Sud-Est</span>
+      <h1 style="font-family:'Fraunces',serif;font-size:clamp(38px,5vw,62px);font-weight:900;line-height:1.05;letter-spacing:-1px;margin-bottom:18px;">
+        FO GRDF <em style="color:var(--or);font-style:italic;">Sud-Est</em>,<br>au plus près du terrain.
+      </h1>
+      <p style="font-size:18px;color:rgba(255,255,255,0.85);max-width:600px;line-height:1.65;">
+        De Lyon à Marseille, de Grenoble à Nice, une équipe engagée pour défendre les salariés des Alpes,
+        de la Provence et de la Vallée du Rhône. Découvrez vos représentants et leurs priorités.
+      </p>
+
+      <div class="rh-stats">
+        <div class="rh-stat">
+          <div class="rh-stat-val"><span data-counter="12">0</span></div>
+          <div class="rh-stat-lbl">Militants<br>sur le terrain</div>
+        </div>
+        <div class="rh-stat">
+          <div class="rh-stat-val"><span data-counter="8">0</span></div>
+          <div class="rh-stat-lbl">Sites<br>couverts</div>
+        </div>
+        <div class="rh-stat">
+          <div class="rh-stat-val"><span data-counter="3">0</span></div>
+          <div class="rh-stat-lbl">Permanences<br>mensuelles</div>
+        </div>
+        <div class="rh-stat">
+          <div class="rh-stat-val"><span data-counter="100">0</span>%</div>
+          <div class="rh-stat-lbl">Salariés<br>représentés</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mini-carte de localisation -->
+    <div class="rh-mini-map" aria-hidden="true">
+      <svg viewBox="0 0 520 540" xmlns="http://www.w3.org/2000/svg">
+        <path class="map-zone" d="M 120 60 L 280 50 L 305 110 L 280 165 L 200 175 L 130 155 L 100 100 Z"/>
+        <path class="map-zone" d="M 240 165 L 295 165 L 305 200 L 270 220 L 235 205 Z"/>
+        <path class="map-zone" d="M 305 110 L 430 100 L 460 180 L 430 230 L 370 235 L 310 210 L 305 165 Z"/>
+        <path class="map-zone" d="M 35 175 L 130 155 L 200 175 L 220 235 L 165 280 L 80 270 L 30 220 Z"/>
+        <path class="map-zone" d="M 200 175 L 305 200 L 310 210 L 370 235 L 360 305 L 290 345 L 220 335 L 180 280 L 200 235 Z"/>
+        <path class="map-zone" d="M 80 270 L 165 280 L 220 335 L 220 410 L 175 475 L 105 460 L 55 400 L 45 330 Z"/>
+        <path class="map-zone this" d="M 220 335 L 360 305 L 430 230 L 460 280 L 470 360 L 440 430 L 360 470 L 290 460 L 230 420 L 220 380 Z"/>
+        <text class="map-label this" x="350" y="390">SUD-EST</text>
+        <circle class="map-fc" cx="270" cy="190" r="13"/>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<!-- ÉQUIPE -->
+<section aria-labelledby="t-equipe">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-eyebrow">Notre équipe</span>
+      <h2 class="section-title" id="t-equipe">Une équipe <em>collective</em>, pas des solitaires.</h2>
+      <p class="section-lead">
+        Chez FO GRDF Sud-Est, nous croyons à la force du collectif. Nos militants couvrent toutes les filières,
+        tous les sites et toutes les générations pour porter une parole véritablement représentative.
+      </p>
+    </div>
+
+    <div class="team-intro reveal">
+      <div>
+        <h3>Une dynamique de territoire</h3>
+        <p>
+          Notre équipe régionale rassemble des salariés issus de tous les métiers de GRDF&nbsp;: techniciens d'intervention,
+          chargés d'affaires, fonctions support, encadrement. Cette diversité est notre force.
+        </p>
+        <p>
+          Nous fonctionnons en binômes par site et en commissions thématiques (santé/sécurité, conditions de travail,
+          rémunérations, mobilités) pour garantir une réactivité maximale.
+        </p>
+      </div>
+      <div class="team-mosaic" aria-label="Aperçu de l'équipe régionale">
+        <div class="avatar-tile" data-hover>SE</div>
+        <div class="avatar-tile" data-hover>MD</div>
+        <div class="avatar-tile" data-hover>JR</div>
+        <div class="avatar-tile" data-hover>LP</div>
+        <div class="avatar-tile" data-hover>KB</div>
+        <div class="avatar-tile" data-hover>TM</div>
+        <div class="avatar-tile" data-hover>NF</div>
+        <div class="avatar-tile" data-hover>AC</div>
+        <div class="avatar-tile" data-hover>EV</div>
+        <div class="avatar-tile" data-hover>RJ</div>
+        <div class="avatar-tile" data-hover>CL</div>
+        <div class="avatar-tile" data-hover>+1</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CANDIDATS -->
+<section class="candidates-section" aria-labelledby="t-candidats">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-eyebrow">Vos candidats</span>
+      <h2 class="section-title" id="t-candidats">Celles et ceux qui <em>portent votre voix</em>.</h2>
+      <p class="section-lead">
+        Six candidatures placeholder pour illustrer la présentation des candidats. À remplacer par les profils réels une fois validés par le collectif.
+      </p>
+    </div>
+
+    <div class="candidates-grid">
+      <article class="candidate-card reveal" data-hover>
+        <div class="candidate-photo">
+          <span>SE</span>
+          <span class="candidate-placeholder">Photo</span>
+        </div>
+        <div class="candidate-info">
+          <div class="candidate-role">Tête de liste · Site Lyon</div>
+          <h4>Sophie Exemple</h4>
+          <div class="candidate-meta">Technicienne d'intervention · 14 ans d'ancienneté</div>
+          <p class="candidate-quote">« Le syndicalisme, c'est d'abord écouter, comprendre, puis agir. »</p>
+          <a href="../militants/militant.html?id=sophie-exemple" class="candidate-link">
+            Voir la fiche complète
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="candidate-card reveal" data-hover data-delay="100">
+        <div class="candidate-photo">
+          <span>MD</span>
+          <span class="candidate-placeholder">Photo</span>
+        </div>
+        <div class="candidate-info">
+          <div class="candidate-role">Co-listier · Site Marseille</div>
+          <h4>Marc Demonstration</h4>
+          <div class="candidate-meta">Chargé d'affaires · 9 ans d'ancienneté</div>
+          <p class="candidate-quote">« Défendre les conditions de travail, c'est défendre la qualité du service. »</p>
+          <a href="../militants/militant.html?id=marc-demonstration" class="candidate-link">
+            Voir la fiche complète
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="candidate-card reveal" data-hover data-delay="200">
+        <div class="candidate-photo">
+          <span>JR</span>
+          <span class="candidate-placeholder">Photo</span>
+        </div>
+        <div class="candidate-info">
+          <div class="candidate-role">Co-listière · Site Grenoble</div>
+          <h4>Julie Référence</h4>
+          <div class="candidate-meta">Encadrante exploitation · 18 ans d'ancienneté</div>
+          <p class="candidate-quote">« Représenter, c'est porter une parole collective, pas individuelle. »</p>
+          <a href="../militants/militant.html?id=julie-reference" class="candidate-link">
+            Voir la fiche complète
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="candidate-card reveal" data-hover>
+        <div class="candidate-photo">
+          <span>LP</span>
+          <span class="candidate-placeholder">Photo</span>
+        </div>
+        <div class="candidate-info">
+          <div class="candidate-role">Co-listier · Site Nice</div>
+          <h4>Luc Placeholder</h4>
+          <div class="candidate-meta">Technicien réseau · 6 ans d'ancienneté</div>
+          <p class="candidate-quote">« La nouvelle génération a son mot à dire. Faisons-le entendre. »</p>
+          <a href="../militants/militant.html?id=luc-placeholder" class="candidate-link">
+            Voir la fiche complète
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="candidate-card reveal" data-hover data-delay="100">
+        <div class="candidate-photo">
+          <span>KB</span>
+          <span class="candidate-placeholder">Photo</span>
+        </div>
+        <div class="candidate-info">
+          <div class="candidate-role">Co-listière · Site Avignon</div>
+          <h4>Karine Brouillon</h4>
+          <div class="candidate-meta">Assistante administrative · 22 ans d'ancienneté</div>
+          <p class="candidate-quote">« Les fonctions support sont essentielles. Elles méritent d'être défendues. »</p>
+          <a href="../militants/militant.html?id=karine-brouillon" class="candidate-link">
+            Voir la fiche complète
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="candidate-card reveal" data-hover data-delay="200">
+        <div class="candidate-photo">
+          <span>TM</span>
+          <span class="candidate-placeholder">Photo</span>
+        </div>
+        <div class="candidate-info">
+          <div class="candidate-role">Suppléant · Site Valence</div>
+          <h4>Thomas Maquette</h4>
+          <div class="candidate-meta">Technicien gaz · 11 ans d'ancienneté</div>
+          <p class="candidate-quote">« La sécurité au travail n'est pas négociable. Jamais. »</p>
+          <a href="../militants/militant.html?id=thomas-maquette" class="candidate-link">
+            Voir la fiche complète
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- PRIORITÉS -->
+<section class="priorities-section" aria-labelledby="t-priorites">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-eyebrow">Priorités locales</span>
+      <h2 class="section-title" id="t-priorites">Nos <em>combats du quotidien</em> en Sud-Est.</h2>
+      <p class="section-lead">
+        Des priorités ancrées dans la réalité du terrain régional, identifiées avec les équipes et les salariés.
+      </p>
+    </div>
+
+    <div class="priorities-grid">
+      <div class="priority reveal">
+        <div class="priority-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+          </svg>
+        </div>
+        <div>
+          <h4>Maintien des sites régionaux</h4>
+          <p>Refuser toute fermeture déguisée et défendre l'emploi local de proximité dans chaque agence.</p>
+        </div>
+      </div>
+
+      <div class="priority reveal" data-delay="100">
+        <div class="priority-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
+            <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+          </svg>
+        </div>
+        <div>
+          <h4>Temps de trajet & astreintes</h4>
+          <p>Obtenir une meilleure prise en compte des contraintes géographiques de la région (montagne, distances).</p>
+        </div>
+      </div>
+
+      <div class="priority reveal" data-delay="200">
+        <div class="priority-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+          </svg>
+        </div>
+        <div>
+          <h4>Reconnaissance des compétences</h4>
+          <p>Faire valoir les expertises terrain dans les grilles et les évolutions de carrière.</p>
+        </div>
+      </div>
+
+      <div class="priority reveal" data-delay="300">
+        <div class="priority-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+        </div>
+        <div>
+          <h4>Qualité de vie au travail</h4>
+          <p>Lutter contre la charge mentale, les organisations désorganisées et le management dégradé.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACTIONS DE TERRAIN -->
+<section class="actions-section" aria-labelledby="t-actions">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-eyebrow">Sur le terrain</span>
+      <h2 class="section-title" id="t-actions">Des <em>actions concrètes</em>, des résultats tangibles.</h2>
+      <p class="section-lead">
+        Exemple chronologique des actions menées sur la région. Contenu illustratif à actualiser.
+      </p>
+    </div>
+
+    <div class="actions-timeline">
+      <div class="action-item reveal">
+        <div class="action-date">Janvier 2026</div>
+        <h4>Rencontres territoriales</h4>
+        <p>Tournée régionale sur les 8 sites pour recueillir les attentes des salariés en vue des élections 2027.</p>
+      </div>
+      <div class="action-item reveal" data-delay="100">
+        <div class="action-date">Mars 2026</div>
+        <h4>Négociation indemnités de déplacement</h4>
+        <p>Obtention d'une revalorisation des indemnités kilométriques pour les techniciens en zone montagne.</p>
+      </div>
+      <div class="action-item reveal" data-delay="200">
+        <div class="action-date">Mai 2026</div>
+        <h4>Permanences mensuelles</h4>
+        <p>Mise en place de permanences régulières dans chaque agence pour rester accessible aux salariés.</p>
+      </div>
+      <div class="action-item reveal" data-delay="300">
+        <div class="action-date">Septembre 2026</div>
+        <h4>Campagne sécurité au travail</h4>
+        <p>Action de sensibilisation sur les EPI et les procédures d'intervention sécurisée.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT FO -->
+<section style="padding: 0 32px 80px;">
+  <div class="container-narrow">
+    <div class="fo-contact-card reveal">
+      <div class="fo-logo-wrap">
+        <a href="mailto:syndicat-fo_grdf-delegations-nationales@grdf.fr" title="Écrire à FO GRDF" data-hover>
+          <img src="https://www.destination-prevention.fr/wp-content/uploads/2026/03/Sans-titre-2026-03-24T120947.656.png" alt="FO Énergie GRDF">
+        </a>
+      </div>
+      <div class="fo-body">
+        <div class="fo-text">
+          <h3>Une question ? L'équipe Sud-Est vous répond</h3>
+          <p>Nos délégués régionaux sont à votre écoute, en toute confidentialité, sur tous les sujets concernant <strong>la région Sud-Est</strong>.</p>
+        </div>
+        <a href="mailto:syndicat-fo_grdf-delegations-nationales@grdf.fr" class="fo-mailto-btn" data-hover>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+          Nous écrire
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="../index.html" class="nav-logo">
+        <img src="https://www.destination-prevention.fr/wp-content/uploads/2026/03/Sans-titre-2026-03-24T120947.656.png" alt="FO Énergie GRDF">
+        <span class="nav-logo-text">FO GRDF<small>Élections 2027</small></span>
+      </a>
+      <p>Force Ouvrière GRDF, syndicat libre et indépendant au service de tous les salariés.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Navigation</h5>
+      <ul>
+        <li><a href="../index.html">Accueil</a></li>
+        <li><a href="../index.html#regions">Toutes les régions</a></li>
+        <li><a href="../index.html#engagements">Engagements</a></li>
+        <li><a href="../presentation.html">Présentation</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Cette région</h5>
+      <ul>
+        <li><a href="#contenu-principal">Présentation</a></li>
+        <li><a href="#t-candidats">Candidats</a></li>
+        <li><a href="#t-priorites">Priorités locales</a></li>
+        <li><a href="#t-actions">Actions terrain</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Contact</h5>
+      <ul>
+        <li><a href="mailto:syndicat-fo_grdf-delegations-nationales@grdf.fr">Délégations nationales</a></li>
+        <li><a href="#">Mentions légales</a></li>
+        <li><a href="#">Accessibilité</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 FO GRDF · Maquette concept · Données fictives</div>
+    <div><a href="mailto:syndicat-fo_grdf-delegations-nationales@grdf.fr">syndicat-fo_grdf-delegations-nationales@grdf.fr</a></div>
+  </div>
+</footer>
+
+<!-- A11Y -->
+<div class="a11y-toggle-bar">
+  <button class="a11y-btn" id="a11yToggle" onclick="toggleA11y()" aria-pressed="false">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+      <path d="M12 2a10 10 0 1 1 0 20A10 10 0 0 1 12 2z"/>
+      <path d="M12 2a10 10 0 0 1 0 20z" fill="currentColor"/>
+    </svg>
+    <span class="a11y-label-off">Mode lecture universelle</span>
+    <span class="a11y-label-on">Mode actif — Revenir</span>
+  </button>
+</div>
+
+<script src="../assets/js/fo-2027.js"></script>
+</body>
+</html>
