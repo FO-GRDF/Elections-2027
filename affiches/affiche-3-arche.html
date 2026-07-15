@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Affiche 3 · Arche organique — FO GRDF Fonctions Centrales</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@400;500;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+/* ── AFFICHE A4 — imprimer depuis Chrome : Ctrl+P, A4, marges "Aucune", cocher "Graphiques d'arrière-plan" ── */
+@page { size: A4; margin: 0; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bleu: #019cda; --bleu-nuit: #0a2540; --or: #f7dd5c; --or-fonce: #e8c93f;
+  --rouge: #c0303a; --creme: #F7F5F0; --gris: #6B6B6B;
+}
+html, body { width: 210mm; height: 297mm; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--creme);
+  color: #1A1A2E;
+  position: relative; overflow: hidden;
+  -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+
+/* vagues organiques en pied */
+.waves { position: absolute; bottom: 0; left: 0; right: 0; height: 60mm; }
+.waves svg { width: 100%; height: 100%; display: block; }
+
+/* ── EN-TÊTE ── */
+.topbar { position: absolute; top: 10mm; left: 14mm; right: 14mm; display: flex; justify-content: space-between; align-items: flex-start; }
+.brand small { display: block; font-size: 3.8mm; font-weight: 700; letter-spacing: 1.4mm; text-transform: uppercase; color: var(--bleu); margin-bottom: 1mm; }
+.brand h1 { font-family: 'Fraunces', serif; font-weight: 900; font-size: 12.5mm; line-height: 0.98; color: var(--bleu-nuit); letter-spacing: -0.4mm; }
+.brand h1 em { color: var(--bleu); font-style: italic; }
+.brand .fc { font-family: 'Caveat', cursive; font-weight: 700; font-size: 8.6mm; color: var(--gris); margin-top: 1.4mm; transform: rotate(-2deg); display: inline-block; }
+.logo { width: 27mm; }
+.logo img { width: 100%; display: block; }
+
+/* ── GRILLE ── */
+.left { position: absolute; top: 52mm; left: 14mm; width: 92mm; }
+.badge-college {
+  display: inline-block; background: var(--bleu-nuit); color: var(--or);
+  font-weight: 700; font-size: 4.6mm; letter-spacing: 1mm; text-transform: uppercase;
+  padding: 2.6mm 7mm; border-radius: 10mm; margin-bottom: 7mm;
+}
+.item { display: flex; gap: 5mm; margin-bottom: 7.5mm; }
+.item .num { font-family: 'Fraunces', serif; font-weight: 900; font-size: 10.5mm; color: var(--bleu); line-height: 0.9; min-width: 13mm; }
+.item:nth-child(3) .num { color: var(--or-fonce); }
+.item:nth-child(4) .num { color: var(--rouge); }
+.item h3 { font-family: 'Fraunces', serif; font-size: 5.6mm; color: var(--bleu-nuit); margin-bottom: 1.4mm; }
+.item p { font-size: 3.9mm; line-height: 1.45; color: #4a4a4a; }
+
+.trait { margin-top: 2mm; background: #fff; border-left: 2mm solid var(--or); border-radius: 3mm; padding: 5mm 6mm; box-shadow: 0 2mm 8mm rgba(10,37,64,0.07); }
+.trait small { display: block; font-size: 3.4mm; font-weight: 700; letter-spacing: 1mm; text-transform: uppercase; color: var(--bleu); margin-bottom: 1.4mm; }
+.trait p { font-family: 'Fraunces', serif; font-style: italic; font-size: 5.4mm; color: var(--bleu-nuit); line-height: 1.3; }
+
+/* ── ARCHE PHOTO ── */
+.arch-wrap { position: absolute; top: 54mm; right: 14mm; width: 78mm; }
+.arch {
+  position: relative; width: 78mm; height: 104mm;
+  border-radius: 39mm 39mm 5mm 5mm;
+  background: linear-gradient(180deg, #fbe883 0%, var(--or-fonce) 100%);
+  box-shadow: 0 8mm 20mm rgba(10,37,64,0.22);
+  display: flex; align-items: center; justify-content: center;
+}
+.arch::before { content: ""; position: absolute; inset: 3mm; border-radius: 36mm 36mm 3.5mm 3.5mm; border: 0.5mm solid rgba(10,37,64,0.18); }
+.photo-slot {
+  width: 56mm; height: 82mm;
+  border: 1.1mm dashed rgba(10,37,64,0.55);
+  border-radius: 28mm 28mm 4mm 4mm;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 2.6mm; color: var(--bleu-nuit); text-align: center;
+}
+.photo-slot .ico { width: 17mm; height: 17mm; opacity: 0.75; }
+.photo-slot .t1 { font-weight: 700; font-size: 4.6mm; letter-spacing: 0.8mm; text-transform: uppercase; }
+.photo-slot .t2 { font-size: 3.2mm; opacity: 0.75; }
+.arch-side {
+  position: absolute; left: -9mm; top: 50%;
+  transform: rotate(-90deg) translateX(50%); transform-origin: left center;
+  font-size: 3.6mm; font-weight: 700; letter-spacing: 1.6mm; color: var(--gris); white-space: nowrap;
+}
+.nameplate {
+  position: relative; margin: -7mm auto 0; width: fit-content;
+  background: var(--bleu-nuit); color: #fff;
+  font-family: 'Fraunces', serif; font-weight: 700; font-size: 6.4mm;
+  padding: 3mm 9mm; border-radius: 12mm; text-align: center;
+  box-shadow: 0 4mm 10mm rgba(10,37,64,0.3);
+}
+.metier { text-align: center; margin-top: 2.6mm; font-size: 3.9mm; color: var(--gris); font-weight: 500; }
+.note-passion { text-align: center; margin-top: 3mm; font-family: 'Caveat', cursive; font-weight: 600; font-size: 7mm; color: var(--rouge); transform: rotate(-2deg); }
+
+/* ── PIED : DATE + VOTEZ ── */
+.foot { position: absolute; bottom: 16mm; left: 14mm; right: 14mm; display: flex; align-items: flex-end; justify-content: space-between; }
+.date { color: #fff; }
+.date .lbl { font-size: 3.9mm; font-weight: 700; letter-spacing: 1mm; text-transform: uppercase; color: rgba(255,255,255,0.85); margin-bottom: 1mm; }
+.date .val { font-family: 'Fraunces', serif; font-weight: 900; font-size: 10.6mm; line-height: 1; }
+.votez { display: flex; align-items: center; gap: 4.5mm; }
+.votez .v { font-family: 'Caveat', cursive; font-weight: 700; font-size: 15mm; color: #fff; transform: rotate(-5deg); }
+.votez .fo { background: #fff; color: var(--bleu-nuit); font-family: 'Fraunces', serif; font-weight: 900; font-size: 11.5mm; padding: 0.8mm 4.4mm; border-radius: 2mm; box-shadow: 0 3mm 8mm rgba(0,0,0,0.25); }
+.soutien-line { position: absolute; bottom: 44mm; left: 14mm; right: 14mm; text-align: left;
+  color: var(--bleu-nuit); font-size: 4.3mm; font-weight: 700; letter-spacing: 0.3mm; text-transform: uppercase; }
+.soutien-line b { border-bottom: 0.9mm solid var(--rouge); padding-bottom: 0.4mm; }
+
+.footer { position: absolute; bottom: 5.6mm; left: 0; right: 0; text-align: center;
+  font-size: 3.4mm; letter-spacing: 1mm; color: rgba(255,255,255,0.75); }
+</style>
+</head>
+<body>
+
+<!-- vagues organiques -->
+<div class="waves">
+  <svg viewBox="0 0 210 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path fill="#f7dd5c" d="M0 26 C 30 12, 62 34, 96 24 C 132 14, 168 30, 210 18 L 210 60 L 0 60 Z" opacity="0.9"/>
+    <path fill="#c0303a" d="M0 34 C 36 22, 70 40, 108 30 C 146 21, 178 36, 210 26 L 210 60 L 0 60 Z" opacity="0.55"/>
+    <path fill="#019cda" d="M0 40 C 40 28, 74 46, 112 37 C 152 28, 182 42, 210 33 L 210 60 L 0 60 Z"/>
+    <path fill="#0a2540" d="M0 48 C 44 38, 82 52, 122 45 C 160 38, 188 48, 210 42 L 210 60 L 0 60 Z"/>
+  </svg>
+</div>
+
+<div class="topbar">
+  <div class="brand">
+    <small>Élections professionnelles · CSE</small>
+    <h1>Votre voix <em>compte</em>.</h1>
+    <span class="fc">FO GRDF — Fonctions Centrales · 2027</span>
+  </div>
+  <div class="logo"><img src="../assets/img/logo-fo-energie.jpg" alt="FO Énergie GRDF"></div>
+</div>
+
+<div class="left">
+  <span class="badge-college">Collège Exécution</span>
+
+  <div class="item">
+    <div class="num">01</div>
+    <div><h3>Le terrain d'abord</h3><p>Technicien gaz de 2009 à 2019 : je connais vos métiers, vos contraintes et vos réalités de l'intérieur.</p></div>
+  </div>
+  <div class="item">
+    <div class="num">02</div>
+    <div><h3>Transmettre</h3><p>Formateur à Energy Formation (chef de travaux, astreinte), puis formateur des militants FO en santé, sécurité et droit du travail.</p></div>
+  </div>
+  <div class="item">
+    <div class="num">03</div>
+    <div><h3>Prévenir</h3><p>Diplômé en prévention des risques professionnels : risques psychosociaux et sécurité routière sont mes combats au CSE.</p></div>
+  </div>
+
+  <div class="trait">
+    <small>Mon trait de caractère</small>
+    <p>« Réactivité et dynamisme — sur un ring comme au CSE, on ne baisse jamais la garde. »</p>
+  </div>
+</div>
+
+<div class="arch-wrap">
+  <div class="arch">
+    <span class="arch-side">CHAMBÉRY · SAVOIE</span>
+    <div class="photo-slot">
+      <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+        <circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/>
+      </svg>
+      <span class="t1">Votre photo</span>
+      <span class="t2">portrait détouré</span>
+    </div>
+  </div>
+  <div class="nameplate">Mickaël Lopes</div>
+  <div class="metier">Prévention des risques professionnels · Militant FO depuis 2016</div>
+  <div class="note-passion">Passionné de Boxe Française 🥊</div>
+</div>
+
+<div class="soutien-line">Pour nous soutenir, votez pour les <b>listes complètes FO</b></div>
+
+<div class="foot">
+  <div class="date">
+    <div class="lbl">Scrutin électronique</div>
+    <div class="val">Novembre 2027</div>
+  </div>
+  <div class="votez"><span class="v">Votez</span><span class="fo">FO</span></div>
+</div>
+
+<div class="footer">syndicat-fo_grdf-delegations-nationales@grdf.fr</div>
+
+</body>
+</html>

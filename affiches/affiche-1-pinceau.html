@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Affiche 1 · Coup de pinceau — FO GRDF Fonctions Centrales</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@400;500;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+/* ── AFFICHE A4 — imprimer depuis Chrome : Ctrl+P, A4, marges "Aucune" ── */
+@page { size: A4; margin: 0; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bleu: #019cda; --bleu-nuit: #0a2540; --or: #f7dd5c; --or-fonce: #e8c93f;
+  --rouge: #c0303a; --gris: #6B6B6B; --fond: #ffffff;
+}
+html, body { width: 210mm; height: 297mm; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--fond);
+  color: #1A1A2E;
+  position: relative;
+  overflow: hidden;
+}
+.script { font-family: 'Caveat', cursive; }
+.serif  { font-family: 'Fraunces', serif; }
+
+/* points décoratifs */
+.dots { position: absolute; width: 34mm; height: 34mm; opacity: 0.55;
+  background-image: radial-gradient(circle, var(--bleu) 0.45mm, transparent 0.45mm);
+  background-size: 4.2mm 4.2mm; }
+.dots.d1 { left: -8mm; top: 118mm; }
+.dots.d2 { right: -10mm; bottom: 60mm; background-image: radial-gradient(circle, var(--rouge) 0.4mm, transparent 0.4mm); opacity: 0.3; }
+
+/* ── EN-TÊTE ── */
+.head { position: absolute; top: 10mm; left: 12mm; right: 12mm; }
+.head .l1 { font-family: 'Caveat', cursive; font-weight: 700; font-size: 15mm; color: #55565a; line-height: 0.9; transform: rotate(-3deg); }
+.head .l1 b { color: var(--bleu-nuit); }
+.head .l2 { font-family: 'Caveat', cursive; font-weight: 700; font-size: 11mm; color: var(--gris); margin-left: 46mm; transform: rotate(-2deg); }
+.logo { position: absolute; top: 8mm; right: 12mm; width: 30mm; }
+.logo img { width: 100%; display: block; }
+
+/* ── COLLÈGE ── */
+.college {
+  position: absolute; top: 44mm; left: 12mm;
+  font-family: 'Caveat', cursive; font-weight: 700;
+  font-size: 24mm; color: var(--bleu); line-height: 0.8;
+  transform: rotate(-4deg);
+}
+.college::after {
+  content: ""; display: block;
+  width: 78mm; height: 4mm; margin-top: 1mm; margin-left: 3mm;
+  background: var(--bleu);
+  border-radius: 60% 40% 50% 50% / 100% 100% 0 0;
+  opacity: 0.85; transform: rotate(1.5deg);
+}
+
+/* ── SPLASH PHOTO ── */
+.splash { position: absolute; top: 52mm; right: 4mm; width: 110mm; height: 122mm; }
+.splash svg { width: 100%; height: 100%; }
+.photo-slot {
+  position: absolute; left: 50%; top: 52%;
+  transform: translate(-50%, -50%);
+  width: 62mm; height: 78mm;
+  border: 1.2mm dashed rgba(255,255,255,0.9);
+  border-radius: 34mm 34mm 6mm 6mm;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 3mm; color: rgba(255,255,255,0.95); text-align: center;
+}
+.photo-slot .ico { width: 20mm; height: 20mm; opacity: 0.9; }
+.photo-slot .t1 { font-weight: 700; font-size: 5mm; letter-spacing: 0.8mm; text-transform: uppercase; }
+.photo-slot .t2 { font-size: 3.4mm; opacity: 0.8; }
+
+/* annotations manuscrites */
+.note { position: absolute; font-family: 'Caveat', cursive; font-weight: 600; color: var(--gris); }
+.note.passion { right: 8mm; top: 178mm; font-size: 8.5mm; transform: rotate(-8deg); text-align: right; line-height: 1; }
+.note.fo2016  { right: 10mm; top: 130mm; font-size: 7mm; transform: rotate(78deg); transform-origin: right center; color: #9a9a9a; }
+.note .arrow { font-size: 9mm; }
+
+/* ── COLONNE INFOS ── */
+.infos { position: absolute; top: 82mm; left: 12mm; width: 82mm; }
+.infos p { font-size: 3.9mm; line-height: 1.4; color: #444; margin-bottom: 3.8mm; }
+.combat { position: absolute; top: 160mm; left: 12mm; width: 84mm; }
+.combat h3 { color: var(--bleu); font-size: 5.6mm; font-weight: 700; letter-spacing: 0.3mm; text-transform: uppercase; margin-bottom: 2mm; }
+.combat p { font-size: 4.6mm; font-weight: 500; color: var(--bleu-nuit); line-height: 1.4; }
+.soutien { position: absolute; top: 196mm; left: 12mm; width: 84mm; border-top: 0.4mm solid #ddd; padding-top: 6mm;
+  font-size: 4.8mm; font-weight: 500; color: #555; text-align: right; line-height: 1.5; text-transform: uppercase; }
+.soutien b { color: var(--bleu); }
+
+/* ── BANDEAU DATE + VOTEZ ── */
+.date-brush {
+  position: absolute; left: 8mm; top: 232mm;
+  background: var(--bleu);
+  color: #fff; font-weight: 700; font-size: 8.6mm;
+  padding: 3mm 10mm 3.4mm;
+  border-radius: 70% 30% 55% 45% / 55% 60% 40% 45%;
+  transform: rotate(-1.6deg);
+}
+.votez { position: absolute; left: 16mm; top: 252mm; display: flex; align-items: center; gap: 6mm; }
+.votez .v { font-family: 'Caveat', cursive; font-weight: 700; font-size: 17mm; color: var(--bleu); transform: rotate(-6deg); }
+.votez .fo { background: var(--bleu); color: #fff; font-family: 'Fraunces', serif; font-weight: 900; font-size: 13mm; padding: 1mm 5mm; border-radius: 2mm; }
+
+/* ── NOM ── */
+.who { position: absolute; right: 12mm; top: 246mm; text-align: right; }
+.who .nom { font-family: 'Caveat', cursive; font-weight: 700; font-size: 17.5mm; color: var(--bleu); line-height: 0.9; transform: rotate(-3deg); }
+.who .metier { font-family: 'Caveat', cursive; font-weight: 600; font-size: 7.5mm; color: var(--gris); margin-top: 1mm; }
+
+/* ── FOOTER ── */
+.footer {
+  position: absolute; bottom: 6mm; left: 0; right: 0;
+  text-align: center; font-size: 3.9mm; letter-spacing: 1.1mm; color: #7a7a7a;
+}
+</style>
+</head>
+<body>
+
+<div class="dots d1"></div>
+<div class="dots d2"></div>
+
+<div class="head">
+  <div class="l1">Élections CSE <b>2027</b></div>
+  <div class="l2">Fonctions Centrales</div>
+</div>
+<div class="logo"><img src="../assets/img/logo-fo-energie.jpg" alt="FO Énergie GRDF"></div>
+
+<div class="college">Exécution</div>
+
+<!-- Splash organique + emplacement photo -->
+<div class="splash">
+  <svg viewBox="0 0 400 440" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <linearGradient id="spl" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#22b1e8"/>
+        <stop offset="70%" stop-color="#019cda"/>
+        <stop offset="100%" stop-color="#0a6ea0"/>
+      </linearGradient>
+    </defs>
+    <path fill="url(#spl)" d="M204 18c46-14 96 2 128 34 30 30 52 74 46 122-5 40 12 78 2 118-11 44-44 84-88 100-42 16-92 14-134-4-40-17-78-46-96-86-17-38-14-84 2-122 15-36 26-78 58-110C150 42 172 28 204 18Z"/>
+    <path fill="url(#spl)" opacity="0.35" d="M60 120c-18 8-34 26-30 46 4 18 24 26 42 22 18-4 30-22 26-40-4-16-20-32-38-28Z"/>
+    <path fill="url(#spl)" opacity="0.3" d="M340 350c-12 14-10 38 6 48 14 9 36 2 44-14 8-16-2-36-18-42-12-5-24-2-32 8Z"/>
+  </svg>
+  <div class="photo-slot">
+    <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+      <circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/>
+    </svg>
+    <span class="t1">Votre photo</span>
+    <span class="t2">portrait détouré<br>épaules visibles</span>
+  </div>
+</div>
+
+<div class="note fo2016">Rejoint FO en 2016 ⤴</div>
+<div class="note passion">Passionné de<br>Boxe Française <span class="arrow">🥊</span></div>
+
+<div class="infos">
+  <p>Technicien gaz de 2009 à 2019, je maîtrise parfaitement le côté technique de l'entreprise.</p>
+  <p>Formateur à Energy Formation (stages chef de travaux, astreinte), j'ai ensuite repris mes études dans la prévention des risques professionnels.</p>
+  <p>Aujourd'hui détaché syndical : mandats CSE et formation des militants FO — santé, sécurité, conditions de travail, droit du travail.</p>
+</div>
+
+<div class="combat">
+  <h3>Mes combats :</h3>
+  <p>Les risques psychosociaux et la sécurité routière — pour que chacun rentre chez soi entier, le soir.</p>
+</div>
+
+<div class="soutien">Pour nous apporter votre soutien<br>votez pour les listes complètes <b>FO</b></div>
+
+<div class="date-brush">Novembre 2027</div>
+<div class="votez"><span class="v">Votez</span><span class="fo">FO</span></div>
+
+<div class="who">
+  <div class="nom">Mickaël Lopes</div>
+  <div class="metier">Prévention des risques · Chambéry</div>
+</div>
+
+<div class="footer">syndicat-fo_grdf-delegations-nationales@grdf.fr</div>
+
+</body>
+</html>
