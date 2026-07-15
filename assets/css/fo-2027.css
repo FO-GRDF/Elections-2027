@@ -1830,3 +1830,219 @@ body.a11y-mode .cand-front { background: #3f3f3d; border-color: rgba(255,255,255
 body.a11y-mode .cand-flip-hint svg { animation: none; }
 body.a11y-mode .fc-pulse { animation: none; opacity: 0; }
 body.a11y-mode .video-slot { background: #3f3f3d; }
+
+/* ════════════════════════════════════════════════════════════
+   V3 — Découpage GRDF réel : villes, FC Saint-Denis, rayonnement
+   ════════════════════════════════════════════════════════════ */
+
+/* Capitales régionales */
+.map-svg .map-city circle {
+  fill: var(--bleu-nuit);
+  stroke: #fff;
+  stroke-width: 1.6;
+}
+.map-svg .map-city text {
+  fill: #33475c;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-style: italic;
+  paint-order: stroke;
+  stroke: rgba(255,255,255,0.85);
+  stroke-width: 3px;
+  pointer-events: none;
+}
+.map-svg .fc-city {
+  fill: var(--rouge-fo);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  text-anchor: middle;
+  paint-order: stroke;
+  stroke: rgba(255,255,255,0.88);
+  stroke-width: 3px;
+  pointer-events: none;
+}
+.map-svg .map-label[data-label="centre-ouest"] { letter-spacing: 0.6px; }
+
+/* Ondes FC — invisibles par défaut, animées en mode rayonnement */
+.map-svg .fc-wave {
+  fill: none;
+  stroke: var(--rouge-fo);
+  stroke-width: 1.6;
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.map-svg.fc-mode .fc-wave { animation: fcWave 2.6s ease-out infinite; }
+.map-svg.fc-mode .fc-wave.w2 { animation-delay: 0.85s; }
+.map-svg.fc-mode .fc-wave.w3 { animation-delay: 1.7s; }
+@keyframes fcWave {
+  0%   { transform: scale(0.4); opacity: 0.55; }
+  100% { transform: scale(14);  opacity: 0; }
+}
+
+/* Mode rayonnement : toute la France se teinte depuis Saint-Denis */
+.map-svg .mz-path { transition: fill 0.35s cubic-bezier(0.34, 1.2, 0.64, 1), opacity 0.4s; }
+.map-svg.fc-mode #mapZones .mz-path {
+  fill: url(#mzHover);
+  opacity: 0.55;
+}
+.map-svg.fc-mode .map-label { opacity: 0.35; }
+.map-svg.fc-mode .map-city { opacity: 0.4; }
+.map-svg.fc-mode .fc-dot { fill: var(--or-fonce); }
+.map-svg.fc-mode .fc-txt { fill: var(--bleu-nuit); }
+
+/* Pastilles couleur GRDF sur les chips (repère visuel interne) */
+.region-chip[data-region="nord-ouest"] .dot-or   { background: #29b0d5; }
+.region-chip[data-region="idf"] .dot-or          { background: #e8c93f; }
+.region-chip[data-region="est"] .dot-or          { background: #b81f6e; }
+.region-chip[data-region="centre-ouest"] .dot-or { background: #6b2d8b; }
+.region-chip[data-region="sud-ouest"] .dot-or    { background: #3aa544; }
+.region-chip[data-region="sud-est"] .dot-or      { background: #f39b1d; }
+.region-chip[data-region="fc"] .dot-or           { background: #c0303a; }
+
+/* ─── ONGLETS RÉGIONS (pages régionales) ─── */
+.region-tabs-bar {
+  background: var(--blanc);
+  border-bottom: 1px solid var(--fond-alt);
+  padding: 0 32px;
+  position: sticky;
+  top: 72px;
+  z-index: 900;
+  box-shadow: 0 4px 16px rgba(10,37,64,0.05);
+}
+.region-tabs {
+  max-width: 1320px;
+  margin: 0 auto;
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.region-tabs::-webkit-scrollbar { display: none; }
+.region-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 18px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--gris);
+  border-bottom: 3px solid transparent;
+  white-space: nowrap;
+  transition: color 0.2s, border-color 0.2s;
+}
+.region-tab:hover { color: var(--bleu); text-decoration: none; }
+.region-tab.is-active {
+  color: var(--bleu-nuit);
+  border-bottom-color: var(--or);
+}
+.region-tab .rt-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Bloc syndicat régional */
+.syndicat-card {
+  background: var(--bleu-nuit);
+  color: var(--blanc);
+  border-radius: 28px;
+  padding: 44px 48px;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 40px;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--ombre-fort);
+}
+.syndicat-card::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at 85% 20%, rgba(247,221,92,0.14) 0%, transparent 55%);
+  pointer-events: none;
+}
+.syndicat-card .sc-eyebrow {
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--or);
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.syndicat-card h3 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(24px, 3vw, 34px);
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 14px;
+}
+.syndicat-card p { color: rgba(255,255,255,0.78); font-size: 15px; line-height: 1.7; }
+.sc-contact {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 20px;
+  padding: 28px;
+  position: relative;
+}
+.sc-contact .sc-secretaire {
+  display: flex; align-items: center; gap: 14px;
+  margin-bottom: 18px;
+}
+.sc-contact .sc-avatar {
+  width: 54px; height: 54px;
+  border-radius: 50%;
+  background: var(--gradient-or);
+  color: var(--bleu-nuit);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Fraunces', serif;
+  font-weight: 900;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+.sc-contact .sc-name { font-weight: 700; font-size: 15.5px; color: var(--blanc); display: block; }
+.sc-contact .sc-role { font-size: 12.5px; color: rgba(255,255,255,0.6); }
+.sc-mail-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: var(--or);
+  color: var(--bleu-nuit);
+  padding: 13px 22px;
+  border-radius: 40px;
+  font-weight: 700;
+  font-size: 13.5px;
+  transition: all 0.25s;
+  width: 100%;
+  justify-content: center;
+}
+.sc-mail-btn:hover {
+  background: var(--blanc);
+  color: var(--bleu-nuit);
+  text-decoration: none;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(247,221,92,0.35);
+}
+.sc-sites {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  margin-top: 20px;
+}
+.sc-site-chip {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.16);
+  color: rgba(255,255,255,0.85);
+  padding: 6px 13px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+@media (max-width: 980px) {
+  .syndicat-card { grid-template-columns: 1fr; padding: 32px 28px; }
+  .region-tabs-bar { top: 64px; }
+}
+
+/* a11y v3 */
+body.a11y-mode .fc-wave { animation: none !important; }
+body.a11y-mode .syndicat-card { background: #525250; }

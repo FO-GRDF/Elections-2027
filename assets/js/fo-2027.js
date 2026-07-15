@@ -96,43 +96,38 @@
 
   const REGIONS = {
     'nord-ouest': {
-      name: 'Nord-Ouest', eyebrow: 'Région · Hauts-de-France & Normandie',
-      desc: 'De Lille à Caen, une équipe ancrée dans le tissu industriel et portuaire du Grand Nord.',
+      name: 'Nord-Ouest', eyebrow: 'Région GRDF · Hauts-de-France & Normandie',
+      desc: 'De Lille au Havre, une équipe ancrée dans le tissu industriel et portuaire du Grand Nord.',
       militants: 9, sites: 7, perm: 3, link: 'regions/region.html?r=nord-ouest'
     },
     'idf': {
-      name: 'Île-de-France', eyebrow: 'Région · Paris & Couronne',
+      name: 'Île-de-France', eyebrow: 'Région GRDF · Paris & Couronne',
       desc: 'Cœur d\'activité GRDF, l\'IDF concentre les enjeux les plus stratégiques pour les salariés.',
       militants: 15, sites: 11, perm: 4, link: 'regions/region.html?r=idf'
     },
     'est': {
-      name: 'Est', eyebrow: 'Région · Grand Est — Alsace, Lorraine, Champagne',
-      desc: 'Une région transfrontalière, des métiers techniques exigeants et des combats sociaux structurants.',
+      name: 'Est', eyebrow: 'Région GRDF · Grand Est & Bourgogne-Franche-Comté',
+      desc: 'De Nancy à Dijon, une région transfrontalière, des métiers techniques exigeants et des combats sociaux structurants.',
       militants: 11, sites: 9, perm: 3, link: 'regions/region.html?r=est'
     },
-    'ouest': {
-      name: 'Ouest', eyebrow: 'Région · Bretagne & Pays de la Loire',
-      desc: 'Une dynamique de proximité, des sites de taille humaine et un attachement fort au service public.',
-      militants: 10, sites: 8, perm: 3, link: 'regions/region.html?r=ouest'
-    },
-    'centre': {
-      name: 'Centre', eyebrow: 'Région · Centre-Val de Loire & Bourgogne-Franche-Comté',
-      desc: 'Au cœur du réseau national, une équipe qui défend la ruralité comme l\'urbain.',
-      militants: 8, sites: 7, perm: 2, link: 'regions/region.html?r=centre'
+    'centre-ouest': {
+      name: 'Centre-Ouest', eyebrow: 'Région GRDF · Bretagne, Pays de la Loire & Centre-Val de Loire',
+      desc: 'De Brest à Orléans autour de Nantes, une dynamique de proximité et un attachement fort au service public.',
+      militants: 12, sites: 9, perm: 3, link: 'regions/region.html?r=centre-ouest'
     },
     'sud-ouest': {
-      name: 'Sud-Ouest', eyebrow: 'Région · Nouvelle-Aquitaine & Occitanie',
-      desc: 'Des territoires étendus, de Bordeaux à Toulouse, une équipe mobile et engagée.',
+      name: 'Sud-Ouest', eyebrow: 'Région GRDF · Nouvelle-Aquitaine & Occitanie',
+      desc: 'Des territoires étendus, de Bordeaux à Toulouse et jusqu\'à la Méditerranée, une équipe mobile et engagée.',
       militants: 10, sites: 8, perm: 3, link: 'regions/region.html?r=sud-ouest'
     },
     'sud-est': {
-      name: 'Sud-Est', eyebrow: 'Région · Auvergne-Rhône-Alpes, PACA & Corse',
-      desc: 'De Lyon à Nice et jusqu\'à la Corse, une équipe ancrée sur le terrain : montagnes, vallées et grandes métropoles.',
+      name: 'Sud-Est', eyebrow: 'Région GRDF · Auvergne-Rhône-Alpes & PACA',
+      desc: 'De Lyon à Nice, une équipe ancrée sur le terrain : montagnes, vallées et grandes métropoles.',
       militants: 12, sites: 8, perm: 3, link: 'regions/region.html?r=sud-est'
     },
     'fc': {
-      name: 'Fonctions Centrales', eyebrow: 'Siège · Direction nationale',
-      desc: 'Les militants des fonctions centrales défendent les sujets transverses : SI, RH, achats, finances, communication.',
+      name: 'Fonctions Centrales', eyebrow: 'Siège · Saint-Denis — rayonnement national',
+      desc: 'Basés à Saint-Denis, les militants des Fonctions Centrales rayonnent sur toute la France : SI, RH, achats, finances, communication.',
       militants: 7, sites: 1, perm: 2, link: 'regions/region.html?r=fc'
     }
   };
@@ -277,14 +272,13 @@
   var tip = document.getElementById('mapTip');
   var frame = document.querySelector('.map-frame');
   var TIP_DATA = {
-    'nord-ouest': { name: 'Nord-Ouest',          meta: '9 militants · 7 sites' },
-    'idf':        { name: 'Île-de-France',       meta: '15 militants · 11 sites' },
-    'est':        { name: 'Est',                 meta: '11 militants · 9 sites' },
-    'ouest':      { name: 'Ouest',               meta: '10 militants · 8 sites' },
-    'centre':     { name: 'Centre',              meta: '8 militants · 7 sites' },
-    'sud-ouest':  { name: 'Sud-Ouest',           meta: '10 militants · 8 sites' },
-    'sud-est':    { name: 'Sud-Est',             meta: '12 militants · 8 sites' },
-    'fc':         { name: 'Fonctions Centrales', meta: '7 militants · siège national' }
+    'nord-ouest':   { name: 'Nord-Ouest',          meta: 'Syndicat FO régional · Lille' },
+    'idf':          { name: 'Île-de-France',       meta: 'Syndicat FO régional · Paris' },
+    'est':          { name: 'Est',                 meta: 'Syndicat FO régional · Nancy' },
+    'centre-ouest': { name: 'Centre-Ouest',        meta: 'Syndicat FO régional · Nantes' },
+    'sud-ouest':    { name: 'Sud-Ouest',           meta: 'Syndicat FO régional · Toulouse' },
+    'sud-est':      { name: 'Sud-Est',             meta: 'Syndicat FO régional · Lyon' },
+    'fc':           { name: 'Fonctions Centrales', meta: 'Saint-Denis · rayonnement national' }
   };
   if (tip && frame) {
     var tipName = tip.querySelector('[data-tip="name"]');
@@ -362,5 +356,23 @@
         setTimeout(function () { card.classList.remove('is-flipped'); }, 350);
       }
     });
+  });
+})();
+
+/* ════════════════════════════════════════════════════════════
+   V3 — Rayonnement national des Fonctions Centrales
+   ════════════════════════════════════════════════════════════ */
+(function () {
+  'use strict';
+  var svg = document.querySelector('.map-svg');
+  if (!svg) return;
+  var fcTriggers = document.querySelectorAll('[data-region="fc"]');
+  function fcOn()  { svg.classList.add('fc-mode'); }
+  function fcOff() { svg.classList.remove('fc-mode'); }
+  fcTriggers.forEach(function (el) {
+    el.addEventListener('mouseenter', fcOn);
+    el.addEventListener('mouseleave', fcOff);
+    el.addEventListener('focus', fcOn);
+    el.addEventListener('blur', fcOff);
   });
 })();
