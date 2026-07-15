@@ -98,17 +98,17 @@
     'nord-ouest': {
       name: 'Nord-Ouest', eyebrow: 'Région GRDF · Hauts-de-France & Normandie',
       desc: 'De Lille au Havre, une équipe ancrée dans le tissu industriel et portuaire du Grand Nord.',
-      militants: 9, sites: 7, perm: 3, link: 'regions/region.html?r=nord-ouest'
+      militants: 9, sites: 8, perm: 3, link: 'regions/region.html?r=nord-ouest'
     },
     'idf': {
       name: 'Île-de-France', eyebrow: 'Région GRDF · Paris & Couronne',
       desc: 'Cœur d\'activité GRDF, l\'IDF concentre les enjeux les plus stratégiques pour les salariés.',
-      militants: 15, sites: 11, perm: 4, link: 'regions/region.html?r=idf'
+      militants: 15, sites: 7, perm: 4, link: 'regions/region.html?r=idf'
     },
     'est': {
       name: 'Est', eyebrow: 'Région GRDF · Grand Est & Bourgogne-Franche-Comté',
       desc: 'De Nancy à Dijon, une région transfrontalière, des métiers techniques exigeants et des combats sociaux structurants.',
-      militants: 11, sites: 9, perm: 3, link: 'regions/region.html?r=est'
+      militants: 11, sites: 8, perm: 3, link: 'regions/region.html?r=est'
     },
     'centre-ouest': {
       name: 'Centre-Ouest', eyebrow: 'Région GRDF · Bretagne, Pays de la Loire & Centre-Val de Loire',
@@ -123,12 +123,12 @@
     'sud-est': {
       name: 'Sud-Est', eyebrow: 'Région GRDF · Auvergne-Rhône-Alpes & PACA',
       desc: 'De Lyon à Nice, une équipe ancrée sur le terrain : montagnes, vallées et grandes métropoles.',
-      militants: 12, sites: 8, perm: 3, link: 'regions/region.html?r=sud-est'
+      militants: 12, sites: 12, perm: 3, link: 'regions/region.html?r=sud-est'
     },
     'fc': {
       name: 'Fonctions Centrales', eyebrow: 'Siège · Saint-Denis — rayonnement national',
       desc: 'Basés à Saint-Denis, les militants des Fonctions Centrales rayonnent sur toute la France : SI, RH, achats, finances, communication.',
-      militants: 7, sites: 1, perm: 2, link: 'regions/region.html?r=fc'
+      militants: 7, sites: 52, perm: 2, link: 'regions/region.html?r=fc'
     }
   };
 
@@ -272,13 +272,13 @@
   var tip = document.getElementById('mapTip');
   var frame = document.querySelector('.map-frame');
   var TIP_DATA = {
-    'nord-ouest':   { name: 'Nord-Ouest',          meta: 'Syndicat FO régional · Lille' },
-    'idf':          { name: 'Île-de-France',       meta: 'Syndicat FO régional · Paris' },
-    'est':          { name: 'Est',                 meta: 'Syndicat FO régional · Nancy' },
-    'centre-ouest': { name: 'Centre-Ouest',        meta: 'Syndicat FO régional · Nantes' },
-    'sud-ouest':    { name: 'Sud-Ouest',           meta: 'Syndicat FO régional · Toulouse' },
-    'sud-est':      { name: 'Sud-Est',             meta: 'Syndicat FO régional · Lyon' },
-    'fc':           { name: 'Fonctions Centrales', meta: 'Saint-Denis · rayonnement national' }
+    'nord-ouest':   { name: 'Nord-Ouest',          meta: '8 sites · 107 salariés FC' },
+    'idf':          { name: 'Île-de-France',       meta: '7 sites · 1 346 salariés FC' },
+    'est':          { name: 'Est',                 meta: '8 sites · 92 salariés FC' },
+    'centre-ouest': { name: 'Centre-Ouest',        meta: '9 sites · 233 salariés FC' },
+    'sud-ouest':    { name: 'Sud-Ouest',           meta: '8 sites · 168 salariés FC' },
+    'sud-est':      { name: 'Sud-Est',             meta: '12 sites · 258 salariés FC' },
+    'fc':           { name: 'Fonctions Centrales', meta: '52 sites partout en France · 2 204 salariés' }
   };
   if (tip && frame) {
     var tipName = tip.querySelector('[data-tip="name"]');
@@ -375,4 +375,63 @@
     el.addEventListener('focus', fcOn);
     el.addEventListener('blur', fcOff);
   });
+})();
+
+/* ════════════════════════════════════════════════════════════
+   V4 — Sites réels sur la carte (fichier NTIC mars 2026)
+   Au survol/clic d'une région, ses sites apparaissent ;
+   Fonctions Centrales = les 52 sites de France.
+   ════════════════════════════════════════════════════════════ */
+(function () {
+  'use strict';
+  var layer = document.getElementById('mapSites');
+  var svg = document.querySelector('.map-svg');
+  if (!layer || !svg || !window.FO_SITES) return;
+  var NS = 'http://www.w3.org/2000/svg';
+  var tip = document.getElementById('mapTip');
+  var frame = document.querySelector('.map-frame');
+  var tipName = tip ? tip.querySelector('[data-tip="name"]') : null;
+  var tipMeta = tip ? tip.querySelector('[data-tip="meta"]') : null;
+
+  function radius(n) { return Math.max(3.2, Math.min(8, 2.6 + Math.sqrt(n) * 0.55)); }
+
+  function renderSites(key) {
+    while (layer.firstChild) layer.removeChild(layer.firstChild);
+    var groups = key === 'fc' ? Object.keys(window.FO_SITES) : [key];
+    var delay = 0;
+    groups.forEach(function (g) {
+      (window.FO_SITES[g] || []).forEach(function (s) {
+        var c = document.createElementNS(NS, 'circle');
+        c.setAttribute('cx', s.x);
+        c.setAttribute('cy', s.y);
+        c.setAttribute('r', radius(s.n));
+        c.setAttribute('class', 'map-site');
+        c.style.animationDelay = (delay * 0.03) + 's';
+        delay++;
+        c.addEventListener('mousemove', function (e) {
+          if (!tip || !frame) return;
+          var r = frame.getBoundingClientRect();
+          tipName.textContent = s.name;
+          tipMeta.textContent = s.n + (s.n > 1 ? ' salariés' : ' salarié') + ' · Fonctions Centrales';
+          tip.style.left = (e.clientX - r.left) + 'px';
+          tip.style.top = (e.clientY - r.top) + 'px';
+          tip.classList.add('is-visible');
+        });
+        c.addEventListener('mouseleave', function () {
+          if (tip) tip.classList.remove('is-visible');
+        });
+        layer.appendChild(c);
+      });
+    });
+  }
+
+  document.querySelectorAll('.map-svg .map-zone, .region-chip').forEach(function (el) {
+    var key = el.dataset.region;
+    if (!key) return;
+    el.addEventListener('mouseenter', function () { renderSites(key); });
+    el.addEventListener('focus', function () { renderSites(key); });
+  });
+
+  // État initial : région active par défaut
+  renderSites('sud-est');
 })();

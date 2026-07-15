@@ -18,7 +18,7 @@ window.FO_REGIONS = {
     secretaire: { initials: 'PL', name: 'Pierre L.', role: 'Secrétaire régional FO GRDF Nord-Ouest' },
     mailSubject: 'Contact FO GRDF Nord-Ouest',
     sites: ['Lille', 'Amiens', 'Rouen', 'Le Havre', 'Caen', 'Dunkerque', 'Beauvais'],
-    stats: { militants: 9, sites: 7, perm: 3 },
+    stats: { militants: 9, sites: 8, perm: 3 },
     candidats: [
       { initials: 'AR', college: 'Exécution', name: 'Antoine R.', role: 'Tête de liste exécution · Lille', meta: 'Technicien Intervention Gaz · 12 ans d’ancienneté', quote: '« Quand un collègue a un souci, il doit savoir vers qui se tourner. C’est ça, être élu du personnel. »' },
       { initials: 'CM', college: 'Maîtrise', name: 'Céline M.', role: 'Tête de liste maîtrise · Rouen', meta: 'Responsable d’équipe clientèle · 15 ans d’ancienneté', quote: '« La maîtrise tient les équipes à bout de bras. Il est temps que ça se voie dans les parcours. »' },
@@ -44,7 +44,7 @@ window.FO_REGIONS = {
     secretaire: { initials: 'SL', name: 'Sophie L.', role: 'Secrétaire régionale FO GRDF Île-de-France' },
     mailSubject: 'Contact FO GRDF Île-de-France',
     sites: ['Paris', 'Nanterre', 'Créteil', 'Versailles', 'Cergy', 'Melun', 'Bobigny'],
-    stats: { militants: 15, sites: 11, perm: 4 },
+    stats: { militants: 15, sites: 7, perm: 4 },
     candidats: [
       { initials: 'KD', college: 'Exécution', name: 'Karim D.', role: 'Tête de liste exécution · Paris', meta: 'Technicien Gaz · 9 ans d’ancienneté', quote: '« Intervenir dans Paris, c’est un métier à part. Il mérite une reconnaissance à part entière. »' },
       { initials: 'SL', college: 'Maîtrise', name: 'Sophie L.', role: 'Tête de liste maîtrise · Nanterre', meta: 'Manager d’équipe exploitation · 14 ans d’ancienneté', quote: '« Encadrer, c’est aussi protéger. Je veux que la charge réelle de la maîtrise soit enfin reconnue. »' },
@@ -70,7 +70,7 @@ window.FO_REGIONS = {
     secretaire: { initials: 'MD', name: 'Marc D.', role: 'Secrétaire régional FO GRDF Est' },
     mailSubject: 'Contact FO GRDF Est',
     sites: ['Nancy', 'Strasbourg', 'Metz', 'Reims', 'Mulhouse', 'Dijon', 'Besançon'],
-    stats: { militants: 11, sites: 9, perm: 3 },
+    stats: { militants: 11, sites: 8, perm: 3 },
     candidats: [
       { initials: 'LT', college: 'Exécution', name: 'Lucas T.', role: 'Tête de liste exécution · Strasbourg', meta: 'Technicien réseau · 8 ans d’ancienneté', quote: '« Les hivers de l’Est ne pardonnent pas. Nos conditions d’intervention non plus ne doivent rien lâcher. »' },
       { initials: 'MD', college: 'Maîtrise', name: 'Marc D.', role: 'Tête de liste maîtrise · Nancy', meta: 'Référent maintenance réseau · 20 ans d’ancienneté', quote: '« Vingt ans de réseau, une conviction : les compétences techniques doivent peser dans les carrières. »' },
@@ -148,7 +148,7 @@ window.FO_REGIONS = {
     secretaire: { initials: 'SE', name: 'Sophie E.', role: 'Secrétaire régionale FO GRDF Sud-Est' },
     mailSubject: 'Contact FO GRDF Sud-Est',
     sites: ['Lyon', 'Marseille', 'Grenoble', 'Nice', 'Avignon', 'Valence', 'Clermont-Ferrand'],
-    stats: { militants: 12, sites: 8, perm: 3 },
+    stats: { militants: 12, sites: 12, perm: 3 },
     candidats: [
       { initials: 'KB', college: 'Exécution', name: 'Karim B.', role: 'Tête de liste exécution · Lyon', meta: 'Technicien Gaz · 10 ans d’ancienneté', quote: '« Sécurité des interventions, reconnaissance du métier, respect des astreintes : je porterai la voix des équipes gaz. »' },
       { initials: 'JR', college: 'Maîtrise', name: 'Julie R.', role: 'Tête de liste maîtrise · Grenoble', meta: 'Encadrante exploitation · 18 ans d’ancienneté', quote: '« Représenter, c’est porter une parole collective, pas individuelle. »' },
@@ -174,7 +174,7 @@ window.FO_REGIONS = {
     secretaire: { initials: 'CV', name: 'Claire V.', role: 'Secrétaire FO GRDF Fonctions Centrales' },
     mailSubject: 'Contact FO GRDF Fonctions Centrales',
     sites: ['Saint-Denis (siège)', 'Entités nationales', 'Salariés FC en région'],
-    stats: { militants: 7, sites: 1, perm: 2 },
+    stats: { militants: 7, sites: 52, perm: 2 },
     candidats: [
       { initials: 'MB', college: 'Exécution', name: 'Mehdi B.', role: 'Tête de liste exécution · Saint-Denis', meta: 'Gestionnaire back-office · 8 ans d’ancienneté', quote: '« Les métiers tertiaires du siège font tourner l’entreprise. Ils méritent d’être défendus comme les autres. »' },
       { initials: 'SR', college: 'Maîtrise', name: 'Samira R.', role: 'Tête de liste maîtrise · Saint-Denis', meta: 'Assistante de direction · 17 ans d’ancienneté', quote: '« Réorganisations permanentes, outils qui changent : les FC ont besoin de stabilité et d’écoute. »' },

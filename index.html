@@ -153,7 +153,7 @@
       <h2 class="section-title" id="t-regions">Une <em>équipe locale</em>, partout en France.</h2>
       <p class="section-lead">
         Le vrai découpage GRDF : 6 régions + les Fonctions Centrales de Saint-Denis, qui rayonnent sur toute la France.
-        Un syndicat FO par région — survolez ou cliquez pour découvrir votre équipe, ses candidats et savoir à qui vous adresser.
+        Un syndicat FO par région — survolez ou cliquez : les sites où travaillent les salariés apparaissent sur la carte, pour que chacun retrouve le sien.
       </p>
     </div>
 
@@ -237,7 +237,9 @@
             </g>
           </g>
 
-          <g id="mapLabels" aria-hidden="true">
+          <g id="mapSites" aria-hidden="true"></g>
+
+        <g id="mapLabels" aria-hidden="true">
             <text class="map-label" data-label="nord-ouest" x="252" y="96">NORD-OUEST</text>
             <text class="map-label" data-label="idf" x="302" y="182">ÎLE-DE-FRANCE</text>
             <text class="map-label" data-label="est" x="462" y="158">EST</text>
@@ -258,6 +260,8 @@
           <g transform="translate(16, 548)" aria-hidden="true">
             <circle cx="0" cy="-4" r="5" fill="#c0303a"/>
             <text x="14" y="0" class="map-legend-txt">FC = Fonctions Centrales · Saint-Denis — un rayonnement national</text>
+            <circle cx="0" cy="-22" r="3.5" fill="#0a2540" stroke="white" stroke-width="1"/>
+            <text x="14" y="-18" class="map-legend-txt">52 sites · 2 204 salariés FC (fichier NTIC, mars 2026)</text>
           </g>
         </svg>
 
@@ -864,6 +868,7 @@
   </button>
 </div>
 
+<script src="assets/js/sites-data.js"></script>
 <script src="assets/js/fo-2027.js"></script>
 </body>
 </html>

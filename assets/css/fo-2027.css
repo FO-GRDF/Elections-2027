@@ -2046,3 +2046,37 @@ body.a11y-mode .video-slot { background: #3f3f3d; }
 /* a11y v3 */
 body.a11y-mode .fc-wave { animation: none !important; }
 body.a11y-mode .syndicat-card { background: #525250; }
+
+/* ════════════════════════════════════════════════════════════
+   V4 — Sites réels (NTIC) sur la carte
+   ════════════════════════════════════════════════════════════ */
+.map-svg .map-site {
+  fill: var(--bleu-nuit);
+  stroke: #fff;
+  stroke-width: 1.4;
+  cursor: pointer;
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: sitePop 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  transition: fill 0.2s;
+}
+.map-svg .map-site:hover { fill: var(--rouge-fo); }
+@keyframes sitePop {
+  from { opacity: 0; transform: scale(0); }
+  to   { opacity: 1; transform: scale(1); }
+}
+.map-svg.fc-mode .map-site { fill: var(--rouge-fo); }
+body.a11y-mode .map-site { animation-duration: 0.01s; }
+
+/* Sites sur la mini-carte des pages régionales */
+.rh-mini-map .map-site {
+  fill: var(--rouge-fo);
+  stroke: rgba(255,255,255,0.95);
+  stroke-width: 1.3;
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: sitePop 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+.rh-mini-map .mini-zone.this .mz-path { fill: var(--or); }

@@ -466,6 +466,8 @@
 
 
         <!-- FONCTIONS CENTRALES — pin sur Saint-Denis, rayonnement national -->
+        <g id="miniSites" aria-hidden="true"></g>
+
         <g class="mini-pin-fc" data-region="fc">
           <circle class="fc-pulse" cx="321" cy="141" r="14"/>
           <circle class="fc-dot" cx="321" cy="141" r="13"/>
@@ -649,6 +651,7 @@
 </div>
 
 <script src="../assets/js/regions-data.js"></script>
+<script src="../assets/js/sites-data.js"></script>
 <script>
 /* ─── Rendu dynamique de la page régionale ─── */
 (function () {
@@ -697,10 +700,44 @@
     }).join('');
   }
 
-  // Sites couverts
+  // Sites couverts — sites réels (fichier NTIC mars 2026)
+  var realSites = [];
+  if (window.FO_SITES) {
+    if (key === 'fc') {
+      Object.keys(window.FO_SITES).forEach(function (g) { realSites = realSites.concat(window.FO_SITES[g]); });
+      realSites.sort(function (a, b) { return b.n - a.n; });
+    } else {
+      realSites = window.FO_SITES[key] || [];
+    }
+  }
   var sitesEl = document.querySelector('[data-r="sites"]');
   if (sitesEl) {
-    sitesEl.innerHTML = R.sites.map(function (s) { return '<span class="sc-site-chip">' + s + '</span>'; }).join('');
+    var shown = key === 'fc' ? realSites.slice(0, 14) : realSites;
+    sitesEl.innerHTML = shown.map(function (s) {
+      return '<span class="sc-site-chip">' + s.name + ' · ' + s.n + '</span>';
+    }).join('') + (key === 'fc' && realSites.length > 14 ? '<span class="sc-site-chip">+ ' + (realSites.length - 14) + ' autres sites</span>' : '');
+    if (realSites.length) {
+      sitesEl.insertAdjacentHTML('afterend', '<p style="font-size:11.5px;color:rgba(255,255,255,0.45);margin-top:12px;">Sites où travaillent les salariés des Fonctions Centrales — fichier NTIC, mars 2026 (le chiffre = effectif FC sur le site).</p>');
+    }
+    set('stat-sites', realSites.length || R.stats.sites);
+  }
+
+  // Points des sites sur la mini-carte
+  var miniSites = document.getElementById('miniSites');
+  if (miniSites && realSites.length) {
+    var NS = 'http://www.w3.org/2000/svg';
+    realSites.forEach(function (s, i) {
+      var c = document.createElementNS(NS, 'circle');
+      c.setAttribute('cx', s.x);
+      c.setAttribute('cy', s.y);
+      c.setAttribute('r', Math.max(3.5, Math.min(8, 2.8 + Math.sqrt(s.n) * 0.5)));
+      c.setAttribute('class', 'map-site');
+      c.style.animationDelay = (i * 0.04) + 's';
+      var t = document.createElementNS(NS, 'title');
+      t.textContent = s.name + ' — ' + s.n + (s.n > 1 ? ' salariés FC' : ' salarié FC');
+      c.appendChild(t);
+      miniSites.appendChild(c);
+    });
   }
 
   // Mosaïque d'équipe (initiales génériques)
