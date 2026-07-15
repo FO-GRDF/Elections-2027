@@ -15,4 +15,6 @@
 
 # Logs
 *.log
-FO/Elections 2027/
+
+# Données sources (nominatives) — ne jamais pousser
+sources/
