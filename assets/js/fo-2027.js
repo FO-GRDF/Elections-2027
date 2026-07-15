@@ -106,7 +106,7 @@
       militants: 15, sites: 11, perm: 4, link: 'regions/region.html?r=idf'
     },
     'est': {
-      name: 'Est', eyebrow: 'Région · Alsace, Lorraine, Champagne, Bourgogne',
+      name: 'Est', eyebrow: 'Région · Grand Est — Alsace, Lorraine, Champagne',
       desc: 'Une région transfrontalière, des métiers techniques exigeants et des combats sociaux structurants.',
       militants: 11, sites: 9, perm: 3, link: 'regions/region.html?r=est'
     },
@@ -116,18 +116,18 @@
       militants: 10, sites: 8, perm: 3, link: 'regions/region.html?r=ouest'
     },
     'centre': {
-      name: 'Centre', eyebrow: 'Région · Centre, Bourgogne, Auvergne',
+      name: 'Centre', eyebrow: 'Région · Centre-Val de Loire & Bourgogne-Franche-Comté',
       desc: 'Au cœur du réseau national, une équipe qui défend la ruralité comme l\'urbain.',
       militants: 8, sites: 7, perm: 2, link: 'regions/region.html?r=centre'
     },
     'sud-ouest': {
-      name: 'Sud-Ouest', eyebrow: 'Région · Nouvelle-Aquitaine & Occitanie ouest',
+      name: 'Sud-Ouest', eyebrow: 'Région · Nouvelle-Aquitaine & Occitanie',
       desc: 'Des territoires étendus, de Bordeaux à Toulouse, une équipe mobile et engagée.',
       militants: 10, sites: 8, perm: 3, link: 'regions/region.html?r=sud-ouest'
     },
     'sud-est': {
-      name: 'Sud-Est', eyebrow: 'Région · Auvergne-Rhône-Alpes & PACA',
-      desc: 'De Lyon à Nice, une équipe ancrée sur le terrain : montagnes, vallées et grandes métropoles.',
+      name: 'Sud-Est', eyebrow: 'Région · Auvergne-Rhône-Alpes, PACA & Corse',
+      desc: 'De Lyon à Nice et jusqu\'à la Corse, une équipe ancrée sur le terrain : montagnes, vallées et grandes métropoles.',
       militants: 12, sites: 8, perm: 3, link: 'regions/region.html?r=sud-est'
     },
     'fc': {
@@ -265,4 +265,102 @@
       }
     });
   }
+})();
+
+/* ════════════════════════════════════════════════════════════
+   V2 — Carte réelle (tooltip + clavier), candidats (flip + filtres)
+   ════════════════════════════════════════════════════════════ */
+(function () {
+  'use strict';
+
+  // ─── Tooltip carte ───
+  var tip = document.getElementById('mapTip');
+  var frame = document.querySelector('.map-frame');
+  var TIP_DATA = {
+    'nord-ouest': { name: 'Nord-Ouest',          meta: '9 militants · 7 sites' },
+    'idf':        { name: 'Île-de-France',       meta: '15 militants · 11 sites' },
+    'est':        { name: 'Est',                 meta: '11 militants · 9 sites' },
+    'ouest':      { name: 'Ouest',               meta: '10 militants · 8 sites' },
+    'centre':     { name: 'Centre',              meta: '8 militants · 7 sites' },
+    'sud-ouest':  { name: 'Sud-Ouest',           meta: '10 militants · 8 sites' },
+    'sud-est':    { name: 'Sud-Est',             meta: '12 militants · 8 sites' },
+    'fc':         { name: 'Fonctions Centrales', meta: '7 militants · siège national' }
+  };
+  if (tip && frame) {
+    var tipName = tip.querySelector('[data-tip="name"]');
+    var tipMeta = tip.querySelector('[data-tip="meta"]');
+    document.querySelectorAll('.map-svg .map-zone').forEach(function (zone) {
+      var key = zone.dataset.region;
+      var d = TIP_DATA[key];
+      if (!d) return;
+      zone.addEventListener('mousemove', function (e) {
+        var r = frame.getBoundingClientRect();
+        tipName.textContent = d.name;
+        tipMeta.textContent = d.meta;
+        tip.style.left = (e.clientX - r.left) + 'px';
+        tip.style.top = (e.clientY - r.top) + 'px';
+        tip.classList.add('is-visible');
+      });
+      zone.addEventListener('mouseleave', function () {
+        tip.classList.remove('is-visible');
+      });
+    });
+  }
+
+  // ─── Carte au clavier (Entrée / Espace) ───
+  document.querySelectorAll('.map-svg .map-zone').forEach(function (zone) {
+    zone.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        zone.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+      }
+    });
+    zone.addEventListener('focus', function () {
+      zone.dispatchEvent(new MouseEvent('mouseenter', { bubbles: true }));
+    });
+  });
+
+  // ─── Filtres par collège ───
+  var tabs = document.querySelectorAll('.college-tab');
+  var cards = document.querySelectorAll('.cand-card');
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      var college = tab.dataset.college;
+      tabs.forEach(function (t) {
+        t.classList.toggle('is-active', t === tab);
+        t.setAttribute('aria-selected', t === tab ? 'true' : 'false');
+      });
+      cards.forEach(function (card) {
+        var show = college === 'all' || card.dataset.college === college;
+        card.classList.toggle('is-hidden', !show);
+        if (show) {
+          card.classList.remove('is-visible');
+          void card.offsetWidth; // relance l'animation reveal
+          card.classList.add('is-visible');
+        }
+      });
+    });
+  });
+
+  // ─── Flip des cartes candidats (clic + clavier) ───
+  cards.forEach(function (card) {
+    card.addEventListener('click', function (e) {
+      if (e.target.closest('a')) return; // laisser vivre les liens du verso
+      card.classList.toggle('is-flipped');
+    });
+    card.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        if (e.target.closest('a')) return;
+        e.preventDefault();
+        card.classList.toggle('is-flipped');
+      }
+      if (e.key === 'Escape') card.classList.remove('is-flipped');
+    });
+    card.addEventListener('mouseleave', function () {
+      // repli doux au départ de la souris (desktop uniquement)
+      if (window.matchMedia('(pointer: fine)').matches) {
+        setTimeout(function () { card.classList.remove('is-flipped'); }, 350);
+      }
+    });
+  });
 })();

@@ -31,7 +31,9 @@ Cette maquette respecte intégralement la charte FO GRDF :
 
 ## ✨ Effets interactifs
 
-- Carte de France interactive avec panneau d'information dynamique
+- **Carte de France géographique réelle** (contours des 13 régions administratives, groupées en 7 territoires FO + pin Fonctions Centrales), avec tooltip au survol, navigation clavier et panneau d'information dynamique
+- **Cartes candidats à retourner** (flip 3D) pour les 3 collèges — exécution, maîtrise, cadre — avec filtres par collège et emplacement vidéo YouTube par candidat
+- **Section « Comprendre le vote »** : 2 emplacements vidéo pédagogiques (pourquoi voter, le CSE en 3 min) + FAQ accordéon
 - Compte à rebours animé jusqu'aux élections de novembre 2027
 - Compteurs animés au scroll (statistiques)
 - Reveal animations au défilement
