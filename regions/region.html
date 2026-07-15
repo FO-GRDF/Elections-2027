@@ -265,6 +265,15 @@
     border-top: 1px solid var(--fond-alt);
     margin-top: auto;
   }
+  .candidate-photo img.cand-cut {
+    width: auto; height: 84%;
+    align-self: flex-end;
+    position: relative; z-index: 1;
+    filter: drop-shadow(0 14px 26px rgba(0,0,0,0.35));
+    transition: transform 0.35s cubic-bezier(0.34,1.4,0.64,1);
+  }
+  .candidate-card:hover .candidate-photo img.cand-cut { transform: scale(1.07) translateY(-4px); }
+  .candidate-photo img.cand-cover { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
   .candidate-video { margin-top: 18px; }
   .candidate-video .video-slot { border-radius: 12px; }
   .candidate-video .vs-play { width: 40px; height: 40px; }
@@ -582,7 +591,7 @@
     <div class="section-head reveal">
       <span class="section-eyebrow">Vos candidats</span>
       <h2 class="section-title" id="t-candidats">Les têtes de liste <em data-r="name2">—</em>, collège par collège.</h2>
-      <p class="section-lead">
+      <p class="section-lead" data-r="candLead">
         Un candidat par collège — exécution, maîtrise, cadre — issu de votre région.
         Chacun aura sa vidéo de présentation. Profils fictifs, à remplacer une fois les listes validées.
       </p>
@@ -792,21 +801,27 @@
     mosaic.innerHTML = tiles.map(function (t) { return '<div class="avatar-tile" data-hover>' + t + '</div>'; }).join('');
   }
 
-  // Candidats (1 tête de liste par collège)
+  // Titre / lead personnalisés (ex. Fonctions Centrales)
+  if (R.candidatsTitle) document.getElementById('t-candidats').innerHTML = R.candidatsTitle;
+  if (R.candidatsLead) set('candLead', R.candidatsLead);
+
+  // Candidats (photos réelles si disponibles)
   var candEl = document.querySelector('[data-r="candidats"]');
   if (candEl) {
     candEl.innerHTML = R.candidats.map(function (c, i) {
-      return '<article class="candidate-card reveal"' + (i ? ' data-delay="' + (i * 100) + '"' : '') + ' data-hover>' +
+      var media = c.photo
+        ? '<img class="' + (c.cover ? 'cand-cover' : 'cand-cut') + '" src="../assets/img/equipe/' + c.photo + '" alt="">'
+        : '<span>' + c.initials + '</span><span class="candidate-placeholder">Photo</span>';
+      return '<article class="candidate-card reveal"' + ((i % 3) ? ' data-delay="' + ((i % 3) * 100) + '"' : '') + ' data-hover>' +
         '<div class="candidate-photo">' +
-          '<span class="candidate-college">Collège ' + c.college + '</span>' +
-          '<span>' + c.initials + '</span>' +
-          '<span class="candidate-placeholder">Photo</span>' +
+          (c.college ? '<span class="candidate-college">Collège ' + c.college + '</span>' : '') +
+          media +
         '</div>' +
         '<div class="candidate-info">' +
           '<div class="candidate-role">' + c.role + '</div>' +
           '<h4>' + c.name + '</h4>' +
           '<div class="candidate-meta">' + c.meta + '</div>' +
-          '<p class="candidate-quote">' + c.quote + '</p>' +
+          (c.quote ? '<p class="candidate-quote">' + c.quote + '</p>' : '') +
           '<div class="candidate-video">' +
             '<div class="video-slot" role="img" aria-label="Emplacement vidéo de présentation — bientôt disponible">' +
               '<span class="vs-play" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="6 3 21 12 6 21"/></svg></span>' +
@@ -814,6 +829,7 @@
               '<span class="vs-soon">Bientôt disponible</span>' +
             '</div>' +
           '</div>' +
+          (c.link ? '<a class="candidate-link" href="' + c.link + '" style="margin-top:14px;">Voir la fiche complète →</a>' : '') +
         '</div>' +
       '</article>';
     }).join('');

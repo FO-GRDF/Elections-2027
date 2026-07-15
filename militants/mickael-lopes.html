@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mickaël Lopes · FO GRDF Fonctions Centrales — Élections 2027</title>
+<meta name="description" content="Mickaël Lopes, militant FO GRDF Fonctions Centrales — Chambéry. Prévention des risques, CSE, formation des militants.">
+<meta name="theme-color" content="#019cda">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=DM+Sans:wght@300;400;500;600;700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/fo-2027.css">
+<style>
+/* ═══════ HERO VITRINE ═══════ */
+.ml-hero {
+  min-height: 92vh;
+  background: linear-gradient(150deg, #061a30 0%, #0a2540 45%, #01578a 100%);
+  color: var(--blanc);
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  padding: 120px 32px 80px;
+}
+.ml-hero::before {
+  content: "";
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 78% 30%, rgba(247,221,92,0.16) 0%, transparent 45%),
+    radial-gradient(circle at 12% 85%, rgba(1,156,218,0.25) 0%, transparent 50%);
+  z-index: -2;
+}
+/* nom géant en arrière-plan */
+.ml-bigname {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Fraunces', serif;
+  font-weight: 900;
+  font-size: clamp(90px, 17vw, 250px);
+  line-height: 0.86;
+  text-align: center;
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(255,255,255,0.10);
+  letter-spacing: -4px;
+  user-select: none;
+  pointer-events: none;
+  z-index: -1;
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), -webkit-text-stroke-color 0.6s;
+  white-space: nowrap;
+}
+.ml-hero.is-hovering .ml-bigname {
+  transform: translate(-50%, -50%) scale(1.045);
+  -webkit-text-stroke-color: rgba(247,221,92,0.16);
+}
+.ml-hero-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 60px;
+  align-items: center;
+  width: 100%;
+}
+.ml-kicker {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: rgba(192,48,58,0.18);
+  border: 1px solid rgba(192,48,58,0.55);
+  color: #ff9aa2;
+  padding: 9px 18px;
+  border-radius: 30px;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  margin-bottom: 26px;
+}
+.ml-kicker .dot { width: 8px; height: 8px; border-radius: 50%; background: #ff5b66; animation: pulseDot 2s infinite; }
+.ml-hero h1 {
+  font-family: 'Fraunces', serif;
+  font-weight: 900;
+  font-size: clamp(44px, 5.6vw, 78px);
+  line-height: 0.98;
+  letter-spacing: -2px;
+  margin-bottom: 20px;
+}
+.ml-hero h1 em { color: var(--or); font-style: italic; }
+.ml-role {
+  font-size: 19px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.85);
+  max-width: 520px;
+  line-height: 1.65;
+  margin-bottom: 30px;
+}
+.ml-role strong { color: var(--or); font-weight: 600; }
+.ml-chips { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 38px; }
+.ml-chip {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.18);
+  backdrop-filter: blur(8px);
+  padding: 9px 16px;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.92);
+}
+.ml-chip svg { color: var(--or); flex-shrink: 0; }
+
+/* ─── PHOTO DÉTOURÉE — effet de mise en avant au survol ─── */
+.ml-photo-stage {
+  position: relative;
+  width: min(400px, 80vw);
+  margin: 0 auto;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  cursor: pointer;
+  outline: none;
+}
+/* halo tournant */
+.ml-ring {
+  position: absolute;
+  inset: 6%;
+  border-radius: 50%;
+  background:
+    conic-gradient(from 0deg, transparent 0deg, rgba(247,221,92,0.0) 240deg, rgba(247,221,92,0.9) 320deg, transparent 360deg);
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2px));
+          mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2px));
+  animation: mlSpin 7s linear infinite;
+  transition: inset 0.5s cubic-bezier(0.34, 1.4, 0.64, 1), filter 0.5s;
+}
+@keyframes mlSpin { to { transform: rotate(360deg); } }
+/* pastille de fond */
+.ml-blob {
+  position: absolute;
+  inset: 10%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #1e5f8f 0%, #0d3252 55%, #0a2540 100%);
+  border: 1px solid rgba(255,255,255,0.14);
+  box-shadow: inset 0 -30px 60px rgba(0,0,0,0.4), 0 30px 80px rgba(0,0,0,0.45);
+  overflow: hidden;
+  transition: transform 0.55s cubic-bezier(0.34, 1.4, 0.64, 1), box-shadow 0.55s;
+}
+.ml-blob::after {
+  content: "";
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.10) 1px, transparent 1px);
+  background-size: 16px 16px;
+  opacity: 0.5;
+}
+/* la photo dépasse de la pastille */
+.ml-photo {
+  position: relative;
+  z-index: 2;
+  width: 62%;
+  filter: drop-shadow(0 24px 48px rgba(0,0,0,0.55)) saturate(1.02);
+  transform-origin: bottom center;
+  transition: transform 0.55s cubic-bezier(0.34, 1.4, 0.64, 1), filter 0.55s;
+  margin-bottom: 9%;
+}
+/* état survolé / focus : MISE EN AVANT */
+.ml-photo-stage:hover .ml-photo,
+.ml-photo-stage:focus-visible .ml-photo {
+  transform: scale(1.14) translateY(-14px);
+  filter: drop-shadow(0 40px 70px rgba(0,0,0,0.6)) drop-shadow(0 0 42px rgba(247,221,92,0.45)) saturate(1.08);
+}
+.ml-photo-stage:hover .ml-blob,
+.ml-photo-stage:focus-visible .ml-blob {
+  transform: scale(1.05);
+  box-shadow: inset 0 -30px 60px rgba(0,0,0,0.4), 0 42px 100px rgba(0,0,0,0.55), 0 0 0 1px rgba(247,221,92,0.35);
+}
+.ml-photo-stage:hover .ml-ring,
+.ml-photo-stage:focus-visible .ml-ring {
+  inset: 1.5%;
+  filter: drop-shadow(0 0 14px rgba(247,221,92,0.55));
+  animation-duration: 2.6s;
+}
+/* étiquette sous la photo */
+.ml-photo-tag {
+  position: absolute;
+  bottom: -4px; left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  background: var(--or);
+  color: var(--bleu-nuit);
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-size: 14.5px;
+  padding: 10px 24px;
+  border-radius: 40px;
+  white-space: nowrap;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+  transition: transform 0.55s cubic-bezier(0.34, 1.4, 0.64, 1), background 0.3s;
+}
+.ml-photo-stage:hover .ml-photo-tag,
+.ml-photo-stage:focus-visible .ml-photo-tag {
+  transform: translateX(-50%) translateY(10px) scale(1.06);
+  background: var(--blanc);
+}
+/* particules or au survol */
+.ml-spark {
+  position: absolute;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--or);
+  opacity: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+.ml-photo-stage:hover .ml-spark { animation: mlSpark 1.6s ease-out infinite; }
+.ml-spark:nth-child(1) { top: 14%; left: 12%; animation-delay: 0s !important; }
+.ml-spark:nth-child(2) { top: 8%;  right: 18%; animation-delay: 0.35s !important; }
+.ml-spark:nth-child(3) { bottom: 26%; left: 4%; animation-delay: 0.7s !important; }
+.ml-spark:nth-child(4) { bottom: 18%; right: 6%; animation-delay: 1.05s !important; }
+@keyframes mlSpark {
+  0%   { opacity: 0; transform: translateY(0) scale(0.4); }
+  30%  { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-46px) scale(1.15); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ml-ring, .ml-spark { animation: none !important; }
+  .ml-photo, .ml-blob, .ml-bigname { transition: none !important; }
+}
+
+/* ═══════ STAT STRIP ═══════ */
+.ml-stats { background: var(--gradient-fo); padding: 56px 32px; }
+.ml-stats .stats-grid { max-width: 1100px; }
+
+/* ═══════ PARCOURS — timeline ═══════ */
+.ml-timeline {
+  position: relative;
+  max-width: 860px;
+  margin: 0 auto;
+  padding-left: 40px;
+}
+.ml-timeline::before {
+  content: "";
+  position: absolute;
+  left: 10px; top: 8px; bottom: 8px;
+  width: 3px;
+  border-radius: 3px;
+  background: linear-gradient(180deg, var(--bleu), var(--or) 70%, var(--rouge-fo));
+}
+.ml-step {
+  position: relative;
+  background: var(--blanc);
+  border-radius: 20px;
+  padding: 28px 32px;
+  margin-bottom: 24px;
+  box-shadow: var(--ombre-doux);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.ml-step:hover { transform: translateX(8px); box-shadow: var(--ombre-fort); }
+.ml-step::before {
+  content: "";
+  position: absolute;
+  left: -38px; top: 32px;
+  width: 19px; height: 19px;
+  border-radius: 50%;
+  background: var(--blanc);
+  border: 4px solid var(--bleu);
+  box-shadow: 0 0 0 5px rgba(1,156,218,0.15);
+}
+.ml-step:nth-child(2)::before { border-color: var(--vert); box-shadow: 0 0 0 5px rgba(40,177,147,0.15); }
+.ml-step:nth-child(3)::before { border-color: var(--or-fonce); box-shadow: 0 0 0 5px rgba(247,221,92,0.25); }
+.ml-step:nth-child(4)::before { border-color: var(--rouge-fo); box-shadow: 0 0 0 5px rgba(192,48,58,0.15); }
+.ml-step-date {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--bleu);
+  margin-bottom: 8px;
+}
+.ml-step:nth-child(2) .ml-step-date { color: var(--vert); }
+.ml-step:nth-child(3) .ml-step-date { color: var(--or-fonce); }
+.ml-step:nth-child(4) .ml-step-date { color: var(--rouge-fo); }
+.ml-step h4 { font-family: 'Fraunces', serif; font-size: 21px; color: var(--bleu-nuit); margin-bottom: 8px; }
+.ml-step p { color: var(--gris); font-size: 14.5px; line-height: 1.65; }
+
+/* ═══════ 50 / 50 ═══════ */
+.ml-split-card {
+  background: var(--bleu-nuit);
+  color: var(--blanc);
+  border-radius: 28px;
+  padding: 48px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--ombre-fort);
+}
+.ml-split-card::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at 85% 15%, rgba(247,221,92,0.12) 0%, transparent 50%);
+  pointer-events: none;
+}
+.ml-split-bar {
+  display: flex;
+  height: 66px;
+  border-radius: 16px;
+  overflow: hidden;
+  margin: 30px 0 16px;
+  border: 1px solid rgba(255,255,255,0.15);
+}
+.ml-split-seg {
+  display: flex; align-items: center; justify-content: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 14.5px;
+  width: 0;
+  transition: width 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+  overflow: hidden;
+}
+.ml-split-seg.cse { background: linear-gradient(135deg, #019cda, #0173a0); }
+.ml-split-seg.formation { background: linear-gradient(135deg, #e8c93f, #c9a92a); color: var(--bleu-nuit); }
+.ml-split-card.is-visible .ml-split-seg { width: 50%; }
+.ml-split-legend { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 13.5px; color: rgba(255,255,255,0.75); }
+
+/* ═══════ COMBATS ═══════ */
+.ml-fights-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+.ml-fight {
+  background: var(--blanc);
+  border-radius: 20px;
+  padding: 32px;
+  border-top: 4px solid var(--bleu);
+  box-shadow: var(--ombre-doux);
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.ml-fight:nth-child(2) { border-top-color: var(--rouge-fo); }
+.ml-fight:nth-child(3) { border-top-color: var(--vert); }
+.ml-fight:nth-child(4) { border-top-color: var(--or-fonce); }
+.ml-fight:hover { transform: translateY(-8px); box-shadow: var(--ombre-fort); }
+.ml-fight .icon {
+  width: 54px; height: 54px;
+  border-radius: 14px;
+  background: var(--gradient-fo);
+  color: var(--or);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 20px;
+  transition: transform 0.3s;
+}
+.ml-fight:hover .icon { transform: rotate(-6deg) scale(1.08); }
+.ml-fight h4 { font-family: 'Fraunces', serif; font-size: 20px; color: var(--bleu-nuit); margin-bottom: 10px; }
+.ml-fight p { color: var(--gris); font-size: 14.5px; line-height: 1.65; }
+
+/* ═══════ BOXE ═══════ */
+.ml-boxe {
+  background: linear-gradient(135deg, #0a2540 0%, #123a5e 100%);
+  border-radius: 28px;
+  color: var(--blanc);
+  padding: 52px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 40px;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--ombre-fort);
+}
+.ml-boxe::after {
+  content: "🥊";
+  position: absolute;
+  right: -14px; bottom: -26px;
+  font-size: 170px;
+  opacity: 0.07;
+  transform: rotate(-12deg);
+}
+.ml-boxe-badge {
+  width: 110px; height: 110px;
+  border-radius: 50%;
+  background: var(--gradient-or);
+  color: var(--bleu-nuit);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  font-family: 'Fraunces', serif;
+  font-weight: 900;
+  font-size: 15px;
+  text-align: center;
+  line-height: 1.15;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.35);
+  flex-shrink: 0;
+  animation: mlFloat 4s ease-in-out infinite;
+}
+@keyframes mlFloat { 0%,100% { transform: translateY(0) rotate(-3deg); } 50% { transform: translateY(-10px) rotate(3deg); } }
+.ml-boxe h3 { font-family: 'Fraunces', serif; font-size: 26px; margin-bottom: 12px; }
+.ml-boxe h3 em { color: var(--or); font-style: italic; }
+.ml-boxe p { color: rgba(255,255,255,0.8); font-size: 15px; line-height: 1.7; max-width: 640px; }
+
+/* ═══════ VIDÉO + CITATION ═══════ */
+.ml-media-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 36px; align-items: center; }
+.ml-quote-block {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: clamp(21px, 2.4vw, 27px);
+  color: var(--bleu-nuit);
+  line-height: 1.5;
+  position: relative;
+  padding-left: 28px;
+  border-left: 5px solid var(--or);
+}
+.ml-quote-block strong { color: var(--bleu); font-style: normal; }
+
+@media (max-width: 1000px) {
+  .ml-hero-inner { grid-template-columns: 1fr; gap: 44px; text-align: center; }
+  .ml-chips { justify-content: center; }
+  .ml-fights-grid { grid-template-columns: 1fr; }
+  .ml-media-grid { grid-template-columns: 1fr; }
+  .ml-boxe { grid-template-columns: 1fr; text-align: center; padding: 36px 28px; }
+  .ml-boxe-badge { margin: 0 auto; }
+  .ml-bigname { font-size: clamp(70px, 20vw, 130px); white-space: normal; }
+}
+
+body.a11y-mode .ml-hero { background: #525250; }
+body.a11y-mode .ml-bigname, body.a11y-mode .ml-spark { display: none; }
+body.a11y-mode .ml-ring { animation: none; }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#contenu-principal">Aller au contenu principal</a>
+
+<div class="cursor-dot" aria-hidden="true"></div>
+<div class="cursor-ring" aria-hidden="true"></div>
+
+<!-- NAV -->
+<nav class="top-nav" aria-label="Navigation principale">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo" aria-label="FO GRDF — retour à l'accueil">
+      <img src="https://www.destination-prevention.fr/wp-content/uploads/2026/03/Sans-titre-2026-03-24T120947.656.png" alt="Logo FO Énergie GRDF">
+      <span class="nav-logo-text">FO GRDF<small>Élections 2027</small></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html#regions">Régions</a></li>
+      <li><a href="../regions/region.html?r=fc">Fonctions Centrales</a></li>
+      <li><a href="../propositions.html">Propositions fiches</a></li>
+      <li><a href="../presentation.html" class="nav-cta">Présentation</a></li>
+    </ul>
+    <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <div class="nav-progress"></div>
+  </div>
+</nav>
+
+<!-- ═══════ HERO VITRINE ═══════ -->
+<header class="ml-hero" id="contenu-principal">
+  <div class="ml-bigname" aria-hidden="true">MICKAËL<br>LOPES</div>
+
+  <div class="ml-hero-inner">
+    <div>
+      <span class="ml-kicker"><span class="dot"></span>FO GRDF · Fonctions Centrales</span>
+      <h1>Mickaël <em>Lopes</em></h1>
+      <p class="ml-role">
+        Détaché syndical à 100&nbsp;% — la moitié en <strong>mandats CSE</strong>, l'autre à <strong>former les militants FO</strong>
+        sur la santé, la sécurité, les conditions de travail et le droit du travail.
+      </p>
+
+      <div class="ml-chips">
+        <span class="ml-chip">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Chambéry · Savoie
+        </span>
+        <span class="ml-chip">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          35 ans · chez GRDF depuis 2009
+        </span>
+        <span class="ml-chip">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Prévention des risques professionnels
+        </span>
+        <span class="ml-chip">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+          Moniteur de boxe française
+        </span>
+      </div>
+
+      <div class="hero-actions">
+        <a href="#parcours" class="btn btn-primary" data-hover>
+          Mon parcours
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a href="#combats" class="btn btn-ghost" data-hover>Mes combats</a>
+      </div>
+    </div>
+
+    <!-- PHOTO DÉTOURÉE — survolez-moi -->
+    <div class="ml-photo-stage" id="photoStage" tabindex="0" role="img" aria-label="Portrait de Mickaël Lopes — survoler pour mettre la photo en avant">
+      <span class="ml-spark" aria-hidden="true"></span>
+      <span class="ml-spark" aria-hidden="true"></span>
+      <span class="ml-spark" aria-hidden="true"></span>
+      <span class="ml-spark" aria-hidden="true"></span>
+      <div class="ml-ring" aria-hidden="true"></div>
+      <div class="ml-blob" aria-hidden="true"></div>
+      <img class="ml-photo" src="../assets/img/equipe/mickael.png" alt="">
+      <span class="ml-photo-tag">Mickaël · Chambéry</span>
+    </div>
+  </div>
+
+  <div class="scroll-cue" aria-hidden="true">
+    <span>Découvrir</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+  </div>
+</header>
+
+<!-- ═══════ STATS ═══════ -->
+<section class="ml-stats stats-strip" aria-label="Chiffres clés">
+  <div class="stats-grid">
+    <div class="stat-item reveal">
+      <span class="stat-num"><span data-counter="2009" data-duration="1800">0</span></span>
+      <div class="stat-text">Entrée chez GRDF<br>technicien gaz</div>
+    </div>
+    <div class="stat-item reveal" data-delay="100">
+      <span class="stat-num"><span data-counter="17">0</span><span class="stat-suffix">&nbsp;ans</span></span>
+      <div class="stat-text">D'expérience<br>terrain & formation</div>
+    </div>
+    <div class="stat-item reveal" data-delay="200">
+      <span class="stat-num"><span data-counter="50">0</span><span class="stat-suffix">/50</span></span>
+      <div class="stat-text">Mandats CSE /<br>formation militants</div>
+    </div>
+    <div class="stat-item reveal" data-delay="300">
+      <span class="stat-num"><span data-counter="100">0</span><span class="stat-suffix">%</span></span>
+      <div class="stat-text">Engagé pour<br>les salariés</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ PARCOURS ═══════ -->
+<section id="parcours" aria-labelledby="t-parcours">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-eyebrow">Mon parcours</span>
+      <h2 class="section-title" id="t-parcours">Du <em>terrain</em> à la défense des salariés.</h2>
+      <p class="section-lead">
+        Un fil rouge : le métier, la transmission et la protection de celles et ceux qui font tourner GRDF.
+      </p>
+    </div>
+
+    <div class="ml-timeline">
+      <div class="ml-step reveal">
+        <div class="ml-step-date">2009 — Les débuts</div>
+        <h4>Technicien d'Intervention Gaz</h4>
+        <p>Le terrain, les interventions, la sécurité industrielle au quotidien. C'est là que tout commence : au contact du réseau et des clients, avec les réalités du métier.</p>
+      </div>
+      <div class="ml-step reveal" data-delay="100">
+        <div class="ml-step-date">Ensuite — Energy Formation</div>
+        <h4>Formateur métiers gaz</h4>
+        <p>Animation des stages <strong>chef de travaux</strong>, <strong>astreinte</strong> et interventions. Transmettre le geste juste et la culture sécurité aux équipes de toute la France.</p>
+      </div>
+      <div class="ml-step reveal" data-delay="200">
+        <div class="ml-step-date">La reprise d'études</div>
+        <h4>Prévention des risques professionnels</h4>
+        <p>Un domaine qui me touche au cœur : les <strong>risques psychosociaux</strong> et la <strong>sécurité routière</strong>, premiers enjeux de santé au travail — souvent invisibles, jamais secondaires.</p>
+      </div>
+      <div class="ml-step reveal" data-delay="300">
+        <div class="ml-step-date">Aujourd'hui — Détaché syndical 100 %</div>
+        <h4>Mandats CSE & formation des militants FO</h4>
+        <p>La moitié du temps au service des salariés dans le cadre du CSE ; l'autre moitié à former les militants Force Ouvrière : santé, sécurité, conditions de travail et droit du travail.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ 50/50 ═══════ -->
+<section style="padding-top: 0;">
+  <div class="container-narrow">
+    <div class="ml-split-card reveal" id="splitCard">
+      <span class="section-eyebrow" style="color: var(--or);">Mon quotidien</span>
+      <h3 style="font-family:'Fraunces',serif;font-size:clamp(24px,3vw,32px);font-weight:900;margin-top:10px;">Un pied au CSE, un pied dans la <em style="color:var(--or);font-style:italic;">transmission</em>.</h3>
+      <div class="ml-split-bar" role="img" aria-label="Répartition du temps : 50 % mandats CSE, 50 % formation des militants">
+        <div class="ml-split-seg cse">50 % · Mandats CSE</div>
+        <div class="ml-split-seg formation">50 % · Formation militants</div>
+      </div>
+      <div class="ml-split-legend">
+        <span>Défendre les dossiers des salariés, siéger, négocier, contrôler.</span>
+        <span>Former les élus FO : SSCT, conditions de travail, droit du travail.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ COMBATS ═══════ -->
+<section id="combats" style="background: var(--fond-alt);" aria-labelledby="t-combats">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-eyebrow">Mes combats</span>
+      <h2 class="section-title" id="t-combats">Ce que je <em>défends</em>, concrètement.</h2>
+    </div>
+
+    <div class="ml-fights-grid">
+      <article class="ml-fight reveal">
+        <div class="icon" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <h4>Risques psychosociaux</h4>
+        <p>Charge mentale, pression des objectifs, isolement : les RPS sont des accidents du travail silencieux. Je me bats pour qu'ils soient mesurés, reconnus et prévenus — pas subis.</p>
+      </article>
+      <article class="ml-fight reveal" data-delay="100">
+        <div class="icon" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/><path d="M5 17H3v-6l2-5h9l4 5h3v6h-2"/></svg>
+        </div>
+        <h4>Sécurité routière</h4>
+        <p>La route est le premier risque mortel au travail. Des milliers de kilomètres par an pour nos techniciens : la prévention routière doit devenir une priorité absolue de l'entreprise.</p>
+      </article>
+      <article class="ml-fight reveal" data-delay="200">
+        <div class="icon" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+        </div>
+        <h4>Santé, sécurité & conditions de travail</h4>
+        <p>Du geste technique au collectif de travail : une SSCT exigeante, des CSE outillés et des élus formés pour ne rien laisser passer.</p>
+      </article>
+      <article class="ml-fight reveal" data-delay="300">
+        <div class="icon" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        </div>
+        <h4>Transmission & formation</h4>
+        <p>Un militant formé est un salarié mieux défendu. Je forme les élus FO au droit du travail et à la SSCT pour élever le rapport de force partout, sur tous les sites.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ BOXE FRANÇAISE ═══════ -->
+<section style="padding-top: 90px; padding-bottom: 90px;">
+  <div class="container-narrow">
+    <div class="ml-boxe reveal">
+      <div class="ml-boxe-badge" aria-hidden="true">BOXE<br>FRANÇAISE<br>·<br>MONITEUR</div>
+      <div>
+        <h3>La <em>boxe française</em>, une école d'engagement.</h3>
+        <p>
+          Moniteur de boxe française, j'y ai appris ce qui fait aussi un bon représentant du personnel :
+          la discipline, le respect de l'adversaire, l'art de la distance — et surtout, ne jamais baisser la garde.
+          Sur un ring comme face à la direction, on ne gagne pas seul : on gagne avec son coin.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ VIDÉO + CITATION ═══════ -->
+<section style="padding-top: 0;" aria-labelledby="t-video">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-eyebrow">En vidéo</span>
+      <h2 class="section-title" id="t-video">Ma présentation <em>en face caméra</em>.</h2>
+    </div>
+    <div class="ml-media-grid">
+      <div class="video-slot vs-large reveal" role="img" aria-label="Emplacement vidéo de présentation de Mickaël Lopes — bientôt disponible">
+        <span class="vs-play" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="6 3 21 12 6 21"/></svg></span>
+        <span class="vs-label">Mickaël se présente en 90 secondes</span>
+        <span class="vs-soon">Vidéo · Bientôt disponible</span>
+      </div>
+      <blockquote class="ml-quote-block reveal" data-delay="100">
+        « La prévention n'est pas une case à cocher. C'est ce qui fait qu'on rentre chez soi <strong>entier</strong>, le soir, après le travail. C'est pour ça que je me bats. »
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section style="padding: 0 32px 80px;">
+  <div class="container-narrow">
+    <div class="fo-contact-card reveal">
+      <div class="fo-logo-wrap">
+        <a href="mailto:syndicat-fo_grdf-delegations-nationales@grdf.fr?subject=Contact%20Mickael%20Lopes%20-%20FO%20GRDF%20FC" title="Écrire à FO GRDF" data-hover>
+          <img src="https://www.destination-prevention.fr/wp-content/uploads/2026/03/Sans-titre-2026-03-24T120947.656.png" alt="FO Énergie GRDF">
+        </a>
+      </div>
+      <div class="fo-body">
+        <div class="fo-text">
+          <h3>Échanger avec Mickaël</h3>
+          <p>Une question sur la prévention, le CSE, la formation syndicale ou les élections 2027 ? Réponse en toute confidentialité.</p>
+        </div>
+        <a href="mailto:syndicat-fo_grdf-delegations-nationales@grdf.fr?subject=Contact%20Mickael%20Lopes%20-%20FO%20GRDF%20FC" class="fo-mailto-btn" data-hover>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+          Nous écrire
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-bottom" style="border-top: none; margin-top: 0;">
+    <div>© 2026 FO GRDF · Maquette concept — fiche de démonstration</div>
+    <div><a href="../propositions.html">Voir les 3 propositions de présentation</a></div>
+  </div>
+</footer>
+
+<!-- A11Y -->
+<div class="a11y-toggle-bar">
+  <button class="a11y-btn" id="a11yToggle" onclick="toggleA11y()" aria-pressed="false">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+      <path d="M12 2a10 10 0 1 1 0 20A10 10 0 0 1 12 2z"/>
+      <path d="M12 2a10 10 0 0 1 0 20z" fill="currentColor"/>
+    </svg>
+    <span class="a11y-label-off">Mode lecture universelle</span>
+    <span class="a11y-label-on">Mode actif — Revenir</span>
+  </button>
+</div>
+
+<script src="../assets/js/fo-2027.js"></script>
+<script>
+(function () {
+  'use strict';
+  // le hero réagit au survol de la photo (nom géant en arrière-plan)
+  var stage = document.getElementById('photoStage');
+  var hero = document.querySelector('.ml-hero');
+  if (stage && hero) {
+    ['mouseenter', 'focus'].forEach(function (e) { stage.addEventListener(e, function () { hero.classList.add('is-hovering'); }); });
+    ['mouseleave', 'blur'].forEach(function (e) { stage.addEventListener(e, function () { hero.classList.remove('is-hovering'); }); });
+  }
+  // barre 50/50 animée à l'apparition
+  var split = document.getElementById('splitCard');
+  if (split && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries, io) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('is-visible'); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.4 }).observe(split);
+  }
+})();
+</script>
+</body>
+</html>

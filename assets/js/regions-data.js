@@ -164,7 +164,7 @@ window.FO_REGIONS = {
 
   'fc': {
     equipe: [
-      { file: 'mickael.png', name: 'Michael', role: 'Prévention des risques · Chambéry', link: '../militants/michael-lopes.html' },
+      { file: 'mickael.png', name: 'Mickaël', role: 'Prévention des risques · Chambéry', link: '../militants/mickael-lopes.html' },
       { file: 'bebby.png',   name: 'Bebby',   role: 'Rôle à préciser' },
       { file: 'carine.png',  name: 'Carine',  role: 'Rôle à préciser', cover: true },
       { file: 'celine.png',  name: 'Céline',  role: 'Rôle à préciser' },
@@ -184,10 +184,16 @@ window.FO_REGIONS = {
     mailSubject: 'Contact FO GRDF Fonctions Centrales',
     sites: ['Saint-Denis (siège)', 'Entités nationales', 'Salariés FC en région'],
     stats: { militants: 7, sites: 52, perm: 2 },
+    candidatsTitle: 'L\'équipe <em>Fonctions Centrales</em>, en vrai.',
+    candidatsLead: 'Les visages du syndicat FO Fonctions Centrales — pas des profils inventés. Les fiches détaillées (parcours, combats, vidéo) arrivent au fur et à mesure.',
     candidats: [
-      { initials: 'MB', college: 'Exécution', name: 'Mehdi B.', role: 'Tête de liste exécution · Saint-Denis', meta: 'Gestionnaire back-office · 8 ans d’ancienneté', quote: '« Les métiers tertiaires du siège font tourner l’entreprise. Ils méritent d’être défendus comme les autres. »' },
-      { initials: 'SR', college: 'Maîtrise', name: 'Samira R.', role: 'Tête de liste maîtrise · Saint-Denis', meta: 'Assistante de direction · 17 ans d’ancienneté', quote: '« Réorganisations permanentes, outils qui changent : les FC ont besoin de stabilité et d’écoute. »' },
-      { initials: 'CV', college: 'Cadre', name: 'Claire V.', role: 'Tête de liste cadre · Saint-Denis', meta: 'Cheffe de projet biométhane · 11 ans d’ancienneté', quote: '« Les cadres aussi ont besoin d’un contre-pouvoir : forfaits jours, charge mentale, transparence des rémunérations. »' }
+      { photo: 'mickael.png', name: 'Mickaël Lopes', role: 'Détaché syndical · Chambéry', meta: 'Prévention des risques professionnels — mandats CSE & formation des militants FO', quote: '« On rentre chez soi entier, le soir. C\'est pour ça que je me bats. »', link: '../militants/mickael-lopes.html' },
+      { photo: 'bebby.png', name: 'Bebby', role: 'Militant FO Fonctions Centrales', meta: 'Profil détaillé à venir' },
+      { photo: 'carine.png', cover: true, name: 'Carine', role: 'Militante FO Fonctions Centrales', meta: 'Profil détaillé à venir' },
+      { photo: 'celine.png', name: 'Céline', role: 'Militante FO Fonctions Centrales', meta: 'Profil détaillé à venir' },
+      { photo: 'david.png', name: 'David', role: 'Militant FO Fonctions Centrales', meta: 'Profil détaillé à venir' },
+      { photo: 'helene.png', name: 'Hélène', role: 'Militante FO Fonctions Centrales', meta: 'Profil détaillé à venir' },
+      { photo: 'hubert.png', name: 'Hubert', role: 'Militant FO Fonctions Centrales', meta: 'Profil détaillé à venir' }
     ],
     priorites: [
       { title: 'Télétravail équitable', text: 'Un accord télétravail ambitieux et appliqué de la même façon dans toutes les directions.' },
