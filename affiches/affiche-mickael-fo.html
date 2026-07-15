@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Affiche Mickaël Lopes · couleurs FO — FO GRDF Fonctions Centrales</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,700;0,900;1,700;1,900&family=DM+Sans:wght@400;500;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+/* ── AFFICHE A4 — imprimer depuis Chrome : Ctrl+P, A4, marges "Aucune", graphiques d'arrière-plan cochés ── */
+@page { size: A4; margin: 0; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bleu: #019cda; --bleu-nuit: #0a2540; --or: #f7dd5c; --or-fonce: #e8c93f;
+  --rouge: #ee2737; --rouge-fo: #c0303a; --creme: #F7F5F0; --gris: #6B6B6B;
+}
+html, body { width: 210mm; height: 297mm; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background:
+    radial-gradient(circle at 85% 16%, rgba(247,221,92,0.28) 0%, transparent 34%),
+    radial-gradient(circle at 6% 92%, rgba(1,156,218,0.14) 0%, transparent 40%),
+    #ffffff;
+  color: var(--bleu-nuit);
+  position: relative; overflow: hidden;
+  -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+
+/* prénom en filigrane */
+.bigname {
+  position: absolute; top: 106mm; left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Fraunces', serif; font-weight: 900;
+  font-size: 46mm; line-height: 0.85;
+  color: transparent; -webkit-text-stroke: 0.45mm rgba(10,37,64,0.07);
+  letter-spacing: -2mm; white-space: nowrap;
+}
+
+/* ── EN-TÊTE ── */
+.topbar { position: absolute; top: 9mm; left: 12mm; right: 12mm; display: flex; justify-content: space-between; align-items: flex-start; }
+.kicker {
+  display: inline-block; background: var(--bleu-nuit); color: #fff;
+  border-radius: 12mm; padding: 3mm 8mm 3.4mm; font-size: 4.4mm; font-weight: 700;
+  letter-spacing: 1mm; text-transform: uppercase; line-height: 1.25;
+}
+.kicker b { color: var(--or); }
+.kicker small { display: block; font-size: 3.1mm; letter-spacing: 0.7mm; color: rgba(255,255,255,0.85); font-weight: 500; }
+.logo { width: 27mm; }
+.logo img { width: 100%; display: block; }
+
+/* ── COLLÈGE ── */
+.college {
+  position: absolute; top: 33mm; left: 12mm;
+  font-family: 'Caveat', cursive; font-weight: 700; font-size: 19mm;
+  color: var(--rouge); line-height: 0.85; transform: rotate(-3deg);
+}
+.college::after {
+  content: ""; display: block; width: 62mm; height: 2.6mm; margin: 1.4mm 0 0 4mm;
+  background: var(--rouge); opacity: 0.75;
+  border-radius: 55% 45% 50% 50% / 100% 100% 0 0; transform: rotate(1deg);
+}
+
+/* ── PHOTO PASTILLE ── */
+.stage { position: absolute; top: 52mm; left: 50%; transform: translateX(-50%); width: 104mm; height: 104mm; }
+.ring { position: absolute; inset: 0; border-radius: 50%;
+  background: conic-gradient(from 205deg, transparent 0 52%, var(--or-fonce) 76%, transparent 93%);
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 1.7mm), #000 calc(100% - 1.2mm));
+          mask: radial-gradient(farthest-side, transparent calc(100% - 1.7mm), #000 calc(100% - 1.2mm)); }
+.blob {
+  position: absolute; inset: 5mm; border-radius: 50%;
+  background: radial-gradient(circle at 35% 28%, #35b3e8 0%, #019cda 55%, #0a6ea0 100%);
+  box-shadow: 0 8mm 18mm rgba(10,37,64,0.28), inset 0 -6mm 12mm rgba(10,37,64,0.22);
+  overflow: hidden;
+  display: flex; align-items: flex-end; justify-content: center;
+}
+.blob::after {
+  content: ""; position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.14) 0.35mm, transparent 0.35mm);
+  background-size: 4mm 4mm;
+}
+.blob img {
+  width: 58%; display: block;
+  position: relative; z-index: 1;
+  filter: drop-shadow(0 4mm 8mm rgba(10,37,64,0.45));
+}
+
+/* annotations manuscrites — à l'extérieur des formes */
+.note { position: absolute; font-family: 'Caveat', cursive; font-weight: 600; }
+.note.fo2016 { left: 14mm; top: 138mm; font-size: 7.2mm; transform: rotate(4deg); color: var(--gris); }
+.note.passion { right: 13mm; top: 134mm; font-size: 7.6mm; transform: rotate(-6deg); text-align: right; line-height: 1.05; color: var(--rouge); }
+
+/* ── IDENTITÉ ── */
+.who { position: absolute; top: 166mm; left: 12mm; right: 12mm; text-align: center; }
+.who .nom { font-family: 'Fraunces', serif; font-weight: 900; font-size: 14.5mm; line-height: 1; color: var(--bleu-nuit); }
+.who .nom em { font-style: italic; color: var(--bleu); }
+.who .metier { margin-top: 2.4mm; font-size: 4.7mm; color: var(--gris); font-weight: 500; }
+
+/* ── 3 POINTS CLÉS ── */
+.points { position: absolute; top: 190mm; left: 12mm; right: 12mm; display: flex; gap: 4.5mm; }
+.pt {
+  flex: 1; background: var(--creme);
+  border: 0.35mm solid #e4e0d6; border-top: 1.4mm solid var(--bleu);
+  border-radius: 4mm; padding: 4.5mm 5mm 5mm; min-height: 40mm;
+}
+.pt:nth-child(2) { border-top-color: var(--or-fonce); }
+.pt:nth-child(3) { border-top-color: var(--rouge); }
+.pt b { display: block; font-family: 'Fraunces', serif; font-size: 4.8mm; color: var(--bleu-nuit); margin-bottom: 1.8mm; line-height: 1.1; }
+.pt span { font-size: 3.5mm; line-height: 1.42; color: #4a4a4a; display: block; }
+
+/* ── QUOTE ── */
+.quote {
+  position: absolute; top: 238mm; left: 20mm; right: 20mm; text-align: center;
+  font-family: 'Fraunces', serif; font-style: italic; font-size: 5.9mm; line-height: 1.35; color: var(--bleu-nuit);
+}
+.quote b { color: var(--rouge); font-style: italic; }
+
+/* ── BANDEAU VOTE ── */
+.voteband {
+  position: absolute; bottom: 13mm; left: 12mm; right: 12mm;
+  display: flex; align-items: center; justify-content: space-between;
+  background: linear-gradient(120deg, var(--rouge) 0%, var(--rouge-fo) 100%);
+  color: #fff;
+  border-radius: 45% 55% 50% 50% / 62% 58% 42% 38%;
+  padding: 5.5mm 14mm 6mm;
+  box-shadow: 0 5mm 14mm rgba(192,48,58,0.35);
+}
+.voteband .d { font-weight: 700; font-size: 6.8mm; line-height: 1.1; }
+.voteband .d small { display: block; font-size: 3.3mm; font-weight: 500; letter-spacing: 0.6mm; text-transform: uppercase; color: rgba(255,255,255,0.9); margin-top: 0.8mm; }
+.voteband .v { display: flex; align-items: center; gap: 3.5mm; }
+.voteband .v .script { font-family: 'Caveat', cursive; font-weight: 700; font-size: 12.5mm; transform: rotate(-4deg); }
+.voteband .v .fo { background: #fff; color: var(--rouge); font-family: 'Fraunces', serif; font-weight: 900; font-size: 10mm; padding: 0.6mm 3.6mm; border-radius: 1.8mm; }
+
+.footer {
+  position: absolute; bottom: 5mm; left: 0; right: 0; text-align: center;
+  font-size: 3.3mm; letter-spacing: 1mm; color: #9a9a9a;
+}
+</style>
+</head>
+<body>
+
+<div class="bigname">MICKAËL</div>
+
+<div class="topbar">
+  <div class="kicker">Élections CSE · <b>2027</b><small>FO GRDF — Fonctions Centrales</small></div>
+  <div class="logo"><img src="../assets/img/logo-fo-energie.jpg" alt="FO Énergie GRDF"></div>
+</div>
+
+<div class="college">Collège Exécution</div>
+
+<div class="stage">
+  <div class="blob">
+    <img src="../assets/img/equipe/mickael.png" alt="Portrait de Mickaël Lopes">
+  </div>
+  <div class="ring"></div>
+</div>
+
+<div class="note fo2016">Rejoint FO en 2016</div>
+<div class="note passion">Passionné de<br>Boxe Française 🥊</div>
+
+<div class="who">
+  <div class="nom">Mickaël <em>Lopes</em></div>
+  <div class="metier">Prévention des risques professionnels · Chambéry</div>
+</div>
+
+<div class="points">
+  <div class="pt"><b>Le terrain</b><span>Technicien gaz de 2009 à 2019 — je connais vos métiers de l'intérieur.</span></div>
+  <div class="pt"><b>La transmission</b><span>Formateur Energy Formation, aujourd'hui formateur des militants FO.</span></div>
+  <div class="pt"><b>La prévention</b><span>Risques psychosociaux et sécurité routière : mes combats au CSE.</span></div>
+</div>
+
+<div class="quote">« On rentre chez soi <b>entier</b>, le soir.<br>C'est pour ça que je me bats. »</div>
+
+<div class="voteband">
+  <div class="d">Novembre 2027<small>Vote électronique</small></div>
+  <div class="v"><span class="script">Votez</span><span class="fo">FO</span></div>
+</div>
+
+<div class="footer">syndicat-fo_grdf-delegations-nationales@grdf.fr</div>
+
+</body>
+</html>
