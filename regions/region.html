@@ -325,6 +325,37 @@
   }
   .priority p { color: var(--gris); font-size: 14.5px; line-height: 1.6; }
 
+  /* Mur de l'équipe (style retenu par le collectif) */
+  .fo-wall {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+  }
+  .fo-wall-member { text-align: center; text-decoration: none; display: block; cursor: pointer; }
+  .fo-wall-pastille {
+    position: relative;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #1e5f8f, #0d3252 90%);
+    border: 1px solid rgba(10,37,64,0.12);
+    display: flex; align-items: flex-end; justify-content: center;
+    overflow: hidden;
+    transition: transform 0.4s cubic-bezier(0.34,1.4,0.64,1), box-shadow 0.4s;
+  }
+  .fo-wall-member:hover .fo-wall-pastille,
+  .fo-wall-member:focus-visible .fo-wall-pastille {
+    transform: translateY(-8px) scale(1.06);
+    box-shadow: 0 22px 44px rgba(10,37,64,0.35), 0 0 0 3px var(--or);
+  }
+  .fo-wall-pastille img { width: 74%; transform: translateY(6%); transition: transform 0.4s cubic-bezier(0.34,1.4,0.64,1); }
+  .fo-wall-member:hover .fo-wall-pastille img { transform: translateY(0) scale(1.1); }
+  .fo-wall-pastille img.is-cover { width: 100%; height: 100%; object-fit: cover; transform: none; }
+  .fo-wall-member:hover .fo-wall-pastille img.is-cover { transform: scale(1.08); }
+  .fo-wall-name { margin-top: 10px; font-family: 'Fraunces', serif; font-weight: 700; color: var(--bleu-nuit); font-size: 15px; }
+  .fo-wall-role { font-size: 10px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--gris); margin-top: 2px; transition: color 0.3s; }
+  .fo-wall-member:hover .fo-wall-role { color: var(--bleu); }
+  @media (max-width: 700px) { .fo-wall { grid-template-columns: repeat(2, 1fr); } }
+
   @media (max-width: 1100px) {
     .candidates-grid { grid-template-columns: 1fr 1fr; }
     .region-hero-inner { grid-template-columns: 1fr; gap: 36px; text-align: center; }
@@ -740,9 +771,20 @@
     });
   }
 
-  // Mosaïque d'équipe (initiales génériques)
+  // Mur de l'équipe réelle (style retenu) — sinon mosaïque générique
   var mosaic = document.querySelector('[data-r="mosaic"]');
-  if (mosaic) {
+  if (mosaic && R.equipe) {
+    mosaic.classList.remove('team-mosaic');
+    mosaic.classList.add('fo-wall');
+    mosaic.innerHTML = R.equipe.map(function (m) {
+      var tag = m.link ? 'a' : 'div';
+      return '<' + tag + (m.link ? ' href="' + m.link + '"' : ' tabindex="0"') + ' class="fo-wall-member" aria-label="' + m.name + ' — ' + m.role + '">' +
+        '<span class="fo-wall-pastille"><img src="../assets/img/equipe/' + m.file + '" alt="" ' + (m.cover ? 'class="is-cover"' : '') + '></span>' +
+        '<span class="fo-wall-name" style="display:block;">' + m.name + '</span>' +
+        '<span class="fo-wall-role" style="display:block;">' + m.role + '</span>' +
+      '</' + tag + '>';
+    }).join('');
+  } else if (mosaic) {
     var tiles = R.candidats.map(function (c) { return c.initials; });
     var extra = ['LP', 'TM', 'NF', 'AC', 'EV', 'RJ', 'CL'];
     while (tiles.length < Math.min(R.stats.militants, 11)) tiles.push(extra[tiles.length % extra.length]);

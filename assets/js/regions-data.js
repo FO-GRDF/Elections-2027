@@ -163,6 +163,15 @@ window.FO_REGIONS = {
   },
 
   'fc': {
+    equipe: [
+      { file: 'mickael.png', name: 'Michael', role: 'Prévention des risques · Chambéry', link: '../militants/michael-lopes.html' },
+      { file: 'bebby.png',   name: 'Bebby',   role: 'Rôle à préciser' },
+      { file: 'carine.png',  name: 'Carine',  role: 'Rôle à préciser', cover: true },
+      { file: 'celine.png',  name: 'Céline',  role: 'Rôle à préciser' },
+      { file: 'david.png',   name: 'David',   role: 'Rôle à préciser' },
+      { file: 'helene.png',  name: 'Hélène',  role: 'Rôle à préciser' },
+      { file: 'hubert.png',  name: 'Hubert',  role: 'Rôle à préciser' }
+    ],
     name: 'Fonctions Centrales',
     color: '#c0303a',
     capital: 'Saint-Denis',
