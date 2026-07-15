@@ -166,7 +166,7 @@ window.FO_REGIONS = {
     equipe: [
       { file: 'mickael.png', name: 'Mickaël', role: 'Prévention des risques · Chambéry', link: '../militants/mickael-lopes.html' },
       { file: 'bebby.png',   name: 'Bebby',   role: 'Rôle à préciser' },
-      { file: 'carine.png',  name: 'Carine',  role: 'Maîtrise · Service Gaz', cover: true },
+      { file: 'carine-detouree.png',  name: 'Carine',  role: 'Maîtrise · Service Gaz' },
       { file: 'celine.png',  name: 'Céline',  role: 'Chargée de clientèle · Toulouse' },
       { file: 'david.png',   name: 'David',   role: 'Rôle à préciser' },
       { file: 'helene.png',  name: 'Hélène',  role: 'Cadre · Energy Formation' },
@@ -189,7 +189,7 @@ window.FO_REGIONS = {
     candidats: [
       { photo: 'mickael.png', college: 'Exécution', name: 'Mickaël Lopes', role: 'Détaché syndical · Chambéry', meta: 'Prévention des risques professionnels — mandats CSE & formation des militants FO. Militant FO depuis 2016.', quote: '« On rentre chez soi entier, le soir. C\'est pour ça que je me bats. »', link: '../militants/mickael-lopes.html' },
       { photo: 'bebby.png', name: 'Bebby', role: 'Militant FO Fonctions Centrales', meta: 'Profil détaillé à venir' },
-      { photo: 'carine.png', cover: true, college: 'Maîtrise', name: 'Carine Brusson', role: 'Service Gaz · Région parisienne', meta: '25 ans au sein des IEG — très sensible à l\'égalité professionnelle et à la lutte contre les discriminations. Passionnée de musique et de flamenco.', quote: '« Une main de fer dans un gant de velours. »' },
+      { photo: 'carine-detouree.png', college: 'Maîtrise', name: 'Carine Brusson', role: 'Service Gaz · Région parisienne', meta: '25 ans au sein des IEG — très sensible à l\'égalité professionnelle et à la lutte contre les discriminations. Passionnée de musique et de flamenco.', quote: '« Une main de fer dans un gant de velours. »' },
       { photo: 'celine.png', college: 'Maîtrise', name: 'Céline Le Bec', role: 'Chargée de clientèle · SCM Toulouse', meta: 'Dans les IEG depuis 2010 : C2T région parisienne, USG Toulouse, puis chargée de clientèle depuis 2022. Expérience RH et urgence gaz.', quote: '« Je porte beaucoup d\'intérêt aux injustices salariales et à la sécurité physique et morale des personnes. »' },
       { photo: 'david.png', name: 'David', role: 'Militant FO Fonctions Centrales', meta: 'Profil détaillé à venir' },
       { photo: 'helene.png', college: 'Cadre', name: 'Hélène Wallyn', role: 'Energy Formation · St-Étienne-de-Montluc', meta: 'Ingénieure informatique passée par l\'automobile, le nucléaire puis le gaz. Sensible à l\'équilibre pro-perso et aux jeunes parents. Touche-à-tout, fan d\'histoire.', quote: '« Trouver du sens dans l\'entraide et la transmission des savoirs. »' },
