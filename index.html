@@ -30,7 +30,7 @@
       </span>
     </a>
     <ul class="nav-links" id="navLinks">
-      <li><a href="#message">Message</a></li>
+      <li><a href="#trouve">Mon élection</a></li>
       <li><a href="#regions">Régions</a></li>
       <li><a href="#candidats">Candidats</a></li>
       <li><a href="#pourquoi">Pourquoi FO</a></li>
@@ -85,7 +85,7 @@
         </div>
         <div class="cd-footer">
           <span class="live" aria-hidden="true"></span>
-          Plateforme nationale FO GRDF · Maquette concept
+          Plateforme nationale FO GRDF
         </div>
       </div>
     </div>
@@ -96,6 +96,54 @@
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
   </div>
 </header>
+
+
+<!-- ═══════════════════ TROUVE TON ÉLECTION (recommandation du conseil) ═══════════════════ -->
+<section class="finder-section" id="trouve" aria-labelledby="t-trouve">
+  <div class="container-narrow">
+    <div class="finder-card" id="finderCard">
+      <canvas class="finder-confetti" id="finderConfetti" aria-hidden="true"></canvas>
+      <div class="finder-head">
+        <span class="finder-eyebrow"><span class="dot"></span>En 10 secondes</span>
+        <h2 class="finder-title" id="t-trouve">Trouve <em>ton</em> élection.</h2>
+        <p class="finder-lead">On ne vote pas selon l'endroit où l'on travaille, mais selon son <strong>entité de rattachement</strong>. Une question, et on s'occupe du reste.</p>
+      </div>
+
+      <div class="finder-step is-active" data-step="1">
+        <p class="finder-q">Sur ta fiche de paie, ton entité, c'est plutôt…</p>
+        <div class="finder-choices">
+          <button class="finder-btn" data-answer="fc" type="button">
+            <span class="fb-ico" aria-hidden="true">🏢</span>
+            <span class="fb-txt"><b>Une direction nationale</b><small>SI, RH, finances, achats, communication, Energy Formation, Service Gaz… — les « Fonctions Centrales », où que tu sois en France</small></span>
+          </button>
+          <button class="finder-btn" data-answer="region" type="button">
+            <span class="fb-ico" aria-hidden="true">🗺️</span>
+            <span class="fb-txt"><b>Une direction régionale GRDF</b><small>Exploitation, intervention, ingénierie… rattachée à ta région</small></span>
+          </button>
+        </div>
+        <button class="finder-help" data-goto="search" type="button">🔍 Je ne sais pas — chercher mon site</button>
+      </div>
+
+      <div class="finder-step" data-step="2">
+        <p class="finder-q">Ta région GRDF :</p>
+        <div class="finder-regions" id="finderRegions"></div>
+        <button class="finder-back" data-goto="1" type="button">← Retour</button>
+      </div>
+
+      <div class="finder-step" data-step="search">
+        <p class="finder-q">Tape le nom de ta ville ou de ton site :</p>
+        <input type="text" class="finder-input" id="finderInput" placeholder="Ex. : Lyon, Isneauville, Saint-Denis…" autocomplete="off" aria-label="Rechercher votre site de travail">
+        <div class="finder-results" id="finderResults" role="listbox"></div>
+        <p class="finder-warn">⚠️ Ton périmètre dépend de ton <b>entité RH</b>, pas de ton adresse : plusieurs périmètres cohabitent souvent sur un même site. En cas de doute, ta <b>fiche de paie</b> fait foi.</p>
+        <button class="finder-back" data-goto="1" type="button">← Retour</button>
+      </div>
+
+      <div class="finder-step" data-step="result">
+        <div class="finder-result" id="finderResult"></div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ═══════════════════ STATS NATIONALES ═══════════════════ -->
 <section class="stats-strip" aria-label="Chiffres clés FO GRDF">
@@ -153,7 +201,7 @@
       <h2 class="section-title" id="t-regions">Une <em>équipe locale</em>, partout en France.</h2>
       <p class="section-lead">
         Le vrai découpage GRDF : 6 régions + les Fonctions Centrales de Saint-Denis, qui rayonnent sur toute la France.
-        Un syndicat FO par région — survolez ou cliquez : les sites où travaillent les salariés apparaissent sur la carte, pour que chacun retrouve le sien.
+        Un syndicat FO par région. Touchez une région : les sites où travaillent les salariés apparaissent sur la carte. Tu ne sais pas quel périmètre te concerne ? <a href="#trouve">Réponds à la question en 10 secondes</a>.
       </p>
     </div>
 
@@ -660,6 +708,10 @@
 
       <div class="comprendre-faq reveal" data-delay="200">
         <details class="faq-item" open>
+          <summary>Quel périmètre me concerne ?<span class="faq-chevron" aria-hidden="true"></span></summary>
+          <p>On vote dans le périmètre de son <strong>entité de rattachement RH</strong>, pas selon sa ville. Si tu dépends d'une direction nationale (SI, RH, finances, communication, Energy Formation…), tu votes <strong>Fonctions Centrales</strong> — même si tu travailles à Lyon ou à Nantes. Sinon, tu votes dans ta région GRDF. Le doute ? Ta fiche de paie fait foi — ou <a href="#trouve">réponds à la question en 10 secondes</a>.</p>
+        </details>
+        <details class="faq-item">
           <summary>À quoi sert le CSE, concrètement ?<span class="faq-chevron" aria-hidden="true"></span></summary>
           <p>Le Comité Social et Économique est consulté sur la stratégie, l'organisation du travail, la santé-sécurité et gère les activités sociales et culturelles. Vos élus y défendent vos intérêts face à la direction, dossier par dossier.</p>
         </details>
@@ -848,7 +900,7 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <div>© 2026 FO GRDF · Maquette concept · Données fictives</div>
+    <div>© 2026 FO GRDF · Version de travail — contenus en cours de validation par le collectif</div>
     <div>
       <a href="mailto:syndicat-fo_grdf-delegations-nationales@grdf.fr">syndicat-fo_grdf-delegations-nationales@grdf.fr</a>
     </div>

@@ -412,7 +412,7 @@
           if (!tip || !frame) return;
           var r = frame.getBoundingClientRect();
           tipName.textContent = s.name;
-          tipMeta.textContent = s.n + (s.n > 1 ? ' salariés' : ' salarié') + ' · Fonctions Centrales';
+          tipMeta.textContent = (s.n >= 3 ? s.n + ' salariés' : 'Salariés') + ' · Fonctions Centrales';
           tip.style.left = (e.clientX - r.left) + 'px';
           tip.style.top = (e.clientY - r.top) + 'px';
           tip.classList.add('is-visible');
@@ -434,4 +434,167 @@
 
   // État initial : région active par défaut
   renderSites('sud-est');
+})();
+
+/* ════════════════════════════════════════════════════════════
+   V5 — « Trouve ton élection » (recommandations du conseil des 5)
+   Wizard 2 questions + recherche par site + mémorisation + partage
+   ════════════════════════════════════════════════════════════ */
+(function () {
+  'use strict';
+  var card = document.getElementById('finderCard');
+  if (!card) return;
+
+  var PERIMS = {
+    'fc':           { name: 'Fonctions Centrales', color: '#c0303a', syndicat: 'Syndicat FO GRDF Fonctions Centrales', extra: 'Où que tu sois en France : ton élection, c\'est celle du siège et des directions nationales.' },
+    'nord-ouest':   { name: 'Nord-Ouest',    color: '#29b0d5', syndicat: 'Syndicat FO GRDF Nord-Ouest' },
+    'idf':          { name: 'Île-de-France', color: '#e8c93f', syndicat: 'Syndicat FO GRDF Île-de-France' },
+    'est':          { name: 'Est',           color: '#b81f6e', syndicat: 'Syndicat FO GRDF Est' },
+    'centre-ouest': { name: 'Centre-Ouest',  color: '#6b2d8b', syndicat: 'Syndicat FO GRDF Centre-Ouest' },
+    'sud-ouest':    { name: 'Sud-Ouest',     color: '#3aa544', syndicat: 'Syndicat FO GRDF Sud-Ouest' },
+    'sud-est':      { name: 'Sud-Est',       color: '#f39b1d', syndicat: 'Syndicat FO GRDF Sud-Est' }
+  };
+  var ORDER = ['nord-ouest', 'idf', 'est', 'centre-ouest', 'sud-ouest', 'sud-est'];
+  var MAIL = 'syndicat-fo_grdf-delegations-nationales@grdf.fr';
+
+  function goto(step) {
+    card.querySelectorAll('.finder-step').forEach(function (s) {
+      s.classList.toggle('is-active', s.dataset.step === String(step));
+    });
+  }
+
+  // Boutons régions (étape 2)
+  var regionsEl = document.getElementById('finderRegions');
+  if (regionsEl) {
+    regionsEl.innerHTML = ORDER.map(function (k) {
+      return '<button class="finder-rbtn" type="button" data-perim="' + k + '"><span class="rdot" style="background:' + PERIMS[k].color + '"></span>' + PERIMS[k].name + '</button>';
+    }).join('');
+  }
+
+  // Confettis sobres (or / bleu / blanc)
+  function confetti() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var cv = document.getElementById('finderConfetti');
+    if (!cv) return;
+    var ctx = cv.getContext('2d');
+    cv.width = card.offsetWidth; cv.height = card.offsetHeight;
+    var colors = ['#f7dd5c', '#019cda', '#ffffff', '#e8c93f'];
+    var parts = [];
+    for (var i = 0; i < 60; i++) {
+      parts.push({ x: cv.width / 2, y: cv.height * 0.35,
+        vx: (Math.random() - 0.5) * 11, vy: -Math.random() * 9 - 3,
+        s: Math.random() * 6 + 3, c: colors[i % colors.length], r: Math.random() * Math.PI, vr: (Math.random() - 0.5) * 0.3 });
+    }
+    var t0 = performance.now();
+    (function tick(now) {
+      var dt = (now - t0) / 1000;
+      ctx.clearRect(0, 0, cv.width, cv.height);
+      parts.forEach(function (p) {
+        p.x += p.vx; p.y += p.vy; p.vy += 0.32; p.r += p.vr;
+        ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.r);
+        ctx.globalAlpha = Math.max(0, 1.4 - dt);
+        ctx.fillStyle = p.c; ctx.fillRect(-p.s / 2, -p.s / 2, p.s, p.s * 0.6);
+        ctx.restore();
+      });
+      if (dt < 1.6) requestAnimationFrame(tick);
+      else ctx.clearRect(0, 0, cv.width, cv.height);
+    })(t0);
+  }
+
+  function showResult(key, save) {
+    var p = PERIMS[key];
+    if (!p) return;
+    if (save !== false) { try { localStorage.setItem('fo-perimetre', key); } catch (e) {} }
+    var link = 'regions/region.html?r=' + key;
+    var el = document.getElementById('finderResult');
+    el.innerHTML =
+      '<div class="fr-badge" style="background:' + p.color + '22;border:1px solid ' + p.color + '88;color:#fff;">🎉 Ton périmètre</div>' +
+      '<h3 style="color:' + (key === 'idf' ? '#f7dd5c' : '#fff') + ';">' + p.name + '</h3>' +
+      '<div class="fr-syndicat">' + p.syndicat + (p.extra ? '<br>' + p.extra : '') + '</div>' +
+      '<div class="fr-ctas">' +
+        '<a class="fr-cta" href="' + link + '">Découvrir mon équipe et mes candidats →</a>' +
+        (navigator.share ? '<button class="fr-cta ghost" type="button" id="frShare">📤 Partager à un collègue</button>' : '') +
+      '</div>' +
+      '<p class="fr-note">En cas de doute, ta <b>fiche de paie</b> fait foi (le périmètre définitif sera fixé par le protocole préélectoral). Besoin d\'aide ? <a href="mailto:' + MAIL + '?subject=' + encodeURIComponent('Quel est mon périmètre ? — ' + p.name) + '">Un militant FO te répond</a>.</p>' +
+      '<button class="fr-restart" type="button" id="frRestart">↺ Recommencer / changer de périmètre</button>';
+    goto('result');
+    confetti();
+    var share = document.getElementById('frShare');
+    if (share) share.addEventListener('click', function () {
+      navigator.share({ title: 'FO GRDF — Élections 2027', text: 'Trouve ton élection en 10 secondes 👇', url: window.location.origin + window.location.pathname + '#trouve' }).catch(function () {});
+    });
+    document.getElementById('frRestart').addEventListener('click', function () {
+      try { localStorage.removeItem('fo-perimetre'); } catch (e) {}
+      var b = document.getElementById('perimBanner'); if (b) b.remove();
+      goto('1');
+    });
+  }
+
+  // Navigation du wizard
+  card.addEventListener('click', function (e) {
+    var nav = e.target.closest('[data-goto]');
+    if (nav) { goto(nav.dataset.goto); if (nav.dataset.goto === 'search') { var i = document.getElementById('finderInput'); if (i) setTimeout(function () { i.focus(); }, 200); } return; }
+    var ans = e.target.closest('.finder-btn');
+    if (ans) { ans.dataset.answer === 'fc' ? showResult('fc') : goto('2'); return; }
+    var reg = e.target.closest('.finder-rbtn');
+    if (reg) { showResult(reg.dataset.perim); return; }
+  });
+
+  // Recherche par site (aide secondaire — avertissement UM affiché)
+  var input = document.getElementById('finderInput');
+  var results = document.getElementById('finderResults');
+  function norm(s) { return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, ''); }
+  if (input && results && window.FO_SITES) {
+    var ALL = [];
+    Object.keys(window.FO_SITES).forEach(function (reg) {
+      window.FO_SITES[reg].forEach(function (s) { ALL.push({ name: s.name, n: s.n, reg: reg }); });
+    });
+    input.addEventListener('input', function () {
+      var q = norm(input.value.trim());
+      results.innerHTML = '';
+      if (q.length < 2) return;
+      var found = ALL.filter(function (s) { return norm(s.name).indexOf(q) !== -1; }).slice(0, 4);
+      if (!found.length) {
+        results.innerHTML = '<div class="finder-site">Site introuvable dans notre liste — pas de panique : réponds à la <button type="button" class="fs-q1" style="background:none;border:none;color:#f7dd5c;cursor:pointer;font-family:inherit;text-decoration:underline;padding:0;">question sur ton entité</button>, ou <a href="mailto:' + MAIL + '?subject=' + encodeURIComponent('Quel est mon périmètre ?') + '" style="color:#f7dd5c;">écris-nous</a>.</div>';
+        var q1 = results.querySelector('.fs-q1');
+        if (q1) q1.addEventListener('click', function () { goto('1'); });
+        return;
+      }
+      results.innerHTML = found.map(function (s, i) {
+        var effectif = s.n >= 3 ? s.n + ' salariés des Fonctions Centrales y travaillent' : 'des salariés des Fonctions Centrales y travaillent';
+        return '<div class="finder-site"><b>' + s.name + '</b> — ' + effectif + '.<br>Ton périmètre dépend de ton entité :' +
+          '<div class="fs-actions">' +
+          '<button type="button" data-pick="fc">Je dépends d\'une direction nationale → FC</button>' +
+          '<button type="button" class="alt" data-pick="' + s.reg + '">Je dépends de la région → ' + PERIMS[s.reg].name + '</button>' +
+          '</div></div>';
+      }).join('');
+    });
+    results.addEventListener('click', function (e) {
+      var b = e.target.closest('[data-pick]');
+      if (b) showResult(b.dataset.pick);
+    });
+  }
+
+  // Retour d'un visiteur : bandeau périmètre mémorisé
+  try {
+    var saved = localStorage.getItem('fo-perimetre');
+    if (saved && PERIMS[saved]) {
+      var nav2 = document.querySelector('.top-nav');
+      var banner = document.createElement('div');
+      banner.className = 'perim-banner';
+      banner.id = 'perimBanner';
+      banner.innerHTML = '👋 Ton périmètre : <b>' + PERIMS[saved].name + '</b>' +
+        '<a href="regions/region.html?r=' + saved + '">Mes candidats</a>' +
+        '<button type="button" id="perimChange">changer</button>';
+      nav2.insertAdjacentElement('afterend', banner);
+      document.getElementById('perimChange').addEventListener('click', function () {
+        try { localStorage.removeItem('fo-perimetre'); } catch (e) {}
+        banner.remove();
+        var t = document.getElementById('trouve');
+        if (t) t.scrollIntoView({ behavior: 'smooth' });
+      });
+      // pré-afficher le résultat dans le wizard
+      showResult(saved, false);
+    }
+  } catch (e) {}
 })();

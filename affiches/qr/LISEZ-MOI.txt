@@ -1,0 +1,10 @@
+QR codes par perimetre — FO GRDF Elections CSE 2027
+
+Un QR par PERIMETRE (jamais par site geographique : un site heberge plusieurs entites RH).
+- qr-accueil.png -> accueil, ouvre directement « Trouve ton election »
+- qr-fc.png -> page Fonctions Centrales (memorise le perimetre du visiteur)
+- qr-<region>.png -> page du syndicat regional
+
+ATTENTION (conseil des 5) : NE RIEN IMPRIMER avant la signature du protocole
+d'accord preelectoral — les perimetres definitifs en dependent.
+Le parametre &src=qr permettra de mesurer plus tard la part d'arrivees par QR.

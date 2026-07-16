@@ -66,6 +66,7 @@ Elections-2027/
 
 ## ✨ Effets interactifs du site
 
+- **« Trouve ton élection en 10 secondes »** (audit du conseil des 5, 07/2026) : wizard 2 questions en tête de page — l'entité RH détermine le périmètre, pas la géographie. Recherche par site en secours (avec avertissement UM), résultat animé + confettis, mémorisation localStorage + bandeau de retour, partage natif mobile. QR codes par périmètre dans `affiches/qr/` (⚠ ne rien imprimer avant le protocole préélectoral).
 - Carte de France géographique réelle avec tooltip, clavier, panneau dynamique et **sites réels par région** (52 sites FC, taille selon effectif)
 - **Rayonnement Fonctions Centrales** : ondes animées depuis Saint-Denis + halo national
 - Cartes candidats à retourner (flip 3D) filtrables par collège, emplacements vidéo YouTube
