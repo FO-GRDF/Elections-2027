@@ -1,0 +1,61 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8">
+<title>Modèle 19 · Street art — Mickaël Lopes</title>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=Rubik:wght@400;600;800&display=swap" rel="stylesheet">
+<style>@page{size:A4;margin:0}*{margin:0;padding:0;box-sizing:border-box}html,body{width:210mm;height:297mm}body{position:relative;overflow:hidden;-webkit-print-color-adjust:exact;print-color-adjust:exact}a{text-decoration:none;color:inherit}img{display:block}
+body{font-family:'Rubik',sans-serif;background:#b9b4ac;color:#1c1a17}
+body::before{content:"";position:absolute;inset:0;background:
+ radial-gradient(circle at 20% 30%,rgba(255,255,255,.18) 0%,transparent 40%),
+ radial-gradient(circle at 80% 70%,rgba(0,0,0,.14) 0%,transparent 45%),
+ repeating-linear-gradient(93deg,rgba(0,0,0,.045) 0 .5mm,transparent .5mm 2.6mm),
+ repeating-linear-gradient(1deg,rgba(255,255,255,.05) 0 .7mm,transparent .7mm 3.4mm)}
+.brique{position:absolute;inset:0;background-image:
+ linear-gradient(rgba(0,0,0,.09) .6mm,transparent .6mm),
+ linear-gradient(90deg,rgba(0,0,0,.07) .6mm,transparent .6mm);
+ background-size:100% 16mm,42mm 16mm;opacity:.5}
+.spray1{position:absolute;top:26mm;right:-14mm;width:90mm;height:90mm;border-radius:50%;background:radial-gradient(circle,rgba(192,48,58,.5) 0%,rgba(192,48,58,.18) 45%,transparent 70%);filter:blur(1.5mm)}
+.spray2{position:absolute;bottom:44mm;left:-20mm;width:80mm;height:80mm;border-radius:50%;background:radial-gradient(circle,rgba(1,156,218,.4) 0%,transparent 65%);filter:blur(2mm)}
+.head{position:absolute;top:10mm;left:14mm;font-family:'Big Shoulders Display';font-weight:900;font-size:8.6mm;text-transform:uppercase;letter-spacing:1mm}
+.head small{display:block;font-family:'Rubik';font-weight:600;font-size:3.4mm;letter-spacing:2mm;color:#4c463d}
+.logo{position:absolute;top:9mm;right:13mm;width:22mm;background:#fff;padding:1.5mm;box-shadow:0 2mm 5mm rgba(0,0,0,.3);transform:rotate(2deg)}
+.pochoir{position:absolute;top:30mm;left:50%;transform:translateX(-50%);width:104mm;height:104mm;display:flex;align-items:flex-end;justify-content:center;overflow:hidden;
+ -webkit-mask:radial-gradient(circle at 50% 50%,#000 68%,transparent 70%);mask:radial-gradient(circle at 50% 50%,#000 68%,transparent 70%);
+ background:radial-gradient(circle,rgba(28,26,23,.85) 55%,rgba(28,26,23,.35) 68%,transparent 72%)}
+.pochoir img{width:64%;filter:grayscale(1) contrast(1.5) brightness(1.06)}
+.tagname{position:absolute;top:134mm;left:0;right:0;text-align:center;font-family:'Big Shoulders Display';font-weight:900;text-transform:uppercase;line-height:.88}
+.tagname .n1{font-size:20mm;letter-spacing:2mm;color:#1c1a17}
+.tagname .n2{font-size:26mm;letter-spacing:1mm;color:#c0303a;text-shadow:.8mm .8mm 0 rgba(0,0,0,.35)}
+.role{position:absolute;top:190mm;left:0;right:0;text-align:center;font-weight:600;font-size:4.2mm;color:#3d382f}
+.college{position:absolute;top:198mm;left:50%;transform:translateX(-50%) rotate(-2deg);display:inline-flex;align-items:center;gap:2.4mm;background:#1c1a17;color:#f7dd5c;padding:2.4mm 7mm;font-family:'Big Shoulders Display';font-weight:800;font-size:5mm;letter-spacing:1.6mm;text-transform:uppercase}
+.college svg{width:4.8mm;height:4.8mm}
+.stickers{position:absolute;top:212mm;left:13mm;right:13mm;display:flex;gap:5mm}
+.stk{flex:1;background:rgba(255,255,255,.92);border:.5mm solid #1c1a17;padding:5mm;min-height:37mm;box-shadow:2mm 2mm 0 rgba(28,26,23,.75)}
+.stk:nth-child(1){transform:rotate(-1.6deg)}.stk:nth-child(2){transform:rotate(1.2deg)}.stk:nth-child(3){transform:rotate(-.8deg)}
+.stk b{display:block;font-family:'Big Shoulders Display';font-weight:900;font-size:5.4mm;text-transform:uppercase;letter-spacing:.6mm;margin-bottom:1.6mm;color:#c0303a}
+.stk:nth-child(2) b{color:#019cda}.stk:nth-child(3) b{color:#1c1a17}
+.stk p{font-size:3.5mm;line-height:1.45;font-weight:500}
+.quote{position:absolute;top:257mm;left:16mm;width:108mm;font-family:'Big Shoulders Display';font-weight:800;font-size:7mm;line-height:1.1;text-transform:uppercase}
+.quote span{color:#c0303a}
+.qr{position:absolute;bottom:11mm;right:13mm;background:#fff;border:.5mm solid #1c1a17;padding:2.8mm;text-align:center;transform:rotate(1.6deg);box-shadow:2mm 2mm 0 rgba(28,26,23,.75)}
+.qr img{width:24mm;height:24mm}.qr span{display:block;font-size:2.7mm;font-weight:700;max-width:26mm;margin-top:1.2mm}
+.foot{position:absolute;bottom:13mm;left:14mm;font-family:'Big Shoulders Display';font-weight:900;text-transform:uppercase}
+.foot .d{font-size:8.6mm}.foot small{display:block;font-family:'Rubik';font-weight:600;font-size:3.1mm;letter-spacing:1.6mm;color:#4c463d}
+.foot .v{display:inline-block;margin-top:1.6mm;background:#c0303a;color:#fff;font-size:6.8mm;padding:1.6mm 6mm;letter-spacing:1mm;transform:rotate(-1.4deg)}
+.mail{position:absolute;bottom:4.4mm;left:0;right:0;text-align:center;font-size:2.9mm;font-weight:600;color:#5c554a}
+</style></head><body>
+<div class="brique"></div><div class="spray1"></div><div class="spray2"></div>
+<div class="head">Élections CSE 2027<small>FO GRDF — Fonctions Centrales</small></div>
+<img class="logo" src="../../assets/img/logo-fo-energie.jpg" alt="FO">
+<div class="pochoir"><img src="../../assets/img/equipe/mickael.png" alt="Mickaël Lopes"></div>
+<div class="tagname"><div class="n1">Mickaël</div><div class="n2">LOPES</div></div>
+<div class="role">Prévention des risques · Chambéry · FO depuis 2016 · moniteur de boxe française</div>
+<div class="college"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> Collège Exécution</div>
+<div class="stickers">
+  <div class="stk"><b>Terrain</b><p>Technicien gaz de 2009 à 2019 : vos métiers, connus de l'intérieur.</p></div>
+  <div class="stk"><b>Transmission</b><p>Formateur Energy Formation, puis formateur des militants FO.</p></div>
+  <div class="stk"><b>Prévention</b><p>RPS et sécurité routière : ses combats au CSE.</p></div>
+</div>
+<div class="quote">« On rentre chez soi <span>entier</span>, le soir. »</div>
+<div class="foot"><div class="d">Novembre 2027</div><small>vote électronique</small><span class="v">Votez FO</span></div>
+<a class="qr" href="https://fo-grdf.github.io/Elections-2027/regions/region.html?r=fc"><img src="../qr/qr-fc.png" alt="QR"><span>fo-grdf.github.io/Elections-2027</span></a>
+<div class="mail">syndicat-fo_grdf-delegations-nationales@grdf.fr</div>
+</body></html>

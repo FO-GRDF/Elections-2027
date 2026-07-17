@@ -1,0 +1,68 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8">
+<title>Modèle 13 · Ligne de métro — Mickaël Lopes</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@600;800;900&display=swap" rel="stylesheet">
+<style>@page{size:A4;margin:0}*{margin:0;padding:0;box-sizing:border-box}html,body{width:210mm;height:297mm}body{position:relative;overflow:hidden;-webkit-print-color-adjust:exact;print-color-adjust:exact}a{text-decoration:none;color:inherit}img{display:block}
+body{font-family:'Nunito Sans',sans-serif;background:#f4f6f8;color:#12212e}
+.head{position:absolute;top:0;left:0;right:0;background:#12212e;color:#fff;padding:9mm 14mm;display:flex;justify-content:space-between;align-items:center}
+.head .t{font-weight:900;font-size:7.4mm}
+.head .t small{display:block;font-weight:600;font-size:3.4mm;letter-spacing:1.2mm;color:#9fc1da;text-transform:uppercase}
+.lignebadge{display:flex;align-items:center;gap:3mm}
+.lignebadge .rond{width:12mm;height:12mm;border-radius:50%;background:#c0303a;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:6mm}
+.logo{width:21mm;background:#fff;border-radius:2mm;padding:1.4mm}
+.sub{position:absolute;top:34mm;left:14mm;right:14mm;display:flex;justify-content:space-between;align-items:center}
+.sub .dir{font-weight:800;font-size:5.2mm}
+.sub .dir b{color:#c0303a}
+.college{display:inline-flex;align-items:center;gap:2.4mm;background:#c0303a;color:#fff;border-radius:16mm;padding:2.2mm 6mm;font-weight:800;font-size:3.8mm;letter-spacing:.8mm;text-transform:uppercase}
+.college svg{width:4.4mm;height:4.4mm}
+.idcard{position:absolute;top:48mm;left:14mm;right:14mm;background:#fff;border-radius:6mm;box-shadow:0 3mm 10mm rgba(18,33,46,.12);padding:7mm 8mm;display:flex;gap:7mm;align-items:center}
+.photo{width:40mm;height:40mm;border-radius:50%;background:#e3ebf1;border:1.2mm solid #c0303a;overflow:hidden;display:flex;align-items:flex-end;justify-content:center;flex-shrink:0}
+.photo img{width:74%}
+.idcard h1{font-weight:900;font-size:11.5mm;line-height:1}
+.idcard h1 span{color:#c0303a}
+.idcard .r{font-weight:700;font-size:4.2mm;color:#51677a;margin-top:1.6mm}
+.idcard .m{font-weight:600;font-size:3.6mm;color:#8296a8;margin-top:1mm}
+.mapzone{position:absolute;top:108mm;left:14mm;right:14mm;height:118mm;background:#fff;border-radius:6mm;box-shadow:0 3mm 10mm rgba(18,33,46,.12);padding:9mm 10mm}
+.mapzone .titre{font-weight:900;font-size:5.2mm;margin-bottom:7mm}
+.line{position:relative;margin-left:6mm;border-left:2.6mm solid #c0303a;padding-left:8mm}
+.stop{position:relative;padding-bottom:9mm}
+.stop:last-child{padding-bottom:0}
+.stop::before{content:"";position:absolute;left:-10.6mm;top:.8mm;width:5.2mm;height:5.2mm;border-radius:50%;background:#fff;border:1.3mm solid #c0303a}
+.stop.terminus::before{background:#c0303a;box-shadow:0 0 0 1.6mm rgba(192,48,58,.25)}
+.stop .an{display:inline-block;background:#12212e;color:#fff;font-weight:800;font-size:3.2mm;border-radius:3mm;padding:.8mm 3mm;margin-bottom:1.4mm}
+.stop b{display:block;font-weight:900;font-size:4.8mm}
+.stop p{font-size:3.6mm;line-height:1.45;color:#51677a;max-width:150mm}
+.corr{display:inline-flex;align-items:center;gap:1.6mm;margin-left:2.5mm;font-size:3mm;font-weight:800;color:#fff;background:#f7a600;border-radius:3mm;padding:.6mm 2.6mm;vertical-align:1mm}
+.quote{position:absolute;top:232mm;left:14mm;width:114mm;background:#12212e;color:#fff;border-radius:6mm;padding:6mm 7mm;font-weight:800;font-size:4.7mm;line-height:1.35}
+.quote i{color:#f7dd5c;font-style:normal}
+.quote small{display:block;font-weight:600;font-size:3.2mm;color:#9fc1da;margin-top:2mm}
+.qr{position:absolute;top:232mm;right:14mm;width:44mm;background:#fff;border-radius:6mm;box-shadow:0 3mm 10mm rgba(18,33,46,.12);padding:4mm;text-align:center}
+.qr img{width:26mm;height:26mm;margin:0 auto}
+.qr span{display:block;font-size:2.8mm;font-weight:800;line-height:1.4;margin-top:1.4mm}
+.foot{position:absolute;bottom:9mm;left:14mm;right:14mm;display:flex;justify-content:space-between;align-items:center}
+.foot .d{font-weight:900;font-size:6.6mm}.foot .d small{display:block;font-weight:700;font-size:3.1mm;letter-spacing:1mm;color:#8296a8;text-transform:uppercase}
+.foot .v{background:#c0303a;color:#fff;font-weight:900;font-size:6mm;border-radius:16mm;padding:2.6mm 8mm}
+.mail{position:absolute;bottom:3.6mm;left:0;right:0;text-align:center;font-size:2.8mm;font-weight:700;color:#8296a8}
+</style></head><body>
+<div class="head">
+  <div class="lignebadge"><span class="rond">FO</span><div class="t">Ligne 2027<small>Réseau syndical · Fonctions Centrales</small></div></div>
+  <img class="logo" src="../../assets/img/logo-fo-energie.jpg" alt="FO">
+</div>
+<div class="sub"><div class="dir">Direction : <b>CSE 2027</b></div><div class="college"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> Collège Exécution</div></div>
+<div class="idcard">
+  <div class="photo"><img src="../../assets/img/equipe/mickael.png" alt="Mickaël Lopes"></div>
+  <div><h1>Mickaël <span>Lopes</span></h1><div class="r">Prévention des risques professionnels · Chambéry</div><div class="m">Voyageur GRDF depuis 2009 · Abonné FO depuis 2016 · Moniteur de boxe française</div></div>
+</div>
+<div class="mapzone">
+  <div class="titre">Son itinéraire — sans correspondance manquée :</div>
+  <div class="line">
+    <div class="stop"><span class="an">2009</span><b>Terrain — Technicien gaz</b><p>Dix ans d'interventions : vos métiers, connus de l'intérieur.</p></div>
+    <div class="stop"><span class="an">2019</span><b>Energy Formation <span class="corr">◆ correspondance</span></b><p>Formateur : stages chef de travaux, astreinte — transmettre le geste juste.</p></div>
+    <div class="stop"><span class="an">&nbsp;&nbsp;+&nbsp;&nbsp;</span><b>Prévention des risques</b><p>Reprise d'études : RPS et sécurité routière, ses combats de cœur.</p></div>
+    <div class="stop terminus"><span class="an">2027</span><b>Terminus : votre CSE</b><p>Mandats CSE + formation des militants FO. Tout le monde descend… voter.</p></div>
+  </div>
+</div>
+<div class="quote">« On rentre chez soi <i>entier</i>, le soir. C'est pour ça que je me bats. »<small>Prochain départ : novembre 2027 — ne ratez pas le train.</small></div>
+<a class="qr" href="https://fo-grdf.github.io/Elections-2027/regions/region.html?r=fc"><img src="../qr/qr-fc.png" alt="QR"><span>Plan du réseau complet fo-grdf.github.io/Elections-2027</span></a>
+<div class="foot"><div class="d">Novembre 2027<small>Vote électronique</small></div><div class="v">VOTEZ FO</div></div>
+<div class="mail">syndicat-fo_grdf-delegations-nationales@grdf.fr</div>
+</body></html>

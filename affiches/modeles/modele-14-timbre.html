@@ -1,0 +1,64 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8">
+<title>Modèle 14 · Timbre — Mickaël Lopes</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>@page{size:A4;margin:0}*{margin:0;padding:0;box-sizing:border-box}html,body{width:210mm;height:297mm}body{position:relative;overflow:hidden;-webkit-print-color-adjust:exact;print-color-adjust:exact}a{text-decoration:none;color:inherit}img{display:block}
+body{font-family:'Jost',sans-serif;background:#e8e2d4;color:#2c2a26}
+body::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(44,42,38,.05) .35mm,transparent .35mm);background-size:2.8mm 2.8mm}
+.timbre{position:absolute;top:14mm;left:50%;transform:translateX(-50%);width:150mm;height:196mm;background:#fdfbf5;
+ -webkit-mask:radial-gradient(circle 3.2mm at 3.2mm 3.2mm,transparent 96%,#000) -3.2mm -3.2mm/9.4mm 9.4mm;
+ mask:radial-gradient(circle 3.2mm at 3.2mm 3.2mm,transparent 96%,#000) -3.2mm -3.2mm/9.4mm 9.4mm;
+ box-shadow:0 6mm 16mm rgba(44,42,38,.3)}
+.cadre{position:absolute;top:22mm;left:38mm;right:38mm;height:180mm;border:.5mm solid #2c2a26;padding:6mm;background:#fdfbf5}
+.cadre::before{content:"";position:absolute;inset:1.8mm;border:.25mm solid #8a8172}
+.entete{text-align:center;font-family:'Cormorant Garamond';font-weight:700;font-size:6.2mm;letter-spacing:1.4mm;text-transform:uppercase;padding-top:2mm}
+.entete small{display:block;font-family:'Jost';font-weight:500;font-size:3mm;letter-spacing:2mm;color:#8a8172;margin-top:1mm}
+.valeur{position:absolute;top:6mm;right:8mm;font-family:'Cormorant Garamond';font-weight:700;font-size:12mm;color:#c0303a;line-height:1}
+.valeur small{display:block;font-size:3mm;font-family:'Jost';letter-spacing:1mm;color:#8a8172;text-align:right}
+.pf{position:absolute;top:36mm;left:0;right:0;display:flex;justify-content:center}
+.pcadre{width:88mm;height:96mm;background:linear-gradient(180deg,#dee9f0,#b8cddb);border:.4mm solid #2c2a26;display:flex;align-items:flex-end;justify-content:center;overflow:hidden;position:relative}
+.pcadre::after{content:"";position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,rgba(44,42,38,.08) 0 .3mm,transparent .3mm 1.1mm);pointer-events:none}
+.pcadre img{width:72%;filter:sepia(.25) contrast(1.06)}
+.nomt{position:absolute;top:140mm;left:0;right:0;text-align:center;font-family:'Cormorant Garamond';font-weight:700;font-size:11.5mm;line-height:1}
+.nomt em{color:#c0303a;font-style:italic}
+.rolet{position:absolute;top:154mm;left:0;right:0;text-align:center;font-size:3.7mm;font-weight:500;color:#5c5548;letter-spacing:.4mm}
+.colleget{position:absolute;top:162mm;left:0;right:0;text-align:center}
+.colleget span{display:inline-flex;align-items:center;gap:2.2mm;border:.4mm solid #c0303a;color:#c0303a;padding:1.8mm 5.5mm;font-weight:600;font-size:3.6mm;letter-spacing:1.2mm;text-transform:uppercase}
+.colleget svg{width:4.2mm;height:4.2mm}
+.obli{position:absolute;top:118mm;right:16mm;width:52mm;height:52mm;border:1mm solid rgba(44,42,38,.55);border-radius:50%;transform:rotate(-14deg);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:rgba(44,42,38,.68);font-weight:700;z-index:3;background:rgba(253,251,245,.12)}
+.obli .o1{font-size:3.4mm;letter-spacing:1mm}.obli .o2{font-size:5.4mm;color:#c0303a}.obli .o3{font-size:3.2mm}
+.obli::before{content:"";position:absolute;left:-14mm;top:50%;width:80mm;height:.5mm;background:repeating-linear-gradient(90deg,rgba(44,42,38,.5) 0 4mm,transparent 4mm 7mm)}
+.steps{position:absolute;top:218mm;left:16mm;right:16mm;display:flex;gap:5mm}
+.st{flex:1;background:#fdfbf5;border:.4mm solid #2c2a26;padding:4.6mm;min-height:34mm}
+.st b{display:block;font-family:'Cormorant Garamond';font-weight:700;font-size:5.2mm;margin-bottom:1.4mm;color:#c0303a}
+.st p{font-size:3.4mm;line-height:1.45;color:#4c463b}
+.quote{position:absolute;top:258mm;left:16mm;width:106mm;font-family:'Cormorant Garamond';font-style:italic;font-weight:600;font-size:6mm;line-height:1.25}
+.quote i{color:#c0303a}
+.qr{position:absolute;bottom:10mm;right:14mm;background:#fdfbf5;border:.4mm solid #2c2a26;padding:2.8mm;text-align:center}
+.qr img{width:24mm;height:24mm}.qr span{display:block;font-size:2.7mm;font-weight:600;max-width:26mm;margin-top:1.2mm}
+.foot{position:absolute;bottom:11mm;left:16mm;font-weight:700}
+.foot .d{font-family:'Cormorant Garamond';font-size:8mm}.foot small{display:block;font-size:3mm;letter-spacing:1.4mm;color:#8a8172;text-transform:uppercase}
+.foot .v{display:inline-block;margin-top:1.6mm;background:#c0303a;color:#fdfbf5;font-size:5.4mm;padding:1.6mm 6mm;letter-spacing:.6mm}
+.mail{position:absolute;bottom:4.4mm;left:0;right:0;text-align:center;font-size:2.8mm;letter-spacing:.9mm;color:#8a8172}
+.logo{position:absolute;top:16mm;left:16mm;width:20mm;background:#fff;padding:1.4mm;border:.3mm solid #2c2a26;z-index:4}
+</style></head><body>
+<img class="logo" src="../../assets/img/logo-fo-energie.jpg" alt="FO">
+<div class="timbre"></div>
+<div class="cadre">
+  <div class="entete">Collection Élections CSE<small>FO GRDF · Fonctions Centrales · MMXXVII</small></div>
+  <div class="valeur">2027<small>ÉMISSION SPÉCIALE</small></div>
+</div>
+<div class="pf"><div class="pcadre"><img src="../../assets/img/equipe/mickael.png" alt="Mickaël Lopes"></div></div>
+<div class="nomt">Mickaël <em>Lopes</em></div>
+<div class="rolet">Prévention des risques professionnels · Chambéry · sociétaire FO depuis 2016</div>
+<div class="colleget"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> Collège Exécution</span></div>
+<div class="obli"><span class="o1">★ OBLITÉRÉ ★</span><span class="o2">VOTEZ FO</span><span class="o3">NOV. 2027 · 1 tour</span></div>
+<div class="steps">
+  <div class="st"><b>Terrain</b><p>Technicien gaz de 2009 à 2019 : vos métiers, connus de l'intérieur.</p></div>
+  <div class="st"><b>Transmission</b><p>Formateur Energy Formation, puis formateur des militants FO.</p></div>
+  <div class="st"><b>Prévention</b><p>RPS et sécurité routière : ses combats au CSE. Moniteur de boxe française.</p></div>
+</div>
+<div class="quote">« On rentre chez soi <i>entier</i>, le soir. C'est pour ça que je me bats. »</div>
+<div class="foot"><div class="d">Novembre 2027</div><small>vote électronique</small><span class="v">VOTEZ FO</span></div>
+<a class="qr" href="https://fo-grdf.github.io/Elections-2027/regions/region.html?r=fc"><img src="../qr/qr-fc.png" alt="QR"><span>fo-grdf.github.io/Elections-2027</span></a>
+<div class="mail">syndicat-fo_grdf-delegations-nationales@grdf.fr</div>
+</body></html>

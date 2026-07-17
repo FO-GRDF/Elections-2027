@@ -1,0 +1,73 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8">
+<title>Modèle 17 · Manomètre — Mickaël Lopes</title>
+<link href="https://fonts.googleapis.com/css2?family=Michroma&family=Titillium+Web:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>@page{size:A4;margin:0}*{margin:0;padding:0;box-sizing:border-box}html,body{width:210mm;height:297mm}body{position:relative;overflow:hidden;-webkit-print-color-adjust:exact;print-color-adjust:exact}a{text-decoration:none;color:inherit}img{display:block}
+body{font-family:'Titillium Web',sans-serif;background:#1a222b;color:#e9eef3}
+body::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) .3mm,transparent .3mm),linear-gradient(90deg,rgba(255,255,255,.04) .3mm,transparent .3mm);background-size:10mm 10mm}
+.plate{position:absolute;top:8mm;left:8mm;right:8mm;bottom:8mm;border:.8mm solid #394a5a;border-radius:6mm;box-shadow:inset 0 0 0 1.6mm #10161d}
+.vis{position:absolute;width:6mm;height:6mm;border-radius:50%;background:radial-gradient(circle at 35% 30%,#7d8fa0,#39424d 70%);box-shadow:inset 0 -1mm 2mm rgba(0,0,0,.5)}
+.vis::after{content:"";position:absolute;left:12%;top:46%;width:76%;height:8%;background:#161d24;transform:rotate(38deg)}
+.v1{top:11mm;left:11mm}.v2{top:11mm;right:11mm}.v3{bottom:11mm;left:11mm}.v4{bottom:11mm;right:11mm}
+.head{position:absolute;top:14mm;left:0;right:0;text-align:center;font-family:'Michroma';font-size:5.4mm;letter-spacing:1.4mm}
+.head small{display:block;font-family:'Titillium Web';font-weight:600;font-size:3.2mm;letter-spacing:2mm;color:#8fa6ba;margin-top:1.4mm;text-transform:uppercase}
+.logo{position:absolute;top:13mm;right:16mm;width:21mm;background:#fff;border-radius:2mm;padding:1.4mm}
+.gauge{position:absolute;top:32mm;left:50%;transform:translateX(-50%);width:118mm;height:118mm;border-radius:50%;background:radial-gradient(circle at 50% 42%,#232e3a,#141b22 75%);border:2.4mm solid #4a5c6e;box-shadow:0 8mm 20mm rgba(0,0,0,.55),inset 0 0 10mm rgba(0,0,0,.6)}
+.gauge svg{position:absolute;inset:0;width:100%;height:100%}
+.photo{position:absolute;top:64mm;left:50%;transform:translateX(-50%);width:52mm;height:52mm;border-radius:50%;overflow:hidden;background:#0f151b;border:.8mm solid #5c92c2;display:flex;align-items:flex-end;justify-content:center;z-index:2}
+.photo img{width:70%}
+.gtxt{position:absolute;top:122mm;left:0;right:0;text-align:center;font-family:'Michroma';font-size:3.4mm;color:#8fa6ba;z-index:2}
+.gtxt b{color:#8affa3}
+.college{position:absolute;top:158mm;left:50%;transform:translateX(-50%);display:inline-flex;align-items:center;gap:2.4mm;border:.6mm solid #ff7b84;color:#ff9ba2;padding:2.2mm 6.5mm;font-weight:700;font-size:4mm;letter-spacing:1.4mm;text-transform:uppercase;background:rgba(192,48,58,.14);border-radius:2mm}
+.college svg{width:4.6mm;height:4.6mm}
+.nom{position:absolute;top:169mm;left:0;right:0;text-align:center;font-family:'Michroma';font-size:11.5mm;line-height:1.25}
+.nom span{color:#f7dd5c}
+.role{position:absolute;top:186mm;left:0;right:0;text-align:center;font-weight:600;font-size:4mm;color:#8fa6ba}
+.dials{position:absolute;top:196mm;left:16mm;right:16mm;display:flex;gap:6mm}
+.dial{flex:1;background:#141b22;border:.5mm solid #394a5a;border-radius:4mm;padding:4.5mm;min-height:40mm}
+.dial .db{display:flex;align-items:center;gap:3mm;margin-bottom:2.4mm}
+.dial .pc{font-family:'Michroma';font-size:5.8mm;color:#8affa3}
+.dial:nth-child(2) .pc{color:#f7dd5c}.dial:nth-child(3) .pc{color:#ff9ba2}
+.dial b{font-size:4.2mm;font-weight:700}
+.dial p{font-size:3.4mm;line-height:1.45;color:#b9c8d6}
+.track{height:2.4mm;background:#0d1319;border-radius:2mm;margin-top:2.6mm;overflow:hidden}
+.track i{display:block;height:100%;background:linear-gradient(90deg,#37b6ff,#8affa3)}
+.dial:nth-child(1) .track i{width:98%}
+.dial:nth-child(2) .track i{width:92%;background:linear-gradient(90deg,#f7dd5c,#e8a93f)}
+.dial:nth-child(3) .track i{width:97%;background:linear-gradient(90deg,#ff9ba2,#c0303a)}
+.quote{position:absolute;top:246mm;left:20mm;width:104mm;font-style:italic;font-weight:600;font-size:4.8mm;line-height:1.35}
+.quote i{color:#8affa3;font-style:italic}
+.foot{position:absolute;bottom:14mm;left:16mm}
+.foot .d{font-family:'Michroma';font-size:6.6mm}.foot small{display:block;font-weight:600;font-size:3mm;letter-spacing:1.6mm;color:#8fa6ba;text-transform:uppercase}
+.foot .v{display:inline-block;margin-top:1.8mm;background:#c0303a;color:#fff;font-weight:900;font-size:5.6mm;padding:1.8mm 6mm;border-radius:2mm;letter-spacing:.6mm}
+.qr{position:absolute;bottom:13mm;right:15mm;background:#fff;border-radius:3mm;padding:2.8mm;text-align:center;color:#10161d}
+.qr img{width:24mm;height:24mm}.qr span{display:block;font-size:2.7mm;font-weight:700;max-width:26mm;margin-top:1.2mm}
+.mail{position:absolute;bottom:4.6mm;left:0;right:0;text-align:center;font-size:2.9mm;letter-spacing:.9mm;color:#5d7181}
+</style></head><body>
+<div class="plate"></div>
+<span class="vis v1"></span><span class="vis v2"></span><span class="vis v3"></span><span class="vis v4"></span>
+<div class="head">ÉLECTIONS CSE 2027<small>FO GRDF — Fonctions Centrales · pupitre de contrôle</small></div>
+<img class="logo" src="../../assets/img/logo-fo-energie.jpg" alt="FO">
+<div class="gauge"><svg viewBox="0 0 200 200">
+<defs><linearGradient id="arc" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#37b6ff"/><stop offset="55%" stop-color="#8affa3"/><stop offset="100%" stop-color="#f7dd5c"/></linearGradient></defs>
+<path d="M30 140 A78 78 0 1 1 170 140" fill="none" stroke="#0d1319" stroke-width="13" stroke-linecap="round"/>
+<path d="M30 140 A78 78 0 1 1 170 140" fill="none" stroke="url(#arc)" stroke-width="9" stroke-linecap="round" stroke-dasharray="358 400"/>
+<g stroke="#8fa6ba" stroke-width="1.6">
+<line x1="30" y1="140" x2="38" y2="134"/><line x1="22" y1="100" x2="32" y2="100"/><line x1="40" y1="55" x2="48" y2="61"/><line x1="100" y1="22" x2="100" y2="32"/><line x1="160" y1="55" x2="152" y2="61"/><line x1="178" y1="100" x2="168" y2="100"/><line x1="170" y1="140" x2="162" y2="134"/></g>
+<line x1="100" y1="103" x2="158" y2="52" stroke="#ff5b66" stroke-width="3.4" stroke-linecap="round"/>
+<circle cx="100" cy="103" r="7" fill="#ff5b66"/><circle cx="100" cy="103" r="3" fill="#10161d"/>
+</svg></div>
+<div class="photo"><img src="../../assets/img/equipe/mickael.png" alt="Mickaël Lopes"></div>
+<div class="gtxt">ENGAGEMENT&nbsp;: <b>PRESSION MAXIMALE</b> — bar : 2027</div>
+<div class="college"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> Collège Exécution</div>
+<div class="nom">MICKAËL <span>LOPES</span></div>
+<div class="role">Prévention des risques professionnels · Chambéry · FO depuis 2016 · moniteur de boxe française</div>
+<div class="dials">
+  <div class="dial"><div class="db"><span class="pc">98%</span><b>Terrain</b></div><p>Technicien gaz 2009-2019 : vos métiers, connus de l'intérieur.</p><div class="track"><i></i></div></div>
+  <div class="dial"><div class="db"><span class="pc">92%</span><b>Transmission</b></div><p>Formateur Energy Formation, puis formateur des militants FO.</p><div class="track"><i></i></div></div>
+  <div class="dial"><div class="db"><span class="pc">97%</span><b>Prévention</b></div><p>RPS &amp; sécurité routière : ses combats au CSE.</p><div class="track"><i></i></div></div>
+</div>
+<div class="quote">« On rentre chez soi <i>entier</i>, le soir. C'est pour ça que je me bats. »</div>
+<div class="foot"><div class="d">NOV. 2027</div><small>vote électronique</small><span class="v">VOTEZ FO</span></div>
+<a class="qr" href="https://fo-grdf.github.io/Elections-2027/regions/region.html?r=fc"><img src="../qr/qr-fc.png" alt="QR"><span>fo-grdf.github.io/Elections-2027</span></a>
+<div class="mail">syndicat-fo_grdf-delegations-nationales@grdf.fr</div>
+</body></html>
